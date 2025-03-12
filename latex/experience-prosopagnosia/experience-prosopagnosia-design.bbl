@@ -1,0 +1,157 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{anyt/global//global/global/global}
+    \entry{chang_2017}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=839894410157165b99503f0dd21ce0b0}{%
+           family={Chang},
+           familyi={C\bibinitperiod},
+           given={Le},
+           giveni={L\bibinitperiod}}}%
+        {{hash=bd456c0a5fdb56a56ad759a82038c1f2}{%
+           family={Tsao},
+           familyi={T\bibinitperiod},
+           given={Doris\bibnamedelima Y.},
+           giveni={D\bibinitperiod\bibinitdelim Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{583f3daee04f1268895bf4f088e7e951}
+      \strng{fullhash}{583f3daee04f1268895bf4f088e7e951}
+      \strng{fullhashraw}{583f3daee04f1268895bf4f088e7e951}
+      \strng{bibnamehash}{583f3daee04f1268895bf4f088e7e951}
+      \strng{authorbibnamehash}{583f3daee04f1268895bf4f088e7e951}
+      \strng{authornamehash}{583f3daee04f1268895bf4f088e7e951}
+      \strng{authorfullhash}{583f3daee04f1268895bf4f088e7e951}
+      \strng{authorfullhashraw}{583f3daee04f1268895bf4f088e7e951}
+      \field{labelalpha}{CT17}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0092-8674}
+      \field{journaltitle}{Cell}
+      \field{month}{09}
+      \field{number}{6}
+      \field{title}{The Code for Facial Identity in the Primate Brain}
+      \field{volume}{169}
+      \field{year}{2017}
+      \field{pages}{1013\bibrangedash 1028.e14}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1016/j.cell.2017.05.011
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1016/j.cell.2017.05.011
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1016/j.cell.2017.05.011
+      \endverb
+    \endentry
+    \entry{degutis_2014}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=60591b7e3d141bd1c1e018b3db6f316f}{%
+           family={DeGutis},
+           familyi={D\bibinitperiod},
+           given={Joseph},
+           giveni={J\bibinitperiod}}}%
+        {{hash=0f035e0f1578bc82604e1559547dce78}{%
+           family={Cohan},
+           familyi={C\bibinitperiod},
+           given={Sarah},
+           giveni={S\bibinitperiod}}}%
+        {{hash=c53454c08d10df7a4be29647be5827df}{%
+           family={Nakayama},
+           familyi={N\bibinitperiod},
+           given={Ken},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{8ce2b6308493aa8f0bf23cdd76d11d47}
+      \strng{fullhash}{8ce2b6308493aa8f0bf23cdd76d11d47}
+      \strng{fullhashraw}{8ce2b6308493aa8f0bf23cdd76d11d47}
+      \strng{bibnamehash}{8ce2b6308493aa8f0bf23cdd76d11d47}
+      \strng{authorbibnamehash}{8ce2b6308493aa8f0bf23cdd76d11d47}
+      \strng{authornamehash}{8ce2b6308493aa8f0bf23cdd76d11d47}
+      \strng{authorfullhash}{8ce2b6308493aa8f0bf23cdd76d11d47}
+      \strng{authorfullhashraw}{8ce2b6308493aa8f0bf23cdd76d11d47}
+      \field{labelalpha}{DCN14}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0006-8950}
+      \field{journaltitle}{Brain}
+      \field{month}{03}
+      \field{number}{6}
+      \field{title}{{Holistic face training enhances face processing in developmental prosopagnosia}}
+      \field{volume}{137}
+      \field{year}{2014}
+      \field{pages}{1781\bibrangedash 1798}
+      \range{pages}{18}
+      \verb{doi}
+      \verb 10.1093/brain/awu062
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1093/brain/awu062
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1093/brain/awu062
+      \endverb
+    \endentry
+    \entry{duchaine_2006}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=c32a3774309dd80565547dcf85fe86af}{%
+           family={Duchaine},
+           familyi={D\bibinitperiod},
+           given={Brad},
+           giveni={B\bibinitperiod}}}%
+        {{hash=c53454c08d10df7a4be29647be5827df}{%
+           family={Nakayama},
+           familyi={N\bibinitperiod},
+           given={Ken},
+           giveni={K\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{6ab5d400900aa920727aab837314004b}
+      \strng{fullhash}{6ab5d400900aa920727aab837314004b}
+      \strng{fullhashraw}{6ab5d400900aa920727aab837314004b}
+      \strng{bibnamehash}{6ab5d400900aa920727aab837314004b}
+      \strng{authorbibnamehash}{6ab5d400900aa920727aab837314004b}
+      \strng{authornamehash}{6ab5d400900aa920727aab837314004b}
+      \strng{authorfullhash}{6ab5d400900aa920727aab837314004b}
+      \strng{authorfullhashraw}{6ab5d400900aa920727aab837314004b}
+      \field{labelalpha}{DN06}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Neuropsychologia}
+      \field{number}{4}
+      \field{title}{The Cambridge Face Memory Test: Results for neurologically intact individuals and an investigation of its validity using inverted face stimuli and prosopagnosic participants}
+      \field{volume}{44}
+      \field{year}{2006}
+      \field{pages}{576\bibrangedash 585}
+      \range{pages}{10}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

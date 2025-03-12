@@ -1,8 +1,18 @@
-{{ define "main" }}
-  <h1>{{ .Title }}</h1>
+{{- define "main" }}
   {{ .Content }}
-  {{ range .Pages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-    {{ .Summary }}
-  {{ end }}
-{{ end }}
+  <section id="{{ .Title }}" class="container">
+    <h2>{{ .Title }}</h2>
+    {{- range .Pages }}
+      <div class="post">
+        <h3><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h3>
+        <div class="post-img">
+          {{- partial "thumb.html" (dict "page" .) }}
+        </div>
+        <div class="post-text">
+          <i>{{- partial "date.html" . }}</i>
+          {{ .Summary }}
+        </div>
+      </div>
+    {{- end }}
+  </section>
+{{- end }}

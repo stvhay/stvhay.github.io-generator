@@ -1,0 +1,279 @@
+%------------------------------------------------
+% Template: https://github.com/cies/resume
+% Authors: Cies Breijs (cies@kde.nl), Vel (vel@latextemplates.com)
+% License: CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%------------------------------------------------
+
+\documentclass[10pt,a4paper]{article}
+\input{structure}
+\hyphenation{Some-long-word}
+
+\begin{document} 
+    % NAME AND CONTACT INFORMATION    
+    \maintitle{Steven Hay}{}\\
+    \noindent\href{mailto:me@stevenhay.com}{me@stevenhay.com}\bull
+    \textsmaller{+}1 (703) 220-5356\bull
+    \href{https://github.com/stvhay}{https://github.com/stvhay}\\
+    323 Colonial Dr\bull Berkeley Springs, 25411 \bull WV \bull USA
+    
+    \spacedhrule{0.9em}{-0.4em}
+    
+    % SUMMARY
+    \roottitle{Summary}
+    \vspace{-1.3em}
+    
+    \begin{multicols}{2}
+        \noindent \textit{During his career, he has had extensive experience in energy systems, nuclear power, and data science. He holds degrees in computer science, electrical engineering, mechanical engineering, and business. With strong technical expertise in programming, system integration, and analytics, Steve also has a passion for open source development, photography, and scuba diving.}\\
+        
+        \noindent{Steve has experience conducting research in the initial stage to establish new engineering initiatives. At Fluence Energy, he founded a Digital Intelligence group to leverage machine learning and advanced analytics to be embedded into the distributed control system of these facilities. While doing so, he built an Agile team from the ground up, formalizing processes established by the core software development team and mapping those into ISO 9001 compliant work practices. The machine learning features the team developed supported the sale of and operational optimization of multi-million dollar grid-scale energy storage assets.}\\
+        
+        \noindent{Prior to that, at MPR, he established grid-scale energy storage as a new consulting area for the company, growing the team from himself on a 5 MW-h project to over 5 full time consultants on multiple projects exceeding 1 GW-h in total.}\\
+        
+        \noindent{In the Navy, he lead the technical and engineering response to StuxNet for the nuclear Navy, establishing an immediate response plan and going on to develop foundational principles for control system security design and operational practices for nuclear powered ships.}
+    \end{multicols}
+    
+    \spacedhrule{0.5em}{-0.4em}
+    
+    % EDUCATION
+    \roottitle{Education}
+    
+    \headedsection
+    {\href{https://www.rpi.edu}{Rensselaer Polytechnic Institute}}
+    {\textsc{Troy, \acr{NY}}} 
+    {
+        \headedsubsection
+        {BS Computer Science}
+        {2003}
+        {\bodytext{Learned the foundations of artificial intelligence and its connection to mathematics, logic, and epistemology.}}
+        
+        \headedsubsection
+        {BS Electrical Engineering}
+        {2003}
+        {\bodytext{Learned control systems engineering, including the study of digital control systems and optimal control.}}
+    }
+    
+    %------------------------------------------------
+    
+    \headedsection 
+    {Naval Postgraduate School}
+    {\textsc{Monterey, \acr{CA}}} 
+    {
+        \headedsubsection
+        {MS Engineering Science, Mechanical Engineering}
+        {2005}
+        {\bodytext{Learned nuclear reactor design, materials engineering, mechanical shock analysis, and computational fluid dynamics.}}
+        
+        \headedsubsection
+        {Executive MBA}
+        {2010}
+        {\bodytext{Learned economics, process optimization, business strategy, budgeting, and defense procurement.}}
+    }
+    
+    \spacedhrule{0.5em}{-0.4em}
+    
+    % EXPERIENCE
+    
+    \roottitle{Experience}
+    
+    \headedsection 
+    {\href{https://www.rpi.edu}{Rensselaer Polytechnic Institute}}
+    {\textsc{Troy, \acr{NY}}} 
+    {
+        \headedsubsection
+        {Teaching Assistant}
+        {Sep 1998 -- Apr 2003}
+        {\bodytext{Upper level programming language theory (Prof. Sybil Schupp) and compiler design course (2 years).}}
+        
+        \headedsubsection
+        {Teaching Assistant}
+        {}
+        {\bodytext{”Minds and Machines” robotics laboratory. (Profs. Selmer Bringsjord and Jim Fahey)}}
+        
+        {\bodytext{Bringsjord, S., \& Heuveln, B. V. (2003). The “mental eye” defence of an infinitized version of Yablo’s paradox. Analysis, 63(277), 61–70.}}
+        
+        \headedsubsection
+        {Undergraduate Research}
+        {}
+        {\bodytext{Implemented an optimal coverage algorithm for a robot with non-holonomic control in arbitrary polygonal space.}}
+        
+        {\bodytext{Huang, W. H. (n.d.). Optimal line-sweep-based decompositions for coverage algorithms. Proceedings 2001 ICRA. IEEE International Conference on Robotics and Automation (Cat. No.01CH37164).}}
+    }
+    
+    %------------------------------------------------
+    
+    \headedsection 
+    {\href{https://www.fluenceenergy.com}{Fluence Energy / AES Energy Storage}}
+    {\textsc{Arlington, \acr{VA}}}
+    {
+        \headedsubsection
+        {Director, Digital Intelligence / Director, Systems Integration / Principal Staff Engineer / Principal Solutions Architect}
+        {Aug 2016 -- Nov 2023}
+        {\bodytext{
+            Founded and led a team of data scientists and engineers reporting directly to \acr{CTO}. Implemented Agile methodology conforming to ISO 9001 best practices. Created technology road-maps and prototype demonstrations of initial \acr{ML} and analytics platforms. Led team that created:
+        
+            \begin{itemize}
+                \item A lithium-ion battery degradation model using \acr{ARIMA} to characterize and predict performance degradation. The model was used to plan maintenance and replacement activities for battery modules.
+        
+                \item A valuation model for energy storage systems using a portfolio of usage profiles, weather and climate prediction techniques, and economic modeling of energy markets. The model was used to better price and size projects, as well as demonstrate product value to customers.
+        
+                \item A 4D data visualization tool to monitor system cooling abnormalities.
+            \end{itemize}
+            (Tools: SQL, Lambda, Snowflake, S3 Tensorflow, Keras, Python, Numpy, Scipy, etc.)
+        }}
+        
+        \headedsubsection
+        {}
+        {}
+        {\bodytext{Integrated the electrical, computer, data acquisition, and control systems deployed for first-in-industry grid scale (10+ MW) battery energy storage projects. Broke ground in Maryland, California, Arizona, Indiana, N. Ireland, Netherlands, and Philippines, serving various grid applications uniquely enabled by storage. These projects formed the commercial and technical basis for Fluence presence in 20+ countries worldwide.}}
+        
+        \headedsubsection
+        {}
+        {}
+        {\bodytext{On-boarded a data collection system storing over 50 million metrics per second.}}
+        
+        \headedsubsection
+        {}
+        {}
+        {\bodytext{Led a small team and participated in the development of a machine learning model for HVAC control that used a combination of neural networks and simulated annealing optimization techniques to reduce the energy consumption required for cooling a 10 MW energy storage facility.}}
+        
+        \headedsubsection
+        {}
+        {}
+        {\bodytext{Technical lead for business valuation and due diligence effort. Resulted in acquisition of Advanced Microgrid Systems, a provider of industry-best bid optimization software utilizing a discrete linear solver.}}
+    }
+    
+    %------------------------------------------------
+    
+    \headedsection 
+    {\href{https://www.mpr.com}{MPR Associates, Inc.}}
+    {\textsc{Alexandria, \acr{VA}}}
+    {
+        \headedsubsection
+        {Lead Engineering Consultant / Engineering Consultant}
+        {Nov 2013 -- Aug 2016}
+        {\bodytext{Led a fly-out team to complete a LOPA and HAZOP hazard analysis at a liquefied natural gas export facility.}}
+        
+        \headedsubsection
+        {}
+        {}
+        {\bodytext{Reviewed and consulted on nuclear plant cybersecurity program requirements.}}
+        
+        \headedsubsection
+        {}
+        {}
+        {\bodytext{Led critical design reviews for nuclear instrumentation upgrades for analog-to-digital and digital-to-digital conversions.}}
+        
+        \headedsubsection
+        {}
+        {}
+        {\bodytext{Implemented an independent calculation to reproduce the results of an internally developed advanced statistical method to determine the  probability of safety valve failure. The method used normality checks, convolution of multinomial probability distributions, and various other statistical tests to produce a closed form solution of a problem previously estimated with Monte Carlo techniques. The results were used to enhance the safety design basis of a nuclear power plant.}}
+        
+        \headedsubsection
+        {}
+        {}
+        {\bodytext{Technical consulting and development of eventual business line for new grid energy storage systems, built to accelerate the transition of energy production to renewable sources.}}
+    }
+    
+    %------------------------------------------------
+    
+    \headedsection 
+    {US Naval Reactors}
+    {\textsc{Washington, \acr{DC}}}
+    {
+        \headedsubsection
+        {Technical Program Manager / Lead Engineer}
+        {May 2003 -- Jun 2013}
+        {\bodytext{Coordinated with senior members of national laboratories to create a research plan for the study of long term mixed-phase corrosion in nuclear boilers (steam generators).}}
+        
+        \headedsubsection
+        {}
+        {}
+        {\bodytext{Modernized headquarters knowledge management, office workflow, and electronic distribution practices. Developed JavaScript front-end interface for work tracking system, resulting in massively increased use and initiating a transition to digital reviews and performance metrics tracking. Recognized with an award in 2012 (Navy Commendation Medal).}}
+        
+        \headedsubsection
+        {}
+        {}
+        {\bodytext{Developed product road mapping and schedules for internal hardware and software products through their life cycle, including conceptual buy-in, requirements development, project management, and delivery to stakeholders . Tracked industry trends to guide schedule and strategic decisions for future products.}}
+        
+        \headedsubsection
+        {}
+        {}
+        {\bodytext{Delivered multiple products to system integrators in parallel: application programming interfaces; nuclear detectors, other pressure and temperature sensor interfaces, serial and direct-wire communications, and computing (processor and video) cards; and related board support packages. Mitigated schedule, cost, and technology risk.}}
+        
+        \headedsubsection
+        {}
+        {}
+        {\bodytext{Led a team to develop new cybersecurity standards for embedded nuclear I\&C systems as a response to advanced persistent threat (APT).}}
+        
+        \headedsubsection
+        {}
+        {}
+        {\bodytext{Coordinated transition to an internal product development system, where modules are sold to system integrators. The shift was a game-changer, delivered on time, and reduced development costs by a factor of ten.}}
+        
+        \headedsubsection
+        {}
+        {}
+        {\bodytext{Problem solving to resolve the most intractable hardware and software issues for 49 operational nuclear submarine power plants.}}
+        
+        \headedsubsection
+        {}
+        {}
+        {\bodytext{Coordinated the installation of a new digital nuclear instrumentation and control system in 15 submarines.}}
+        
+        \headedsubsection
+        {}
+        {}
+        {\bodytext{Trained prospective commanding officers for nuclear submarines and aircraft carriers in various instrumentation and control topics.}}
+    }
+    
+    %------------------------------------------------
+    
+    \headedsection 
+    {US Navy}
+    {}
+    {
+        \headedsubsection
+        {Nuclear Reactor Operator}
+        {Mar 1996 -- Aug 1999}
+        {\bodytext{Selected for officer program with full scholarship; National Defense Medal.}}    
+    }
+    
+    %------------------------------------------------
+    
+    \begin{center}
+        \textit{Please refer to \href{https://www.linkedin.com/in/steve-hay-8763636b}{my LinkedIn profile} for the complete list of work experiences along with recommendations.}
+    \end{center}
+    
+    %------------------------------------------------
+    
+    \spacedhrule{-0.2em}{-0.4em}
+
+    % INTERESTS
+
+    \roottitle{Interests}
+    
+    \inlineheadsection
+    {Software:}
+    {Maintained a Linux kernel fork for the Rockchip RK3588 ARM microprocessor to support a miniaturized retro-gaming platform (\href{https://batocera.org}{Batocera Linux}). (\href{https://github.com/stvhay/kernel}{GitHub})}
+    
+    %------------------------------------------------
+    
+    \inlineheadsection
+    {Photography:}
+    {Was a frequent contributor to the Washington Post travel section and winner of the 2011 Talking Newspaper Association of the UK photography award. (\href{https://www.flickr.com/photos/stevehay/albums}{portfolio})}
+
+    %------------------------------------------------
+
+    \inlineheadsection
+    {Digital Music:}
+    {Chiptunes and vintage sample tracking.}
+    
+    %------------------------------------------------
+    
+    \inlineheadsection
+    {Scuba Diving:}
+    {PADI advanced open water certification with 100+ logged dives.}
+    
+    %------------------------------------------------
+
+\end{document}

@@ -1,0 +1,327 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage[
+        bibencoding=utf8, 
+        style=alphabetic
+]{biblatex}
+\addbibresource{experience-prosopagnosia-design.bib}
+
+\geometry{margin=1in}
+
+\begin{document}
+
+\title{Software and Hardware Architecture Proposal for\\``Using Augmented Reality to Experience Prosopagnosia''}
+\author{}
+\date{}
+\maketitle
+
+\section*{Introduction}
+
+This proposal outlines a comprehensive software and hardware architecture to implement an augmented reality (AR) system that simulates the subjective experience of prosopagnosia (face blindness). The system aims to manipulate live video feeds by altering facial features in real-time, based on neural models of face recognition, specifically those in the fusiform face area (FFA). The primary goal is to create an immersive experience that accurately reflects the perceptual challenges faced by individuals with prosopagnosia.
+
+\section*{Overview of the Proposed Architecture}
+
+The system comprises both on-device and server-side components to achieve real-time performance with minimal latency. It utilizes advanced computer vision and machine learning algorithms to detect, model, and alter faces within a live video stream. The architecture is designed to be scalable, modular, and optimized for real-time processing, ensuring an immersive and seamless user experience.
+
+\section{Software Architecture}
+
+\subsection{Software Components Overview}
+
+\begin{itemize}
+    \item \textbf{Face Detection and Tracking Module}
+    \item \textbf{Face Representation and Modeling Module}
+    \item \textbf{Face Distortion Module}
+    \item \textbf{Rendering Module}
+    \item \textbf{User Interface Module}
+    \item \textbf{Networking Module (if offloading processing)}
+    \item \textbf{Latency Optimization Module}
+\end{itemize}
+
+\subsection{Data Flow and Processing Pipeline}
+
+\begin{enumerate}
+    \item \textbf{Video Capture}: The AR headset's camera captures live video feeds.
+    \item \textbf{Face Detection and Tracking}: Real-time detection of frontal faces and tracking their positions in successive frames.
+    \item \textbf{Face Representation and Modeling}: Generation of 3D face models and extraction of a 50-dimensional eigenvalue representation based on FFA neural models.
+    \item \textbf{Face Distortion}: Alteration of facial features by modifying the eigenvalues to simulate prosopagnosia.
+    \item \textbf{Rendering}: Overlay of the distorted faces onto the original video feed in real-time.
+    \item \textbf{Display}: Presentation of the augmented video feed to the user through the AR headset.
+    \item \textbf{User Interaction and Feedback}: Optional modules for user input and experience surveys.
+\end{enumerate}
+
+\subsection{Detailed Component Description}
+
+\subsubsection{Face Detection and Tracking Module}
+
+\textbf{Function}: Detects faces in real-time from the video feed and tracks them across frames.
+
+\textbf{Technologies}:
+\begin{itemize}
+    \item \textbf{OpenCV}: For initial face detection using Haar Cascades or DNN-based detectors.
+    \item \textbf{Dlib}: For facial landmark detection.
+    \item \textbf{TensorFlow Lite} or \textbf{ONNX Runtime}: For optimized neural network inference on mobile devices.
+\end{itemize}
+
+\textbf{Algorithms}:
+\begin{itemize}
+    \item \textbf{Multi-task Cascaded Convolutional Networks (MTCNN)} for face detection.
+    \item \textbf{Kalman Filters} or \textbf{Optical Flow} for tracking.
+\end{itemize}
+
+\subsubsection{Face Representation and Modeling Module}
+
+\textbf{Function}: Generates 3D face models and computes the eigenvalue representation of facial features. \cite{chang_2017}
+
+\textbf{Technologies}:
+\begin{itemize}
+    \item \textbf{Eigenfaces Method}: For face representation using Principal Component Analysis (PCA).
+    \item \textbf{3D Morphable Models (3DMM)}: To create and manipulate 3D face geometry.
+\end{itemize}
+
+\textbf{Algorithms}:
+\begin{itemize}
+    \item \textbf{PCA}: To extract the 50-dimensional eigenvalue representation.
+    \item \textbf{Non-linear optimization}: For fitting the 3D model to the detected face.
+\end{itemize}
+
+\subsubsection{Face Distortion Module}
+
+\textbf{Function}: Alters facial features by modifying the eigenvalues to simulate the perceptual distortions experienced in prosopagnosia.
+
+\textbf{Technologies}:
+\begin{itemize}
+    \item Custom algorithms based on FFA neural encoding studies.
+\end{itemize}
+
+\textbf{Algorithms}:
+\begin{itemize}
+    \item \textbf{Eigenvalue Manipulation}: Adjusting eigenvalues to distort facial features while maintaining realism.
+    \item \textbf{Neural Style Transfer}: As an alternative to apply perceptual changes.
+\end{itemize}
+
+\subsubsection{Rendering Module}
+
+\textbf{Function}: Integrates the distorted faces back into the video feed and renders the augmented reality scene.
+
+\textbf{Technologies}:
+\begin{itemize}
+    \item \textbf{Unity3D} or \textbf{Unreal Engine}: For AR rendering.
+    \item \textbf{ARCore} or \textbf{ARKit}: Depending on the AR headset compatibility.
+\end{itemize}
+
+\textbf{Algorithms}:
+\begin{itemize}
+    \item \textbf{Shader Programming}: For real-time rendering effects.
+    \item \textbf{Texture Mapping}: To overlay the altered face onto the original.
+\end{itemize}
+
+\subsubsection{User Interface Module}
+
+\textbf{Function}: Manages user interactions and displays contextual information.
+
+\textbf{Technologies}:
+\begin{itemize}
+    \item Cross-platform UI frameworks such as \textbf{Qt} or \textbf{Unity UI}.
+\end{itemize}
+
+\textbf{Features}:
+\begin{itemize}
+    \item Menu systems for settings.
+    \item Visual cues or instructions for participants.
+\end{itemize}
+
+\subsubsection{Networking Module (If Offloading Processing)}
+
+\textbf{Function}: Handles data transmission between the AR headset and the local server.
+
+\textbf{Technologies}:
+\begin{itemize}
+    \item \textbf{WebSockets} or \textbf{gRPC}: For real-time communication.
+    \item \textbf{UDP Protocol}: For low-latency data transfer.
+\end{itemize}
+
+\textbf{Security}:
+\begin{itemize}
+    \item \textbf{Encryption}: SSL/TLS protocols to secure data transmission.
+\end{itemize}
+
+\subsubsection{g. Latency Optimization Module}
+
+\textbf{Function}: Ensures that the total processing time remains within the 20\,ms target.
+
+\textbf{Technologies}:
+\begin{itemize}
+    \item \textbf{Multi-threading}: To parallelize tasks.
+    \item \textbf{GPU Acceleration}: Utilizing shaders and compute shaders.
+\end{itemize}
+
+\textbf{Strategies}:
+\begin{itemize}
+    \item \textbf{Algorithm Optimization}: Simplifying models without significant loss of quality.
+    \item \textbf{Asynchronous Processing}: Decoupling processing steps to prevent bottlenecks.
+\end{itemize}
+
+\subsection{Latency Reduction Techniques}
+
+\begin{itemize}
+    \item \textbf{On-Device Processing}: Utilize the AR headset's GPU for parallel computations.
+    \item \textbf{Model Compression}: Use quantization and pruning on neural networks.
+    \item \textbf{Efficient Algorithms}: Implement lightweight versions of face detection and recognition algorithms.
+    \item \textbf{Edge Computing}: Deploy edge servers close to the user to reduce network latency if offloading is necessary.
+\end{itemize}
+
+\section{Hardware Architecture}
+
+\subsection{AR Headset Specifications}
+
+\textbf{Device Requirements}:
+\begin{itemize}
+    \item High-resolution camera(s) for video capture.
+    \item Powerful GPU for real-time rendering and processing.
+    \item Sufficient RAM and storage.
+\end{itemize}
+
+\textbf{Suggested Devices}:
+\begin{itemize}
+    \item \textbf{Microsoft HoloLens 2}
+    \item \textbf{Magic Leap 2}
+    \item \textbf{Meta Quest Pro}
+\end{itemize}
+
+\subsection{Processing Capabilities}
+
+\subsubsection{On-Device Processing}
+
+\textbf{Advantages}:
+\begin{itemize}
+    \item Reduced latency due to elimination of network delays.
+    \item Increased privacy as data is processed locally.
+\end{itemize}
+
+\textbf{Limitations}:
+\begin{itemize}
+    \item Limited computational resources compared to servers.
+    \item Potential thermal constraints.
+\end{itemize}
+
+\subsubsection{Offloading to Local Server}
+
+\textbf{Server Specifications}:
+\begin{itemize}
+    \item \textbf{GPU}: NVIDIA RTX series or equivalent for deep learning tasks.
+    \item \textbf{TPU}: Tensor Processing Units if compatible.
+    \item \textbf{CPU}: Multi-core processors for handling multiple threads.
+\end{itemize}
+
+\textbf{Network Architecture}:
+\begin{itemize}
+    \item High-speed local network (Ethernet or Wi-Fi 6).
+    \item Dedicated router to prioritize traffic.
+\end{itemize}
+
+\subsection{Networking Considerations}
+
+\textbf{Latency}:
+\begin{itemize}
+    \item Target end-to-end latency of less than 20\,ms.
+    \item Use of \textbf{Quality of Service (QoS)} settings to prioritize AR data.
+\end{itemize}
+
+\textbf{Bandwidth}:
+\begin{itemize}
+    \item Sufficient to handle high-resolution video streams.
+\end{itemize}
+
+\textbf{Reliability}:
+\begin{itemize}
+    \item Redundant network paths if possible.
+\end{itemize}
+
+\textbf{Security}:
+\begin{itemize}
+    \item Secure Wi-Fi networks with strong encryption.
+\end{itemize}
+
+\subsection{Integration of Hardware Components}
+
+\textbf{Camera Systems}:
+\begin{itemize}
+    \item Integrated with the AR headset for seamless video capture.
+\end{itemize}
+
+\textbf{Sensors}:
+\begin{itemize}
+    \item \textbf{IMUs} (Inertial Measurement Units) for motion tracking.
+    \item \textbf{Depth Sensors}: Optional, for improved 3D modeling.
+\end{itemize}
+
+\textbf{Wearable Computing}:
+\begin{itemize}
+    \item Lightweight and ergonomically designed for comfort during extended use.
+\end{itemize}
+
+\section{Implementation Considerations}
+
+\subsection{Scalability and Flexibility}
+
+\begin{itemize}
+    \item \textbf{Modular Design}: Allows for components to be updated or replaced without overhauling the entire system.
+    \item \textbf{Cross-Platform Compatibility}: Development using platforms that support multiple devices (e.g., Unity3D).
+    \item \textbf{Future-Proofing}: Designing with future technological advancements in mind.
+\end{itemize}
+
+\subsection{Real-Time Processing Challenges}
+
+\begin{itemize}
+    \item \textbf{Data Throughput}: Ensuring the system can handle the data rates required for high-resolution video.
+    \item \textbf{Synchronization}: Keeping all processing modules in sync to prevent visual artifacts.
+    \item \textbf{Error Handling}: Robust methods to handle failures without disrupting the user experience.
+\end{itemize}
+
+\subsection{Privacy and Ethical Considerations}
+
+\begin{itemize}
+    \item \textbf{Data Management}: Ensuring that facial data is not stored unnecessarily.
+    \item \textbf{User Consent}: Informing participants about the data processing involved.
+    \item \textbf{Compliance}: Adhering to data protection regulations (e.g., GDPR).
+\end{itemize}
+
+\section{Exhibit Setup Considerations}
+
+\subsection{Participant Experience Design}
+
+\begin{itemize}
+    \item \textbf{Controlled Environment}: A designated area where lighting and background conditions are optimal.
+    \item \textbf{Wearables}: Provision of uniform robes and headgear to minimize recognition based on non-facial features.
+    \item \textbf{Rotation System}: Scheduling to ensure participants experience both known and unknown faces.
+    \item \textbf{Data Gathering}: Data will be gathered to measure the participants' expriences using psychometrics such as \cite{degutis_2014} \cite{duchaine_2006}
+\end{itemize}
+
+\subsection{Hardware Deployment}
+
+\begin{itemize}
+    \item \textbf{AR Headsets}: Multiple units for simultaneous use by small groups.
+    \item \textbf{Local Servers}: Positioned to minimize network latency, possibly within the exhibit space.
+    \item \textbf{Networking Equipment}: High-performance routers and switches dedicated to the exhibit.
+\end{itemize}
+
+\subsection{Support Infrastructure}
+
+\begin{itemize}
+    \item \textbf{Technical Staff}: On-site personnel to assist with equipment and troubleshoot issues.
+    \item \textbf{Educational Materials}: Contextual placards or videos explaining the experience.
+    \item \textbf{Feedback Mechanisms}: Tablets or kiosks for participants to complete surveys post-experience.
+\end{itemize}
+
+\section{Conclusion}
+
+The proposed software and hardware architecture leverages cutting-edge technologies in computer vision, machine learning, and augmented reality to create an immersive simulation of prosopagnosia. By carefully balancing on-device processing with potential server-side support, the system is designed to meet the stringent latency requirements essential for a seamless user experience. The modular design ensures scalability and adaptability, allowing for future enhancements and the potential incorporation of additional perceptual disorder simulations.
+
+This architecture not only serves the immediate goals of the project but also lays the groundwork for future research and development in assistive AR technologies and educational tools that foster empathy and understanding of perceptual diversity.
+
+\printbibliography
+
+\end{document}

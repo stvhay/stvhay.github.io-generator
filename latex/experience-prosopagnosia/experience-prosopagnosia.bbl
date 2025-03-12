@@ -1,0 +1,607 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{anyt/global//global/global/global}
+    \entry{bakir_2023}{article}{}{}
+      \name{author}{6}{}{%
+        {{hash=59c707be486557671cb75f416e39502a}{%
+           family={Bakır},
+           familyi={B\bibinitperiod},
+           given={Çiçek\bibnamedelima Nur},
+           giveni={Ç\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=dfe020230f388383740d0e49781e6ba9}{%
+           family={Abbas},
+           familyi={A\bibinitperiod},
+           given={Sharif\bibnamedelima Omar},
+           giveni={S\bibinitperiod\bibinitdelim O\bibinitperiod}}}%
+        {{hash=f8f1430490a529fc57bf8ba3ccbacb4a}{%
+           family={Sever},
+           familyi={S\bibinitperiod},
+           given={Egemen},
+           giveni={E\bibinitperiod}}}%
+        {{hash=403c5ba8d6d66b78ad4332f019a03d2a}{%
+           family={Morey},
+           familyi={M\bibinitperiod},
+           given={Aslıhan\bibnamedelima Özcan},
+           giveni={A\bibinitperiod\bibinitdelim Ö\bibinitperiod}}}%
+        {{hash=40d968e2fe869c72d0e1b0893f6209ea}{%
+           family={Genç},
+           familyi={G\bibinitperiod},
+           given={Herdem\bibnamedelima Aslan},
+           giveni={H\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=0d994c7afd1d60add791597218d0d367}{%
+           family={Mutluer},
+           familyi={M\bibinitperiod},
+           given={Tuba},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{ed15908ffc2384ca58a96573366c9b97}
+      \strng{fullhash}{604007cb51baa23709c72418c6be687c}
+      \strng{fullhashraw}{604007cb51baa23709c72418c6be687c}
+      \strng{bibnamehash}{ed15908ffc2384ca58a96573366c9b97}
+      \strng{authorbibnamehash}{ed15908ffc2384ca58a96573366c9b97}
+      \strng{authornamehash}{ed15908ffc2384ca58a96573366c9b97}
+      \strng{authorfullhash}{604007cb51baa23709c72418c6be687c}
+      \strng{authorfullhashraw}{604007cb51baa23709c72418c6be687c}
+      \field{labelalpha}{Bak+23}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Digital Health}
+      \field{title}{Use of augmented reality in mental health-related conditions: A systematic review}
+      \field{volume}{9}
+      \field{year}{2023}
+      \field{pages}{20552076231203649}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1177/20552076231203649
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1177/20552076231203649
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1177/20552076231203649
+      \endverb
+    \endentry
+    \entry{bieber_2021}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=3b5d66a47c339bdbcc3a2af47b5aaf96}{%
+           family={Bieber},
+           familyi={B\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{3b5d66a47c339bdbcc3a2af47b5aaf96}
+      \strng{fullhash}{3b5d66a47c339bdbcc3a2af47b5aaf96}
+      \strng{fullhashraw}{3b5d66a47c339bdbcc3a2af47b5aaf96}
+      \strng{bibnamehash}{3b5d66a47c339bdbcc3a2af47b5aaf96}
+      \strng{authorbibnamehash}{3b5d66a47c339bdbcc3a2af47b5aaf96}
+      \strng{authornamehash}{3b5d66a47c339bdbcc3a2af47b5aaf96}
+      \strng{authorfullhash}{3b5d66a47c339bdbcc3a2af47b5aaf96}
+      \strng{authorfullhashraw}{3b5d66a47c339bdbcc3a2af47b5aaf96}
+      \field{labelalpha}{Bie21}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{12}
+      \field{note}{Accessed: 2024-09-25}
+      \field{title}{We Could Use Augmented Reality to Simulate Prosopagnosia}
+      \field{year}{2021}
+      \verb{urlraw}
+      \verb https://davidbieber.com/snippets/2021-12-12-prosopagnosia-augmented-reality/
+      \endverb
+      \verb{url}
+      \verb https://davidbieber.com/snippets/2021-12-12-prosopagnosia-augmented-reality/
+      \endverb
+    \endentry
+    \entry{chang_2017}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=839894410157165b99503f0dd21ce0b0}{%
+           family={Chang},
+           familyi={C\bibinitperiod},
+           given={Le},
+           giveni={L\bibinitperiod}}}%
+        {{hash=bd456c0a5fdb56a56ad759a82038c1f2}{%
+           family={Tsao},
+           familyi={T\bibinitperiod},
+           given={Doris\bibnamedelima Y.},
+           giveni={D\bibinitperiod\bibinitdelim Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{583f3daee04f1268895bf4f088e7e951}
+      \strng{fullhash}{583f3daee04f1268895bf4f088e7e951}
+      \strng{fullhashraw}{583f3daee04f1268895bf4f088e7e951}
+      \strng{bibnamehash}{583f3daee04f1268895bf4f088e7e951}
+      \strng{authorbibnamehash}{583f3daee04f1268895bf4f088e7e951}
+      \strng{authornamehash}{583f3daee04f1268895bf4f088e7e951}
+      \strng{authorfullhash}{583f3daee04f1268895bf4f088e7e951}
+      \strng{authorfullhashraw}{583f3daee04f1268895bf4f088e7e951}
+      \field{labelalpha}{CT17}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0092-8674}
+      \field{journaltitle}{Cell}
+      \field{month}{09}
+      \field{number}{6}
+      \field{title}{The Code for Facial Identity in the Primate Brain}
+      \field{volume}{169}
+      \field{year}{2017}
+      \field{pages}{1013\bibrangedash 1028.e14}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1016/j.cell.2017.05.011
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1016/j.cell.2017.05.011
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1016/j.cell.2017.05.011
+      \endverb
+    \endentry
+    \entry{degutis_2014}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=60591b7e3d141bd1c1e018b3db6f316f}{%
+           family={DeGutis},
+           familyi={D\bibinitperiod},
+           given={Joseph},
+           giveni={J\bibinitperiod}}}%
+        {{hash=0f035e0f1578bc82604e1559547dce78}{%
+           family={Cohan},
+           familyi={C\bibinitperiod},
+           given={Sarah},
+           giveni={S\bibinitperiod}}}%
+        {{hash=c53454c08d10df7a4be29647be5827df}{%
+           family={Nakayama},
+           familyi={N\bibinitperiod},
+           given={Ken},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{8ce2b6308493aa8f0bf23cdd76d11d47}
+      \strng{fullhash}{8ce2b6308493aa8f0bf23cdd76d11d47}
+      \strng{fullhashraw}{8ce2b6308493aa8f0bf23cdd76d11d47}
+      \strng{bibnamehash}{8ce2b6308493aa8f0bf23cdd76d11d47}
+      \strng{authorbibnamehash}{8ce2b6308493aa8f0bf23cdd76d11d47}
+      \strng{authornamehash}{8ce2b6308493aa8f0bf23cdd76d11d47}
+      \strng{authorfullhash}{8ce2b6308493aa8f0bf23cdd76d11d47}
+      \strng{authorfullhashraw}{8ce2b6308493aa8f0bf23cdd76d11d47}
+      \field{labelalpha}{DCN14}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0006-8950}
+      \field{journaltitle}{Brain}
+      \field{month}{03}
+      \field{number}{6}
+      \field{title}{{Holistic face training enhances face processing in developmental prosopagnosia}}
+      \field{volume}{137}
+      \field{year}{2014}
+      \field{pages}{1781\bibrangedash 1798}
+      \range{pages}{18}
+      \verb{doi}
+      \verb 10.1093/brain/awu062
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1093/brain/awu062
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1093/brain/awu062
+      \endverb
+    \endentry
+    \entry{degutis_2023}{article}{}{}
+      \name{author}{9}{}{%
+        {{hash=60591b7e3d141bd1c1e018b3db6f316f}{%
+           family={DeGutis},
+           familyi={D\bibinitperiod},
+           given={Joseph},
+           giveni={J\bibinitperiod}}}%
+        {{hash=a3704dda0bb879a04b4c603415ce1c2c}{%
+           family={Bahierathan},
+           familyi={B\bibinitperiod},
+           given={Kanisha},
+           giveni={K\bibinitperiod}}}%
+        {{hash=cf5bf4a1128da4a49b0a8c10b72ee208}{%
+           family={Barahona},
+           familyi={B\bibinitperiod},
+           given={Katherine},
+           giveni={K\bibinitperiod}}}%
+        {{hash=af303053d7dd787e62c789385d860a02}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={EunMyoung},
+           giveni={E\bibinitperiod}}}%
+        {{hash=4ecc2940668f1e6dc9e969b5b37912ed}{%
+           family={Evans},
+           familyi={E\bibinitperiod},
+           given={Travis\bibnamedelima C.},
+           giveni={T\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=a85786ce0b256dd63c0a436d1e190ede}{%
+           family={Shin},
+           familyi={S\bibinitperiod},
+           given={Hye\bibnamedelima Min},
+           giveni={H\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=3b7aae4cbbcaa949ab15eb4d0609d2a8}{%
+           family={Mishra},
+           familyi={M\bibinitperiod},
+           given={Maruti},
+           giveni={M\bibinitperiod}}}%
+        {{hash=9dccc4d03fdfc6383bb1cba079d9a85b}{%
+           family={Likitlersuang},
+           familyi={L\bibinitperiod},
+           given={Jirapat},
+           giveni={J\bibinitperiod}}}%
+        {{hash=edba18ba5c931675ee24b2bda9390286}{%
+           family={Wilmer},
+           familyi={W\bibinitperiod},
+           given={Jeremy\bibnamedelima B.},
+           giveni={J\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+      }
+      \strng{namehash}{485c48fb175bab4f802ab228c1401938}
+      \strng{fullhash}{c902d6bd2a3baa6dd7af34f0333c13c4}
+      \strng{fullhashraw}{c902d6bd2a3baa6dd7af34f0333c13c4}
+      \strng{bibnamehash}{485c48fb175bab4f802ab228c1401938}
+      \strng{authorbibnamehash}{485c48fb175bab4f802ab228c1401938}
+      \strng{authornamehash}{485c48fb175bab4f802ab228c1401938}
+      \strng{authorfullhash}{c902d6bd2a3baa6dd7af34f0333c13c4}
+      \strng{authorfullhashraw}{c902d6bd2a3baa6dd7af34f0333c13c4}
+      \field{labelalpha}{DeG+23}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0010-9452}
+      \field{journaltitle}{Cortex}
+      \field{title}{What is the prevalence of developmental prosopagnosia? An empirical assessment of different diagnostic cutoffs}
+      \field{volume}{161}
+      \field{year}{2023}
+      \field{pages}{51\bibrangedash 64}
+      \range{pages}{14}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.cortex.2022.12.014
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0010945223000138
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0010945223000138
+      \endverb
+    \endentry
+    \entry{dingfelder_2024}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=8c2bd1550fd3998dfbd26f474e68bd18}{%
+           family={Dingfelder},
+           familyi={D\bibinitperiod},
+           given={Sadie},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {Little, Brown}%
+        {Company}%
+      }
+      \strng{namehash}{8c2bd1550fd3998dfbd26f474e68bd18}
+      \strng{fullhash}{8c2bd1550fd3998dfbd26f474e68bd18}
+      \strng{fullhashraw}{8c2bd1550fd3998dfbd26f474e68bd18}
+      \strng{bibnamehash}{8c2bd1550fd3998dfbd26f474e68bd18}
+      \strng{authorbibnamehash}{8c2bd1550fd3998dfbd26f474e68bd18}
+      \strng{authornamehash}{8c2bd1550fd3998dfbd26f474e68bd18}
+      \strng{authorfullhash}{8c2bd1550fd3998dfbd26f474e68bd18}
+      \strng{authorfullhashraw}{8c2bd1550fd3998dfbd26f474e68bd18}
+      \field{labelalpha}{Din24}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{0316545147}
+      \field{month}{06}
+      \field{title}{Do I Know You?: A Faceblind Reporter’s Journey into the Science of Sight, Memory, and Imagination}
+      \field{year}{2024}
+      \field{pages}{278}
+      \range{pages}{1}
+      \verb{urlraw}
+      \verb https://www.hachettebookgroup.com/titles/sadie-dingfelder/do-i-know-you/9780316545433/
+      \endverb
+      \verb{url}
+      \verb https://www.hachettebookgroup.com/titles/sadie-dingfelder/do-i-know-you/9780316545433/
+      \endverb
+    \endentry
+    \entry{duchaine_2006}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=c32a3774309dd80565547dcf85fe86af}{%
+           family={Duchaine},
+           familyi={D\bibinitperiod},
+           given={Brad},
+           giveni={B\bibinitperiod}}}%
+        {{hash=c53454c08d10df7a4be29647be5827df}{%
+           family={Nakayama},
+           familyi={N\bibinitperiod},
+           given={Ken},
+           giveni={K\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{6ab5d400900aa920727aab837314004b}
+      \strng{fullhash}{6ab5d400900aa920727aab837314004b}
+      \strng{fullhashraw}{6ab5d400900aa920727aab837314004b}
+      \strng{bibnamehash}{6ab5d400900aa920727aab837314004b}
+      \strng{authorbibnamehash}{6ab5d400900aa920727aab837314004b}
+      \strng{authornamehash}{6ab5d400900aa920727aab837314004b}
+      \strng{authorfullhash}{6ab5d400900aa920727aab837314004b}
+      \strng{authorfullhashraw}{6ab5d400900aa920727aab837314004b}
+      \field{labelalpha}{DN06}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Neuropsychologia}
+      \field{number}{4}
+      \field{title}{The Cambridge Face Memory Test: Results for neurologically intact individuals and an investigation of its validity using inverted face stimuli and prosopagnosic participants}
+      \field{volume}{44}
+      \field{year}{2006}
+      \field{pages}{576\bibrangedash 585}
+      \range{pages}{10}
+    \endentry
+    \entry{herald_2023}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=2d6d92689cc6f614b82e1661197ea535}{%
+           family={Herald},
+           familyi={H\bibinitperiod},
+           given={Sarah\bibnamedelima B.},
+           giveni={S\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=5565bc2505b9fa1a7d0aa832041a9617}{%
+           family={Almeida},
+           familyi={A\bibinitperiod},
+           given={Jorge},
+           giveni={J\bibinitperiod}}}%
+        {{hash=c32a3774309dd80565547dcf85fe86af}{%
+           family={Duchaine},
+           familyi={D\bibinitperiod},
+           given={Brad},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{eecdb37f0bed46cbc44a63a65388cd31}
+      \strng{fullhash}{eecdb37f0bed46cbc44a63a65388cd31}
+      \strng{fullhashraw}{eecdb37f0bed46cbc44a63a65388cd31}
+      \strng{bibnamehash}{eecdb37f0bed46cbc44a63a65388cd31}
+      \strng{authorbibnamehash}{eecdb37f0bed46cbc44a63a65388cd31}
+      \strng{authornamehash}{eecdb37f0bed46cbc44a63a65388cd31}
+      \strng{authorfullhash}{eecdb37f0bed46cbc44a63a65388cd31}
+      \strng{authorfullhashraw}{eecdb37f0bed46cbc44a63a65388cd31}
+      \field{labelalpha}{HAD23}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0028-3932}
+      \field{journaltitle}{Neuropsychologia}
+      \field{title}{Face distortions in prosopometamorphopsia provide new insights into the organization of face perception}
+      \field{volume}{182}
+      \field{year}{2023}
+      \field{pages}{108517}
+      \range{pages}{1}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.neuropsychologia.2023.108517
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0028393223000519
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0028393223000519
+      \endverb
+    \endentry
+    \entry{hazarika_2023}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=2c094e89b3d111c15d1c7aa9919cfeb3}{%
+           family={Hazarika},
+           familyi={H\bibinitperiod},
+           given={Ananya},
+           giveni={A\bibinitperiod}}}%
+        {{hash=627387eb98060bc83d0e6e2a9d12fa71}{%
+           family={Rahmati},
+           familyi={R\bibinitperiod},
+           given={Mehdi},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{3f09825a73aa873ec3e13c97d75330a5}
+      \strng{fullhash}{3f09825a73aa873ec3e13c97d75330a5}
+      \strng{fullhashraw}{3f09825a73aa873ec3e13c97d75330a5}
+      \strng{bibnamehash}{3f09825a73aa873ec3e13c97d75330a5}
+      \strng{authorbibnamehash}{3f09825a73aa873ec3e13c97d75330a5}
+      \strng{authornamehash}{3f09825a73aa873ec3e13c97d75330a5}
+      \strng{authorfullhash}{3f09825a73aa873ec3e13c97d75330a5}
+      \strng{authorfullhashraw}{3f09825a73aa873ec3e13c97d75330a5}
+      \field{labelalpha}{HR23}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Sensors (Basel, Switzerland)}
+      \field{title}{Towards an Evolved Immersive Experience: Exploring 5G- and Beyond-Enabled Ultra-Low-Latency Communications for Augmented and Virtual Reality}
+      \field{volume}{23}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:257947721
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:257947721
+      \endverb
+    \endentry
+    \entry{lanska_2017}{incollection}{}{}
+      \name{author}{2}{}{%
+        {{hash=95d7777312d4873224d7be4265cad054}{%
+           family={Lanska},
+           familyi={L\bibinitperiod},
+           given={Douglas\bibnamedelima J.},
+           giveni={D\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=19d8ed09cad8d552adc13d5657347945}{%
+           family={Lanska},
+           familyi={L\bibinitperiod},
+           given={John\bibnamedelima R.},
+           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {S.Karger AG}%
+      }
+      \strng{namehash}{32876988a64996d4bd8719fca837addc}
+      \strng{fullhash}{32876988a64996d4bd8719fca837addc}
+      \strng{fullhashraw}{32876988a64996d4bd8719fca837addc}
+      \strng{bibnamehash}{32876988a64996d4bd8719fca837addc}
+      \strng{authorbibnamehash}{32876988a64996d4bd8719fca837addc}
+      \strng{authornamehash}{32876988a64996d4bd8719fca837addc}
+      \strng{authorfullhash}{32876988a64996d4bd8719fca837addc}
+      \strng{authorfullhashraw}{32876988a64996d4bd8719fca837addc}
+      \field{labelalpha}{LL17}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{{Neurologic-Psychiatric Syndromes in Focus - Part II: From Psychiatry to Neurology}}
+      \field{isbn}{978-3-318-06088-1}
+      \field{month}{12}
+      \field{title}{{The Alice-in-Wonderland Syndrome}}
+      \field{year}{2017}
+      \verb{doi}
+      \verb 10.1159/000475722
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1159/000475722
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1159/000475722
+      \endverb
+    \endentry
+    \entry{nagel_1974}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=1e25dfb48354228b81bd77a4e66dfd8b}{%
+           family={Nagel},
+           familyi={N\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{1e25dfb48354228b81bd77a4e66dfd8b}
+      \strng{fullhash}{1e25dfb48354228b81bd77a4e66dfd8b}
+      \strng{fullhashraw}{1e25dfb48354228b81bd77a4e66dfd8b}
+      \strng{bibnamehash}{1e25dfb48354228b81bd77a4e66dfd8b}
+      \strng{authorbibnamehash}{1e25dfb48354228b81bd77a4e66dfd8b}
+      \strng{authornamehash}{1e25dfb48354228b81bd77a4e66dfd8b}
+      \strng{authorfullhash}{1e25dfb48354228b81bd77a4e66dfd8b}
+      \strng{authorfullhashraw}{1e25dfb48354228b81bd77a4e66dfd8b}
+      \field{labelalpha}{Nag74}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Philosophical Review}
+      \field{number}{4}
+      \field{title}{What is It Like to Be a Bat?}
+      \field{volume}{83}
+      \field{year}{1974}
+      \true{nocite}
+      \field{pages}{435\bibrangedash 50}
+      \range{pages}{21}
+      \verb{doi}
+      \verb 10.2307/2183914
+      \endverb
+    \endentry
+    \entry{richards_1970}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=f0a95435733f93e166b710dd4538c35b}{%
+           family={Richards},
+           familyi={R\bibinitperiod},
+           given={W.},
+           giveni={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{f0a95435733f93e166b710dd4538c35b}
+      \strng{fullhash}{f0a95435733f93e166b710dd4538c35b}
+      \strng{fullhashraw}{f0a95435733f93e166b710dd4538c35b}
+      \strng{bibnamehash}{f0a95435733f93e166b710dd4538c35b}
+      \strng{authorbibnamehash}{f0a95435733f93e166b710dd4538c35b}
+      \strng{authornamehash}{f0a95435733f93e166b710dd4538c35b}
+      \strng{authorfullhash}{f0a95435733f93e166b710dd4538c35b}
+      \strng{authorfullhashraw}{f0a95435733f93e166b710dd4538c35b}
+      \field{labelalpha}{Ric70}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Experimental Brain Research}
+      \field{title}{Stereopsis and Stereoblindness}
+      \field{volume}{10}
+      \field{year}{1970}
+      \field{pages}{380\bibrangedash 388}
+      \range{pages}{9}
+      \verb{doi}
+      \verb 10.1007/BF02324765
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/BF02324765
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/BF02324765
+      \endverb
+    \endentry
+    \entry{vonnoorden_2001}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=49b9ebe281f69c079ec273ed4774b76f}{%
+           family={Von\bibnamedelima Noorden},
+           familyi={V\bibinitperiod\bibinitdelim N\bibinitperiod},
+           given={Gunter\bibnamedelima K.},
+           giveni={G\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=32006738f811c0f390c573e9818b7f9a}{%
+           family={Campos},
+           familyi={C\bibinitperiod},
+           given={Emilio\bibnamedelima C.},
+           giveni={E\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {St. Louis, MO}%
+      }
+      \list{publisher}{1}{%
+        {Mosby}%
+      }
+      \strng{namehash}{18007976fadaaafc5811a8766362f286}
+      \strng{fullhash}{18007976fadaaafc5811a8766362f286}
+      \strng{fullhashraw}{18007976fadaaafc5811a8766362f286}
+      \strng{bibnamehash}{18007976fadaaafc5811a8766362f286}
+      \strng{authorbibnamehash}{18007976fadaaafc5811a8766362f286}
+      \strng{authornamehash}{18007976fadaaafc5811a8766362f286}
+      \strng{authorfullhash}{18007976fadaaafc5811a8766362f286}
+      \strng{authorfullhashraw}{18007976fadaaafc5811a8766362f286}
+      \field{labelalpha}{VC01}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{6th}
+      \field{isbn}{0-323-01129-2}
+      \field{title}{Binocular Vision and Ocular Motility: Theory and Management of Strabismus}
+      \field{year}{2001}
+      \keyw{Strabismus,Binocular vision,Eye Movements}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

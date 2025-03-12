@@ -1,0 +1,19 @@
+
+{{- $page := .page }}
+{{- $imgName := .imgName | default "img" }}
+{{- $formats := (slice "webp" "png" "jpg" "jpeg") }}
+{{- $altText := $page.Title }}
+{{- $cssClass := "post-img" }}
+
+{{- $found := false }}
+{{- range $formats }}
+  {{- if not $found }}
+    {{- $imgPath := printf "%s.%s" $imgName . }}
+    {{- with $page.Resources.GetMatch $imgPath }}
+      <div class="{{ $cssClass }}">
+        <img src="{{ .RelPermalink }}" alt="{{ $altText }}">
+      </div>
+      {{- $found = true }}
+    {{- end }}
+  {{- end }}
+{{- end }}

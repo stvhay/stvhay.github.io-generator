@@ -1,0 +1,78 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc} 
+\usepackage{csquotes}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage[
+        bibencoding=utf8, 
+        style=alphabetic
+]{biblatex}
+\addbibresource{experience-prosopagnosia.bib}
+
+\title{
+    Using Augmented Reality to Experience Prosopagnosia
+}
+
+\author{Steven Hay}
+    
+\begin{document}
+
+    \maketitle
+    
+    \begin{abstract}
+        This project aims to simulate the subjective experience of the face blind condition (prosopagnosia) through augmented reality (AR) manipulation of facial features. Informed by research on neural encoding in the fusiform face area, the system captures live video input and distorts faces by altering their geometric features. The aim of the project is to accurately simulate the subjective experience of someone with prosopagnosia, allowing for an immersive exploration of how disrupted facial recognition impacts perception and social interaction. By merging neuroscience insights with AR technology, this work contributes to both the artistic exploration and scientific understanding of face perception disorders.
+    \end{abstract}
+
+    \quotation \textit{
+        "It is useless to base the defense of materialism on any analysis of mental phenomena that fails to deal explicitly with their subjective character" \nocite{nagel_1974} \hspace{1em plus 1fill}---Thomas Nagel}
+    
+    \section{Problem Statement}
+    There are no widely accepted or scientifically validated immersive simulations of face blindness (prosopagnosia). A search of academic literature revealed no attempts to simulate this subjective experience. However, a blog post was found that explores a similar concept \cite{bieber_2021}. While AR technology has been used to develop treatments for disorders such as autism spectrum disorder (ASD), attention-deficit hyperactivity disorder (ADHD), and intellectual disabilities (ID) \cite{bakir_2023}, less research is directed towards studying subjective experience.
+    
+    Prosopagnosia affects up to 5.4 percent of the human population \cite{degutis_2023}, impairing their ability to recognize faces. This impairment impacts a person's social interactions, personal relationships, and overall quality of life. Exploring subjective experience informs neurological research and provides a pathway to developing better diagnostic tools and treatment modalities. An immersive simulation of prosopagnosia aims to increase public understanding of this neurological condition and promote the awareness of perceptual diversity, increasing empathy towards those with prosopagnosia and other perceptual disorders or differences.
+        
+    \section{Methodology}
+
+    \subsection{Neurological Basis}
+    This simulation is uniquely grounded in neuro-scientific research on face perception, leveraging insights into cell activation in the fusiform face area (FFA) \cite{chang_2017}. By modifying the neural representations of facial features, which are encoded in mathematical structures (eigenvalues), a distorted but realistic human face is generated. In doing so, the simulation aims to closely mimic the subjective experience of prosopagnosia. This provides a scientifically supported basis for simulating face blindness more accurately than facial blurring.
+
+    \subsection{Validation and Data Collection}
+    An implementation will be developed that is suitable for an interactive, public presentation in a controlled environment. The system will be validated by tuning the model to achieve degraded results of a face test for someone without prosopagnosia. Tests already developed to measure facial recognition ability, such as the Cambridge Face Memory Test \cite{duchaine_2006} or a face recognition training program \cite{degutis_2014} can be used to validate the methodology of the simulation. A short survey can also be given to participants to see whether they self-report an experience similar to those reported by those with prosopagnosia.
+
+    \section{AR System}
+    
+    \subsection{Description}
+    The system captures a live video feed, detects frontal faces, and generates 3D models of those faces. Using neural models of face recognition, specifically those in the fusiform face area (FFA), a 50 dimensional eigenvalue representation of the face is constructed \cite{chang_2017} which represent geometric features of human faces. Each dimension represents a measurement of a key geometric facial feature used in human face recognition. An example of such a measurement might be a subject's pupillary distance. This representation is able to both decompose an existing face into these principal (eigenvalue) components, or generate a face from these components. The simulation will alters faces it captures to distort them in a way that preserves their realism but renders them unrecognizable to the FFA--the distortions blunting the FFA's recognition response. The approach aims to be more immersive than facial blurring since it will preserve facial detail. This system will be built using existing face detection learning techniques and will leverage current research into the FFA neural modeling \cite{chang_2017}.
+
+    \subsection{Technical Challenges}
+    
+    \subsubsection{Latency Reduction}
+    One challenge in implementing this simulation will be performing all of these processing steps in real time in order to give an immersive experience. Optimization of this processing will be essential to minimizing lag, enhancing the experience. A total processing time of about 20ms is desired. \cite{hazarika_2023} If additional processing beyond what is available in the headset is needed, a local server with GPU or TPU may be needed to offload face recognition, decomposition, and rendering via a local network to the server in order to reduce latency.
+
+    \subsubsection{Raw Video Stream Access}
+    Current AR technology is likely to have the processing capability to perform the real time video transformations needed to complete the project. However, access to the raw video stream in most headsets is currently blocked to developers to alleviate privacy concerns related to video recording others without consent. It may be possible to use external cameras and feed that data directly into the headset or to a companion device for processing, but care would need to be taken to ensure low-latency requirements are met. Alternative approaches using static images, or potentially a virtual mirror, could be used to achieve the objective in a different way. It is also possible that video stream access could be arranged for use for this specific purpose.
+
+    \section{Exhibit}
+    
+    \subsection{Description}
+    In addition to the basic technological implementation of the simulation, an experience will be designed for public participation. The exhibit will consist of contextual placards or videos, with a private section where small groups of people (preferably people who know each other) will participate in the experience. It will probably be necessary to provide some kind of removable but uniform robe and headgear to participants to minimize recognition based on other features. A rotation system will be needed such that each person has the experience with one known person and others they will not recognize.
+    
+    \subsection{Context and Limitations}
+    When providing a simulation such as this to the public, it is crucial to ensure that participants are informed and consent to the experience they are going to have. Additionally, the limitations and purpose of the simulation must be made clear. A contextual video or placards will be written to brief participants and establish context for the demonstration as an educational tool designed to develop insight into perceptual diversity and to increase empathy for those with different subjective realities. It will be made clear that the simulation is merely an approximation of face blindness, and comes with inherent limitations in accuracy as well. These materials will be developed in cooperation with people who have prosopagnosia, to ensure there is sufficient community feedback. Consulting on the project will be Sadie Dingfelder, a face blind journalist and science writer who has reported and written a book on her experience living with prosopagnosia and other perceptual differences \cite{dingfelder_2024}.
+    
+    \section{Future Work}
+    
+    \subsection{Other Perceptual Disorders}
+    The simulation of other disorders using augmented reality can be explored. For example, there is less common form of prosopagnosia called prosopometamorphopsia (demon face syndrome) \cite{herald_2023}. Also depth perception disorders such as visual dysmetropsia (distorted perception of distance) \cite{lanska_2017} or stereo blindness (lack of three dimensional vision) \cite{richards_1970}. There are also other perceptual consequences of amblyopia (abnormal binocular interaction)  other than stereo blindness \cite{vonnoorden_2001}.
+
+    \subsection{Assistive AR Technology}
+    Combined with facial recognition this project could contribute to the development of assistive AR technology for people with prosopagnosia by helping to label or visually distinguish known faces through the AR device.
+
+    \subsection{Improved Simulations}
+    There is more work possible to improve the simulation of prosopagnosia with AR. This project will limit its simulation to frontal views. Expansion of face recognition and 3D modeling to include oblique and profile views would be an improvement to the simulation.
+
+    \subsection{Adaptations to a Wider Audience}
+    Other simpler simulations of face blindness may also be considered that would be less immersive but accessible to a wider audience. Such a simulation could have farther reach than one requiring a headset. For example, a JavaScript plugin powered by a remote back-end (or possibly client-side using Web Assembly) in a web browser could be developed to find and alter faces on social media platforms such as Facebook or Instagram. Such a tool could be used to collect data from a larger and more diverse set of people.
+    
+    \printbibliography
+\end{document}

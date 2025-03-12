@@ -1,4 +1,30 @@
 baseURL = 'https://example.org/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
-theme = 'sh'
+title = 'Steven Hay'
+pluralizelisttitles = false
+
+[[menus.main]]
+name = 'Home'
+pageRef = '/'
+weight = 1
+
+[[menus.main]]
+name = 'CV'
+url = '/docs/cv/cv-steve-hay.pdf'
+params = { target = "_blank" }
+weight = 111
+
+[[menus.main]]
+name = 'Portfolio'
+pageRef = '/portfolio'
+weight = 210
+
+[[menus.main]]
+name = 'Writing'
+url = '/writing'
+weight = 510
+
+[[menus.main]]
+name = 'Contact'
+url = '/#contact'
+weight = 1000
