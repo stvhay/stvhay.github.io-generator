@@ -20,7 +20,7 @@ args()
 
 clean()
 {
-    rm -rf public
+    rm -rf public/*
 }
 
 prettify()
