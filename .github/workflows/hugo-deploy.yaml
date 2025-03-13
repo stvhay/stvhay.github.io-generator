@@ -39,12 +39,26 @@ jobs:
           sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-bibtex-extra latexmk
           npm install --save-dev --save-exact prettier
 
+      - name: Get changed .tex files
+        id: changed-tex-files
+        uses: tj-actions/changed-files@v45
+        with:
+          files: "**/*.tex"
+
+      - name: Build if .tex files changed
+        if: steps.changed-tex-files.outputs.any_changed == 'true'
+        run: |
+          echo "The following .tex files have changed:"
+          ./build.sh
+
+      - name: Build if .tex files unchanged
+        if: steps.changed-tex-files.outputs.any_changed == 'true'
+        run: |
+          ./build.sh --no-tex --ci
+
       - name: Run build script
         run: |
-          git submodule add git@github.com:stvhay/stvhay.github.io.git public
-          git submodule init
-          git submodule update
-          ./build.sh
+          ./build.sh --ci
 
       - name: Publish website
         run: |

@@ -12,14 +12,8 @@ I wanted to be able to write documents in LaTeX and Markdown and published easil
 
 ```bash
 repo="git_pages_repo"
-apt install hugo texlive-latex-base
+apt install hugo texlive-latex-base texlive-latex-extra texlive-bibtex-extra latexmk
 npm install --save-dev --save-exact prettier
-if [[ -d .git ]] 
-then
-    git submodule add "$repo" public
-else
-    git clone "$repo" public
-fi
 ./build.sh
 ./publish.sh
 ```

@@ -1,50 +1,64 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# handle command line arguments and options
-args_opts()
-{
-    # Process command line arguments
-    for arg in "$@"
-    do
-        case $arg in
-            --no-tex)
-                tex_enabled=false
-                shift
-            ;;
-            --no-pretty)
-                pretty_enabled=false
-                shift
-            ;;
-        esac
-    done
-}
+publish_repo=git@github.com:stvhay/stvhay.github.io.git
 
-# clean the generated website directory "public"
-clean_public()
-{
+
+
+# Process command line arguments
+pretty_enabled=true
+git_commit=HEAD   # unless its CI, look at the HEAD for changes
+for arg in "$@"
+do
+    case $arg in
+        --no-pretty)
+            pretty_enabled=false
+            shift
+        ;;
+        --ci)
+            git_commit=HEAD~1
+    esac
+done
+
+
+
+# initialize generated website directory "public"
+if [[ ! -d public ]]
+then
+    git clone "$publish_repo" public
+fi
+
+if [[ -d public/.git ]] # website directory is a git repository
+then
     git -C public rm -rf --cached .
     git -C public clean -fd
     git -C public checkout main .gitignore
-    if ! $tex_enabled 
+    git -C public checkout main -- "docs/**/*.pdf"
+else
+    rm -rf public/*
+fi
+
+
+
+# Build LaTeX documents
+modified_files()
+{
+    { 
+        git ls-files --modified --others --exclude-standard
+        git diff --cached --name-only
+        git diff $git_commit --name-only
+    } | grep '\.tex' | sort | uniq
+}
+base_dir=$(pwd)
+mkdir -pv latex
+cd "${base_dir}/latex" || exit 1
+changed_tex_files=()
+while IFS= read -r line; do
+    changed_tex_files+=("$line")
+done < <(modified_files)
+while IFS= read -r texfile
+do
+    if [[ $(printf " %q " "${changed_tex_files[@]}") =~ $(printf " %q " "$texfile") ]]
     then
-        git -C public checkout main -- "docs/**/*.pdf"
-    fi
-}
-
-# format the html and js in the generated website
-prettify()
-{
-    npx prettier public --write
-}
-
-# generate .pdf files from LaTeX
-build_latex()
-{
-    local base_dir=$(pwd)
-    mkdir -pv latex
-    cd "${base_dir}/latex" || return 1
-    while IFS= read -r texfile
-    do
         echo "Building: $texfile"
         texdir=$(dirname "$texfile")
         filename=$(basename "$texfile")
@@ -58,38 +72,26 @@ build_latex()
         mkdir -p "${base_dir}/static/docs/$texdir"
         mv "${filename%.tex}.pdf" "${base_dir}/static/docs/$texdir/"
         cd - >/dev/null || continue
-    done < latex.manifest
-    cd "${base_dir}" || return 1
-}
+    fi
+done < latex.manifest
+cd "${base_dir}" || exit 1
 
-# Clean the built .pdf files from the working directory.
-clean_latex_pdf() 
-{
-    while IFS= read -r texfile
-    do
-        rm -f static/docs/"${texfile%.tex}.pdf" 
-    done < latex/latex.manifest
-}
 
-## main script
 
-tex_enabled=true
-pretty_enabled=true
-args_opts "$@"
-
-clean_public
-
-if $tex_enabled
-then
-    build_latex
-fi
-
+# Build website
 hugo
-clean_latex_pdf
+[[ $pretty_enabled ]] && npx prettier public --write --ignore-path=.prettierignore
 
-if $pretty_enabled 
-then 
-    prettify
-fi
 
-git -C public add --all
+
+# Clean any built .pdf files from the working directory.
+while IFS= read -r texfile
+do
+    rm -f static/docs/"${texfile%.tex}.pdf" 
+done < latex/latex.manifest
+
+
+
+# Stage changes
+[[ -d public/.git  ]] && git -C public add --all
+git -C public status
