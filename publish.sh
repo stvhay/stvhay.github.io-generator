@@ -12,4 +12,7 @@ case $# in
 esac
 
 git -C public commit -s "${msg_arg[@]}"
-git -C push
+git -C public push
+git add --all
+git commit -s "${msg_arg[@]}"
+git push

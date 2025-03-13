@@ -3,6 +3,13 @@ languageCode = 'en-us'
 title = 'Steven Hay'
 pluralizelisttitles = false
 
+[params]
+description = "This is my blog."
+author = "Steven Hay"
+
+[outputs]
+home = ['html', 'rss']
+
 [[menus.main]]
 name = 'Home'
 pageRef = '/'
