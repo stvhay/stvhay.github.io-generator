@@ -8,7 +8,18 @@ I wanted to be able to write documents in LaTeX and Markdown and published easil
 - I run [prettier](https://prettier.io) on the Hugo output for consistent formatting.
 - The *public* submodule is linked to a [GitHub](https://github.com/stvhay/stvhay.github.io/) repository configured for static hosting [here](https://stevenhay.com).
 
-## TODO
+## Build environment
 
-- Document how to setup the build environment.
-- Make a **publish.sh** script that will automatically commit the changes in the submodule.
+```bash
+repo="git_pages_repo"
+apt install hugo texlive-latex-base
+npm install --save-dev --save-exact prettier
+if [[ -d .git ]] 
+then
+    git submodule add "$repo" public
+else
+    git clone "$repo" public
+fi
+./build.sh
+./publish.sh
+```

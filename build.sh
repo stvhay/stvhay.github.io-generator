@@ -1,6 +1,7 @@
 #!/bin/bash
 
-args()
+# handle command line arguments and options
+args_opts()
 {
     # Process command line arguments
     for arg in "$@"
@@ -18,16 +19,23 @@ args()
     done
 }
 
-clean()
+# clean the generated website directory "public"
+clean_public()
 {
-    rm -rf public/*
+    git -C public rm -rf --cached .
+    git -C public clean -fd
+    git -C public checkout main .gitignore
+    ! $tex_enabled && \
+        git -C public checkout main -- "docs/**/*.pdf"
 }
 
+# format the html and js in the generated website
 prettify()
 {
     npx prettier public --write
 }
 
+# generate .pdf files from LaTeX
 build_latex()
 {
     local pwd=$(pwd)
@@ -52,13 +60,25 @@ build_latex()
     cd "${pwd}" || return 1
 }
 
+# Clean the built .pdf files from the working directory.
+clean_latex_pdf() 
+{
+    while IFS= read -r texfile
+    do
+        rm -f static/docs/"${texfile%.tex}.pdf" 
+    done < latex/latex.manifest
+}
+
+## main script
+
 tex_enabled=true
 pretty_enabled=true
-args "$@"
+args_opts "$@"
 
-clean
+clean_public
 $tex_enabled && \
     build_latex
 hugo
+clean_latex_pdf
 $pretty_enabled && \
     prettify
