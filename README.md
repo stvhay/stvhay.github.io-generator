@@ -6,7 +6,7 @@ I wanted to be able to write documents in LaTeX and Markdown and published easil
 - LaTeX files are converted to .pdf with [pdfTeX](https://tug.org/applications/pdftex/).
 - Hugo outputs to a git submodule *public*.
 - I run [prettier](https://prettier.io) on the Hugo output for consistent formatting.
-- The *public* submodule is linked to a [GitHub](https://github.com/stvhay/stvhay.github.io/) repository configured for static hosting [here](https://stevenhay.com).
+- Continuous integration is used to push static content to a [GitHub](https://github.com/stvhay/stvhay.github.io/) repository configured for static hosting [here](https://stevenhay.com).
 
 ## Build environment
 
