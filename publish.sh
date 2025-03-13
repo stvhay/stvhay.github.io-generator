@@ -11,6 +11,5 @@ case $# in
     ;;
 esac
 
-git -C public add --all
 git -C public commit -s "${msg_arg[@]}"
 git -C push

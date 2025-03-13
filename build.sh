@@ -25,8 +25,10 @@ clean_public()
     git -C public rm -rf --cached .
     git -C public clean -fd
     git -C public checkout main .gitignore
-    ! $tex_enabled && \
+    if ! $tex_enabled 
+    then
         git -C public checkout main -- "docs/**/*.pdf"
+    fi
 }
 
 # format the html and js in the generated website
@@ -38,9 +40,9 @@ prettify()
 # generate .pdf files from LaTeX
 build_latex()
 {
-    local pwd=$(pwd)
+    local base_dir=$(pwd)
     mkdir -pv latex
-    cd "${pwd}/latex" || return 1
+    cd "${base_dir}/latex" || return 1
     while IFS= read -r texfile
     do
         echo "Building: $texfile"
@@ -51,13 +53,13 @@ build_latex()
         
         latexmk -pdf "$filename" >/dev/null
         latexmk -c >/dev/null
-        rm -f "${filename}".{dvi,bbl} ./*.fls
+        rm -f "${filename%.tex}".{dvi,bbl} ./*.fls
         
-        mkdir -p "${pwd}/static/docs/$texdir"
-        mv "${filename%.tex}.pdf" "${pwd}/static/docs/$texdir/"
+        mkdir -p "${base_dir}/static/docs/$texdir"
+        mv "${filename%.tex}.pdf" "${base_dir}/static/docs/$texdir/"
         cd - >/dev/null || continue
     done < latex.manifest
-    cd "${pwd}" || return 1
+    cd "${base_dir}" || return 1
 }
 
 # Clean the built .pdf files from the working directory.
@@ -76,9 +78,18 @@ pretty_enabled=true
 args_opts "$@"
 
 clean_public
-$tex_enabled && \
+
+if $tex_enabled
+then
     build_latex
+fi
+
 hugo
 clean_latex_pdf
-$pretty_enabled && \
+
+if $pretty_enabled 
+then 
     prettify
+fi
+
+git -C public add --all
