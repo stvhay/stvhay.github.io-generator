@@ -9,6 +9,13 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
+      - uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: texlive-latex-base texlive-latex-extra \
+            texlive-bibtex-extra latexmk biber \
+            libimage-exiftool-perl
+          version: 1.0
+
       - name: Get GitHub Actions bot details
         id: bot-details
         uses: raven-actions/bot-details@v1
@@ -35,33 +42,13 @@ jobs:
 
       - name: Install dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-bibtex-extra latexmk
           npm install --save-dev --save-exact prettier
-
-      - name: Get changed .tex files
-        id: changed-tex-files
-        uses: tj-actions/changed-files@v45
-        with:
-          files: "**/*.tex"
-
-      - name: Build if .tex files changed
-        if: steps.changed-tex-files.outputs.any_changed == 'true'
-        run: |
-          echo "The following .tex files have changed:"
-          ./build.sh
-
-      - name: Build if .tex files unchanged
-        if: steps.changed-tex-files.outputs.any_changed == 'true'
-        run: |
-          ./build.sh --no-tex --ci
 
       - name: Run build script
         run: |
-          ./build.sh --ci
+          ./build.sh
 
       - name: Publish website
         run: |
-          find .
-          git -C public commit -m "${{ github.event.head_commit.message }}"
-          git -C public push
+          git -C public commit -m "${{ github.event.head_commit.message }}" || true
+          git -C public push || true

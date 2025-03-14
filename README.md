@@ -12,7 +12,9 @@ I wanted to be able to write documents in LaTeX and Markdown and published easil
 
 ```bash
 repo="git_pages_repo"
-apt install hugo texlive-latex-base texlive-latex-extra texlive-bibtex-extra latexmk
+apt install hugo texlive-latex-base texlive-latex-extra \
+    texlive-bibtex-extra latexmk biber \
+    libimage-exiftool-perl
 npm install --save-dev --save-exact prettier
 ./build.sh
 ./publish.sh
