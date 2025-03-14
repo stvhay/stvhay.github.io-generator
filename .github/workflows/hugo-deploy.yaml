@@ -46,7 +46,7 @@ jobs:
 
       - name: Run build script
         run: |
-          ./build.sh
+          ./build
 
       - name: Publish website
         run: |

@@ -16,6 +16,12 @@ apt install hugo texlive-latex-base texlive-latex-extra \
     texlive-bibtex-extra latexmk biber \
     libimage-exiftool-perl
 npm install --save-dev --save-exact prettier
-./build.sh
-./publish.sh
+./build
+./publish
 ```
+
+## Utilities
+
+Sourcing **utilities.sh** will create functions in the shell that will create
+or edit a blog post and launch the configured `$EDITOR`, as well as functions
+to build and publish.
