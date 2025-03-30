@@ -1,6 +1,7 @@
+# shellcheck shell=bash
 build()
-(
-pushd "$hugo_repo_dir"  || return
+( 
+pushd "${hugo_repo_dir:?}"  || return
 
     publish_repo=git@github.com:stvhay/stvhay.github.io.git
 

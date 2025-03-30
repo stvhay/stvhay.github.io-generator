@@ -1,6 +1,7 @@
+# shellcheck shell=bash
 publish()
-(
-pushd "$hugo_repo_dir"  || return
+( 
+pushd "${hugo_repo_dir:?}"  || return
 
     msg_arg=("-m")
     case $# in

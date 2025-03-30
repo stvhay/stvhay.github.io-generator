@@ -1,11 +1,12 @@
+# shellcheck shell=bash
 post()
-(
-pushd "$hugo_repo_dir"  || return
+( 
+pushd "${hugo_repo_dir:?}"  || return
 
     usage()
     {
         cat << EOF
-    Usage: $(basename $0) [options] [title]
+    Usage: $(basename "$0") [options] [title]
 
     Options:
     --page PAGE      Specify page (Default: writing)
