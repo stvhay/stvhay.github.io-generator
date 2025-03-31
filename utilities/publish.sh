@@ -3,14 +3,19 @@ publish()
 ( 
 pushd "${hugo_repo_dir:?}"  || return
 
-    msg_arg=("-m")
-    if [[ $# -ne 1 ]]
-    then
-        >&2 echo "Usage:"
-        >&2 echo "    $0 commit_message"
-        exit 1
-    fi
-    msg_arg+=("$1")
+    case $#
+    in
+        0) : ;;
+        1)
+            msg_arg=("-m" "$1")
+            ;;
+        *)
+            >&2 echo "Usage:"
+            >&2 echo "    $0 [commit_message]"
+            exit 1
+            ;;
+    esac
+
     git -C public commit -s "${msg_arg[@]}"
     git -C public push
     git add --all
