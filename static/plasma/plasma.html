@@ -1,0 +1,180 @@
+<!doctype html>
+<canvas id="plasma"></canvas>
+<script>
+    /* PLASMA CONFIGURATION */
+    const PLASMA_CONFIG = {
+        // Global parameters
+        ZOOM_FACTOR: 10, // Zoom level (1 = full view, higher = zoomed in)
+        WAVE_AMPLITUDE: 32, // Intensity multiplier for wave values
+        WAVE_OFFSET: 128, // Base value offset (center point)
+        BASE_SPEED: 0.05, // Global animation speed multiplier
+
+        PARAMS: {
+            EVEN_LINE: {
+                // SCALES[0]: Horizontal wave density: Smaller values, tighter ripples
+                // SCALES[1]: Vertical wave density: Smaller values, tighter ripples
+                // SCALES[2]: Diagonal wave density: Smaller values, finer diagonal patterns
+                // SCALES[3]: Radial wave density
+                SCALES: [10.6, 20.4, 5.8, 2.9],
+                SPEEDS: [-0.72, -1.28], // Time multipliers for wave progression
+                PHASE_OFFSET: Math.PI / 2.1, // Phase shift between lines
+                COLOR_MODE: "grayscale", // 'hsv' or 'grayscale'
+                HSV: {
+                    SATURATION: 85, // 0-100% color intensity
+                    BRIGHTNESS: 65, // Base brightness (0-100)
+                    BRIGHTNESS_VAR: 15, // Brightness variation amplitude
+                    HUE_CYCLE_SPEED: 0.35, // Color cycling speed (0 = static)
+                },
+                GRAYSCALE: {
+                    RED_COEFF: 0.587, // Luminance coefficients (ITU-R BT.601)
+                    GREEN_COEFF: 0.587,
+                    BLUE_COEFF: 0.587,
+                    CONTRAST: 0.8, // Value scaling (0-1 = low-high contrast)
+                    BRIGHTNESS: 1.25, // Brightness multiplier
+                },
+            },
+            ODD_LINE: {
+                SCALES: [50.2, 10.0, -15.4, -9.0],
+                SPEEDS: [2.37, 3.76],
+                PHASE_OFFSET: Math.PI / 1.8,
+                COLOR_MODE: "hsv",
+                HSV: {
+                    SATURATION: 85,
+                    BRIGHTNESS: 65,
+                    BRIGHTNESS_VAR: 55,
+                    HUE_CYCLE_SPEED: 0.25,
+                },
+                GRAYSCALE: {
+                    RED_COEFF: 0.3,
+                    GREEN_COEFF: 0.3,
+                    BLUE_COEFF: 0.3,
+                    CONTRAST: 0.9,
+                    BRIGHTNESS: 1.2,
+                },
+            },
+        },
+    };
+
+    /* CORE PLASMA ENGINE */
+    const canvas = document.getElementById("plasma");
+    const ctx = canvas.getContext("2d");
+    let time = 0;
+
+    function init() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        requestAnimationFrame(render);
+    }
+
+    function render() {
+        const imgData = ctx.createImageData(canvas.width, canvas.height);
+        const { width: w, height: h } = canvas;
+
+        for (let y = 0; y < h; y++) {
+            const isEven = y % 2 === 0;
+            const params = isEven
+                ? PLASMA_CONFIG.PARAMS.EVEN_LINE
+                : PLASMA_CONFIG.PARAMS.ODD_LINE;
+
+            for (let x = 0; x < w; x++) {
+                // Apply zoom and phase offset
+                const zx = x / PLASMA_CONFIG.ZOOM_FACTOR + params.PHASE_OFFSET;
+                const zy = y / PLASMA_CONFIG.ZOOM_FACTOR + params.PHASE_OFFSET;
+
+                // Wave equation components
+                const waves = [
+                    Math.sin(zx / params.SCALES[0] + time * params.SPEEDS[0]),
+                    Math.sin(zy / params.SCALES[1] + time * params.SPEEDS[1]),
+                    Math.sin((zx + zy) / params.SCALES[2] + time * 1.5),
+                    Math.sin(Math.hypot(zx, zy) / params.SCALES[3] - time * 2),
+                ];
+
+                // Combine waves and normalize
+                const value =
+                    PLASMA_CONFIG.WAVE_OFFSET +
+                    waves.reduce((a, b) => a + b) *
+                        PLASMA_CONFIG.WAVE_AMPLITUDE;
+
+                const idx = (y * w + x) * 4;
+
+                if (params.COLOR_MODE === "grayscale") {
+                    // Grayscale conversion
+                    const gray = Math.min(
+                        255,
+                        Math.max(
+                            0,
+                            value *
+                                params.GRAYSCALE.CONTRAST *
+                                params.GRAYSCALE.BRIGHTNESS,
+                        ),
+                    );
+                    imgData.data.set(
+                        [
+                            gray * params.GRAYSCALE.RED_COEFF,
+                            gray * params.GRAYSCALE.GREEN_COEFF,
+                            gray * params.GRAYSCALE.BLUE_COEFF,
+                            255,
+                        ],
+                        idx,
+                    );
+                } else if (params.COLOR_MODE === "hsv") {
+                    // HSV color conversion
+                    const hue =
+                        (value + time * params.HSV.HUE_CYCLE_SPEED * 100) % 360;
+                    const brightness =
+                        params.HSV.BRIGHTNESS +
+                        Math.sin(time) * params.HSV.BRIGHTNESS_VAR;
+                    const rgb = HSVtoRGB(
+                        hue,
+                        params.HSV.SATURATION,
+                        brightness,
+                    );
+                    imgData.data.set(rgb, idx);
+                } else {
+                    imgData.data.set([0, 0, 0, 255], idx);
+                }
+            }
+        }
+
+        ctx.putImageData(imgData, 0, 0);
+        time += PLASMA_CONFIG.BASE_SPEED;
+        requestAnimationFrame(render);
+    }
+
+    /* ======================
+   UTILITY FUNCTIONS
+   ====================== */
+    function HSVtoRGB(h, s, v) {
+        h /= 60; // Sector 0-5
+        s /= 100;
+        v /= 100;
+        const i = Math.floor(h);
+        const f = h - i;
+        const p = v * (1 - s);
+        const q = v * (1 - s * f);
+        const t = v * (1 - s * (1 - f));
+
+        const [r, g, b] =
+            i === 0
+                ? [v, t, p]
+                : i === 1
+                  ? [q, v, p]
+                  : i === 2
+                    ? [p, v, t]
+                    : i === 3
+                      ? [p, q, v]
+                      : i === 4
+                        ? [t, p, v]
+                        : [v, p, q];
+
+        return [
+            Math.round(r * 255),
+            Math.round(g * 255),
+            Math.round(b * 255),
+            255,
+        ];
+    }
+
+    // Initialize
+    init();
+</script>
