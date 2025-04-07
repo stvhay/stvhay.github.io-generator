@@ -14,7 +14,7 @@ function config1() {
                 // SCALES[1]: Vertical wave density: Smaller values, tighter ripples
                 // SCALES[2]: Diagonal wave density: Smaller values, finer diagonal patterns
                 // SCALES[3]: Radial wave density
-                SCALES: [10.6, 5.4, 10.8, 3.9],
+                SCALES: [20.6, 10.4, 20.8, 7.9],
                 SPEEDS: [-0.72, -1.28, 1.5, 2], // Time multipliers for wave progression
                 PHASE_OFFSET: Math.PI / 2.1, // Phase shift between lines
                 COLOR_MODE: "hsv", // 'hsv' or 'grayscale'

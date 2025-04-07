@@ -1,0 +1,21 @@
+html {
+    background-color: black;
+    color: white;
+}
+
+/* Center the div and set its width to 100 characters */
+.canvas-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120ch; /* Set width to 100 characters */
+    margin: 20ch auto; /* Center horizontally */
+}
+
+/* Ensure the canvas fills the container */
+.canvas-container canvas {
+    display: block;
+    width: 80ch;
+    height: 40ch;
+    image-rendering: pixelated;
+}
