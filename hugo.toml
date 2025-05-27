@@ -2,6 +2,7 @@ baseURL = 'https://stevenhay.com/'
 languageCode = 'en-us'
 title = 'Steven Hay'
 pluralizelisttitles = false
+enableEmoji = true
 
 [params]
 description = "This is my blog."
