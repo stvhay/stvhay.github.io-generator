@@ -3,7 +3,7 @@
 {{- $imgName := .imgName | default "img" }}
 {{- $formats := (slice "webp" "png" "jpg" "jpeg") }}
 {{- $altText := $page.Title }}
-{{- $cssClass := "post-img" }}
+{{- $cssClass := .class | default "post-img" }}
 
 {{- $found := false }}
 {{- range $formats }}
