@@ -48,11 +48,14 @@
         url("/fonts/LM-bold-italic.ttf") format("truetype");
 }
 
+html {
+    font-size: 16pt
+}
 body {
     font-family: "Latin Modern", sans-serif;
     background-color: #e9ecef;
     color: #343a40;
-    line-height: 1.8;
+    line-height: 1.4;
     text-rendering: optimizeLegibility;
 }
 
@@ -115,7 +118,7 @@ h2 {
 }
 
 p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     margin-bottom: 1.5rem;
 }
 
