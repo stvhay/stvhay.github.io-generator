@@ -49,8 +49,9 @@
 }
 
 html {
-    font-size: 12pt
+    font-size: 12pt;
 }
+
 body {
     font-family: "Latin Modern", sans-serif;
     background-color: #e9ecef;
@@ -261,4 +262,76 @@ footer {
 footer p {
     font-size: 0.9rem;
     margin-top: 1rem;
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #121212;
+        color: #e0e0e0;
+    }
+
+    header,
+    nav,
+    footer {
+        background-color: #1f1f1f;
+        color: #e0e0e0;
+    }
+
+    nav a {
+        color: #e0e0e0;
+    }
+
+    nav a:hover {
+        color: #f9ff99;
+    }
+
+    .container {
+        background: #111;
+        /*box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);*/
+        border-radius: 8px;
+    }
+
+    h2 {
+        color: #e0e0e0;
+    }
+
+    .post {
+        border: 1px solid #444;
+        background-color: #222;
+    }
+
+    .post:hover {
+        box-shadow: 0 5px 10px rgba(128, 128, 128, 0.3);
+    }
+
+    .post-text h3 a {
+        color: #e0e0e0;
+    }
+
+    .post-text h3 a:hover {
+        color: #f9ff99;
+    }
+
+    .article {
+        border: 1px solid #444;
+        background-color: #222;
+    }
+
+    .article:hover {
+        box-shadow: 0 5px 10px rgba(128, 128, 128, 0.3);
+    }
+
+    a {
+        color: #ffffff;
+    }
+
+    a:hover {
+        color: #f9ff99;
+        text-decoration: underline;
+    }
+
+    ul {
+        color: #ccc;
+    }
 }
