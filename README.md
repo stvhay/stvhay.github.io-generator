@@ -1,5 +1,7 @@
 # stvhay.github.io-generator
 
+[![website](https://github.com/stvhay/stvhay.github.io-generator/actions/workflows/website.yml/badge.svg)](https://github.com/stvhay/stvhay.github.io-generator/actions/workflows/website.yml)
+
 I wanted to be able to write documents in LaTeX and Markdown and published easily into a website. This is the result.
 
 - I've ported my web content to Markdown and used [Hugo](https://gohugo.io/) to generate a static website.
