@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Vision Grid Animation</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 20px;
+                background-color: black;
+                color: gray;
+                font-family: Arial, sans-serif;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .controls {
+                margin-bottom: 20px;
+                display: flex;
+                gap: 15px;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+
+            .control-group {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            label {
+                font-size: 12px;
+                color: #ccc;
+            }
+
+            input,
+            button {
+                padding: 5px 10px;
+                border: 1px solid #555;
+                background: #333;
+                color: white;
+                border-radius: 3px;
+            }
+
+            button {
+                cursor: pointer;
+                background: #555;
+            }
+
+            button:hover {
+                background: #666;
+            }
+
+            button:disabled {
+                background: #222;
+                cursor: not-allowed;
+            }
+
+            .grid-container {
+                display: flex;
+                gap: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .grid-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .grid-title {
+                font-size: 16px;
+                color: gray;
+                text-align: center;
+            }
+
+            canvas {
+                border: 1px solid #333;
+                image-rendering: pixelated;
+            }
+
+            .status {
+                margin-top: 20px;
+                font-size: 14px;
+                color: #aaa;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Visualization of Theoretically Detectable Signal Variation</h1>
+        <h4>Default set to d'=1 (confidence: 76%) = 3.2% of background</h4>
+        <p>Ported from Human-written Python to JavaScript by ChatGPT.</p>
+        <div class="controls">
+            <div class="control-group">
+                <label>Rates (comma-separated)</label>
+                <input
+                    type="text"
+                    id="rates"
+                    value="0.000200, 0.006250, 0.006450"
+                    placeholder="0.000200, 0.006250, 0.006450"
+                />
+            </div>
+            <div class="control-group">
+                <label>Names (comma-separated)</label>
+                <input
+                    type="text"
+                    id="names"
+                    value="Detectable, Background, Combined"
+                    placeholder="Detectable, Background, Combined"
+                />
+            </div>
+            <div class="control-group">
+                <label>Grid Size</label>
+                <input
+                    type="number"
+                    id="size"
+                    value="300"
+                    min="50"
+                    max="1000"
+                />
+            </div>
+            <div class="control-group">
+                <label>Tau</label>
+                <input
+                    type="number"
+                    id="tau"
+                    value="0.5"
+                    min="0.1"
+                    max="2"
+                    step="0.1"
+                />
+            </div>
+            <button id="startBtn">Start Animation</button>
+            <button id="stopBtn" disabled>Stop</button>
+            <button id="resetBtn">Reset</button>
+        </div>
+
+        <div class="grid-container" id="gridContainer"></div>
+
+        <div class="status" id="status">Ready to start</div>
+
+        <script>
+            class VisionGrid {
+                constructor() {
+                    this.animationId = null;
+                    this.isRunning = false;
+                    this.grids = [];
+                    this.canvases = [];
+                    this.contexts = [];
+                    this.imageData = [];
+                    this.dt = 1 / 30; // 30 FPS
+                    this.startTime = 0;
+                    this.warmupFrames = 0;
+
+                    this.setupEventListeners();
+                }
+
+                setupEventListeners() {
+                    document
+                        .getElementById("startBtn")
+                        .addEventListener("click", () => this.start());
+                    document
+                        .getElementById("stopBtn")
+                        .addEventListener("click", () => this.stop());
+                    document
+                        .getElementById("resetBtn")
+                        .addEventListener("click", () => this.reset());
+                }
+
+                // Generate Poisson-distributed random numbers using Knuth's algorithm
+                poissonRandom(lambda) {
+                    if (lambda === 0) return 0;
+
+                    const L = Math.exp(-lambda);
+                    let k = 0;
+                    let p = 1;
+
+                    do {
+                        k++;
+                        p *= Math.random();
+                    } while (p > L);
+
+                    return k - 1;
+                }
+
+                // Update grid with Poisson activations
+                updateGrid(gridData, rate, size, alpha) {
+                    const newGrid = new Float32Array(size * size);
+
+                    for (let i = 0; i < size * size; i++) {
+                        const activation = this.poissonRandom(rate * this.dt);
+                        newGrid[i] =
+                            (1 - alpha) * gridData[i] +
+                            alpha * (activation / this.dt);
+                    }
+
+                    return newGrid;
+                }
+
+                // Convert grid data to image data for canvas
+                gridToImageData(gridData, size, imageData) {
+                    const data = imageData.data;
+                    const maxVal = 2.0; // vmax from original code
+
+                    for (let i = 0; i < size * size; i++) {
+                        const value = Math.min(gridData[i] / maxVal, 1.0);
+                        const grayValue = Math.floor(value * 255);
+
+                        const pixelIndex = i * 4;
+                        data[pixelIndex] = grayValue; // R
+                        data[pixelIndex + 1] = grayValue; // G
+                        data[pixelIndex + 2] = grayValue; // B
+                        data[pixelIndex + 3] = 255; // A
+                    }
+                }
+
+                setupGrids() {
+                    const ratesInput = document.getElementById("rates").value;
+                    const namesInput = document.getElementById("names").value;
+                    const size = parseInt(
+                        document.getElementById("size").value,
+                    );
+                    const tau = parseFloat(
+                        document.getElementById("tau").value,
+                    );
+
+                    const rates = ratesInput
+                        .split(",")
+                        .map((r) => parseFloat(r.trim()));
+                    const names = namesInput.split(",").map((n) => n.trim());
+
+                    // Ensure names and rates arrays have same length
+                    while (names.length < rates.length) {
+                        names.push(`Grid ${names.length + 1}`);
+                    }
+
+                    this.rates = rates;
+                    this.names = names;
+                    this.size = size;
+                    this.alpha = this.dt / tau;
+                    this.warmupFrames = Math.floor((tau * 5) / this.dt);
+
+                    // Clear existing grids
+                    const container = document.getElementById("gridContainer");
+                    container.innerHTML = "";
+
+                    this.grids = [];
+                    this.canvases = [];
+                    this.contexts = [];
+                    this.imageData = [];
+
+                    // Create grids and canvases
+                    for (let i = 0; i < rates.length; i++) {
+                        // Initialize grid data
+                        this.grids.push(new Float32Array(size * size));
+
+                        // Create canvas element
+                        const gridItem = document.createElement("div");
+                        gridItem.className = "grid-item";
+
+                        const title = document.createElement("div");
+                        title.className = "grid-title";
+                        title.textContent = names[i];
+
+                        const canvas = document.createElement("canvas");
+                        canvas.width = size;
+                        canvas.height = size;
+                        canvas.style.width = "300px";
+                        canvas.style.height = "300px";
+
+                        gridItem.appendChild(title);
+                        gridItem.appendChild(canvas);
+                        container.appendChild(gridItem);
+
+                        this.canvases.push(canvas);
+                        const ctx = canvas.getContext("2d");
+                        this.contexts.push(ctx);
+                        this.imageData.push(ctx.createImageData(size, size));
+                    }
+                }
+
+                updateStatus(message) {
+                    document.getElementById("status").textContent = message;
+                }
+
+                animate() {
+                    if (!this.isRunning) return;
+
+                    const currentTime = Date.now();
+                    const elapsed = (currentTime - this.startTime) / 1000;
+
+                    // Warmup phase
+                    if (this.frameCount < this.warmupFrames) {
+                        for (let i = 0; i < this.rates.length; i++) {
+                            this.grids[i] = this.updateGrid(
+                                this.grids[i],
+                                this.rates[i],
+                                this.size,
+                                this.alpha,
+                            );
+                        }
+                        this.frameCount++;
+                        this.updateStatus(
+                            `Warming up... ${Math.floor((this.frameCount / this.warmupFrames) * 100)}%`,
+                        );
+                    } else {
+                        // Main animation phase
+                        for (let i = 0; i < this.rates.length; i++) {
+                            this.grids[i] = this.updateGrid(
+                                this.grids[i],
+                                this.rates[i],
+                                this.size,
+                                this.alpha,
+                            );
+                            this.gridToImageData(
+                                this.grids[i],
+                                this.size,
+                                this.imageData[i],
+                            );
+                            this.contexts[i].putImageData(
+                                this.imageData[i],
+                                0,
+                                0,
+                            );
+                        }
+                        this.updateStatus(`Running... ${elapsed.toFixed(1)}s`);
+                    }
+
+                    this.animationId = requestAnimationFrame(() =>
+                        this.animate(),
+                    );
+                }
+
+                start() {
+                    if (this.isRunning) return;
+
+                    this.setupGrids();
+                    this.isRunning = true;
+                    this.startTime = Date.now();
+                    this.frameCount = 0;
+
+                    document.getElementById("startBtn").disabled = true;
+                    document.getElementById("stopBtn").disabled = false;
+
+                    this.updateStatus("Starting...");
+                    this.animate();
+                }
+
+                stop() {
+                    this.isRunning = false;
+                    if (this.animationId) {
+                        cancelAnimationFrame(this.animationId);
+                        this.animationId = null;
+                    }
+
+                    document.getElementById("startBtn").disabled = false;
+                    document.getElementById("stopBtn").disabled = true;
+
+                    this.updateStatus("Stopped");
+                }
+
+                reset() {
+                    this.stop();
+
+                    // Clear all grids
+                    for (let i = 0; i < this.grids.length; i++) {
+                        if (this.grids[i]) {
+                            this.grids[i].fill(0);
+                            if (this.contexts[i]) {
+                                this.contexts[i].clearRect(
+                                    0,
+                                    0,
+                                    this.size,
+                                    this.size,
+                                );
+                            }
+                        }
+                    }
+
+                    this.updateStatus("Reset - Ready to start");
+                }
+            }
+
+            // Initialize the application
+            const visionGrid = new VisionGrid();
+        </script>
+    </body>
+</html>
