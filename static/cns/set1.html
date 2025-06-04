@@ -93,7 +93,6 @@
     <body>
         <h1>Visualization of Theoretically Detectable Signal Variation</h1>
         <h4>Default set to d'=1 (confidence: 76%) = 3.2% of background</h4>
-        <p>Ported from Human-written Python to JavaScript by ChatGPT.</p>
         <div class="controls">
             <div class="control-group">
                 <label>Rates (comma-separated)</label>
@@ -109,8 +108,8 @@
                 <input
                     type="text"
                     id="names"
-                    value="Detectable, Background, Combined"
-                    placeholder="Detectable, Background, Combined"
+                    value="Signal, Background Rhodospin, Signal+Background"
+                    placeholder="Signal, Background Rhodospin, Signal+Background"
                 />
             </div>
             <div class="control-group">
@@ -143,6 +142,8 @@
 
         <div class="status" id="status">Ready to start</div>
 
+        <p>Ported from Human-written Python to JavaScript by ChatGPT.</p>
+
         <script>
             class VisionGrid {
                 constructor() {
@@ -152,9 +153,10 @@
                     this.canvases = [];
                     this.contexts = [];
                     this.imageData = [];
-                    this.dt = 1 / 30; // 30 FPS
+                    this.dt = 1 / 30; // initial guess 30 FPS
                     this.startTime = 0;
                     this.warmupFrames = 0;
+                    this.frameTimes = [];
 
                     this.setupEventListeners();
                 }
@@ -287,10 +289,39 @@
                     document.getElementById("status").textContent = message;
                 }
 
+                median(arr) {
+                    const sorted = [...arr].sort((a, b) => a - b);
+                    const mid = Math.floor(sorted.length / 2);
+                    if (sorted.length % 2 === 0) {
+                        return (sorted[mid - 1] + sorted[mid]) / 2;
+                    } else {
+                        return sorted[mid];
+                    }
+                }
+
                 animate() {
                     if (!this.isRunning) return;
 
                     const currentTime = Date.now();
+
+                    if (this.lastFrameTime !== undefined) {
+                        const delta = (currentTime - this.lastFrameTime) / 1000;
+                        this.frameTimes.push(delta);
+                        if (this.frameTimes.length > 5) {
+                            this.frameTimes.shift();
+                        }
+                        this.dt = this.median(this.frameTimes);
+                        // Update alpha based on new dt and tau
+                        const tau = parseFloat(
+                            document.getElementById("tau").value,
+                        );
+                        this.alpha = this.dt / tau;
+                    } else {
+                        this.dt = 1 / 30; // fallback initial dt
+                    }
+
+                    this.lastFrameTime = currentTime;
+
                     const elapsed = (currentTime - this.startTime) / 1000;
 
                     // Warmup phase
@@ -342,6 +373,8 @@
                     this.isRunning = true;
                     this.startTime = Date.now();
                     this.frameCount = 0;
+                    this.frameTimes = [];
+                    this.lastFrameTime = undefined;
 
                     document.getElementById("startBtn").disabled = true;
                     document.getElementById("stopBtn").disabled = false;
