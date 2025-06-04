@@ -213,6 +213,7 @@ ul {
 
 .article p {
     position: float;
+    clear: both;
 }
 
 .article:hover {
