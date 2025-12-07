@@ -1,0 +1,26 @@
+{{- /*
+Renders a post card with thumbnail, title, and summary.
+
+@context {page} page The page to render as a card.
+@context {bool} showDate Whether to show the date (optional, default false).
+
+@example: {{ partial "post-card.html" (dict "page" . "showDate" true) }}
+*/}}
+
+{{- $page := .page }}
+{{- $showDate := .showDate | default false }}
+
+<div class="post card">
+  <div class="post-img">
+    {{- partial "thumb.html" (dict "page" $page) }}
+  </div>
+  <div class="post-text">
+    <h3><a href="{{ $page.RelPermalink }}">{{ $page.LinkTitle }}</a></h3>
+    {{- if $showDate }}
+      <i>{{- partial "date.html" $page }}</i>
+      <br>
+    {{- end }}
+    {{ $page.Summary }}
+    <span class="section-mark">({{ $page.Section }})</span>
+  </div>
+</div>
