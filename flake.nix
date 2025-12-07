@@ -32,7 +32,10 @@
 
                 # Font packages (texlive-fonts-recommended, texlive-fonts-extra)
                 collection-fontsrecommended
-                collection-fontsextra;
+                collection-fontsextra
+
+                # Additional packages for CV template
+                mdwtools relsize hyperref xcolor url microtype tex-gyre geometry;
             })
 
             # ExifTool for PDF metadata manipulation
