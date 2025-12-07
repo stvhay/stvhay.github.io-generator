@@ -6,7 +6,6 @@
 
 :root {
     --color-bg-body: #e9ecef;
-    --color-bg-container: #ffffff;
     --color-bg-header: black;
     --color-bg-card: transparent;
     --color-text-primary: #343a40;
@@ -145,10 +144,7 @@ section {
 .container {
     max-width: 100ch;
     margin: auto;
-    background: var(--color-bg-container);
     padding: 1.25rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-sm);
     margin-bottom: 0.625rem;
     margin-top: 1.25rem;
 }
@@ -309,7 +305,6 @@ footer p {
 @media (prefers-color-scheme: dark) {
     :root {
         --color-bg-body: #121212;
-        --color-bg-container: #111;
         --color-bg-header: #1f1f1f;
         --color-bg-card: #222;
         --color-text-primary: #e0e0e0;
