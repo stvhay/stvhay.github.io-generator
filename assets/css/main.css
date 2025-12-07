@@ -123,11 +123,6 @@ p {
     margin-bottom: 1.5rem;
 }
 
-br {
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
-}
-
 ul {
     margin-left: 2em;
 }
@@ -207,7 +202,6 @@ ul {
 }
 
 .article p {
-    position: float;
     clear: both;
 }
 
