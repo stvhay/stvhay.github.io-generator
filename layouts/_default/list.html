@@ -3,7 +3,7 @@
   <section id="{{ .Title }}" class="container">
     <h2>{{ .Title }}</h2>
     {{- range .Pages }}
-      <div class="post">
+      <div class="post card">
         <h3><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h3>
         <div class="post-img">
           {{- partial "thumb.html" (dict "page" .) }}

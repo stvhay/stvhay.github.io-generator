@@ -127,24 +127,27 @@ ul {
     margin-left: 2em;
 }
 
-.post {
+.card {
     position: relative;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    margin-bottom: 1.25rem;
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.15);
+}
+
+.post {
     display: grid;
     grid-template-columns: 150px 1fr;
     gap: 0 1.25rem;
     align-items: flex-start;
-    border: 1px solid #ced4da;
     padding: 1.25rem;
-    transition: box-shadow 0.3s ease;
     grid-template-areas:
         "image heading"
         "image text";
-    border-radius: 8px;
-    margin-bottom: 1.25rem;
-}
-
-.post:hover {
-    box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.15);
 }
 
 .post-img {
@@ -178,12 +181,7 @@ ul {
 }
 
 .article {
-    position: relative;
-    border: 1px solid #ced4da;
     padding: 2rem;
-    transition: box-shadow 0.3s ease;
-    border-radius: 8px;
-    margin-bottom: 1.25rem;
 }
 
 .article-img {
@@ -198,10 +196,6 @@ ul {
 
 .article p {
     clear: both;
-}
-
-.article:hover {
-    box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.15);
 }
 
 .section-mark {
@@ -289,12 +283,12 @@ footer p {
         color: #e0e0e0;
     }
 
-    .post {
+    .card {
         border: 1px solid #444;
         background-color: #222;
     }
 
-    .post:hover {
+    .card:hover {
         box-shadow: 0 0.3125rem 0.625rem rgba(128, 128, 128, 0.3);
     }
 
@@ -304,15 +298,6 @@ footer p {
 
     .post-text h3 a:hover {
         color: #f9ff99;
-    }
-
-    .article {
-        border: 1px solid #444;
-        background-color: #222;
-    }
-
-    .article:hover {
-        box-shadow: 0 0.3125rem 0.625rem rgba(128, 128, 128, 0.3);
     }
 
     a {
