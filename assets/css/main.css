@@ -12,10 +12,10 @@
     --color-text-primary: #343a40;
     --color-text-light: #f8f9fa;
     --color-text-muted: inherit;
-    --color-accent: #007bff;
+    --color-accent: #0069d9;
     --color-accent-hover: #0056b3;
     --color-border: #ced4da;
-    --color-border-hover: #007bff;
+    --color-border-hover: #0069d9;
     --shadow-sm: 0 0 1.25rem rgba(0, 0, 0, 0.1);
     --shadow-md: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.15);
     --border-radius: 8px;
