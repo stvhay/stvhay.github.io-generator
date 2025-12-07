@@ -29,7 +29,7 @@ weight = 210
 
 [[menus.main]]
 name = 'Writing'
-url = '/writing'
+pageRef = '/writing'
 weight = 510
 
 [[menus.main]]
