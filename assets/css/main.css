@@ -131,6 +131,12 @@ nav a:hover {
     color: var(--color-accent);
 }
 
+nav a:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    color: var(--color-accent);
+}
+
 section {
     padding: 1.875rem 1.25rem;
 }
@@ -171,6 +177,12 @@ ul {
 
 .card:hover {
     box-shadow: var(--shadow-md);
+}
+
+.card:focus-within {
+    box-shadow: var(--shadow-md);
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
 }
 
 .post {
@@ -274,6 +286,12 @@ a {
 }
 
 a:hover {
+    color: var(--color-accent-hover);
+}
+
+a:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
     color: var(--color-accent-hover);
 }
 
