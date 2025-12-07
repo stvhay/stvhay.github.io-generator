@@ -20,6 +20,17 @@
     --border-radius: 8px;
 }
 
+/* ==========================================================================
+   Font Declarations
+   ========================================================================== */
+
+/*
+ * Latin Modern font family - Professional typeface for body text
+ * font-display: swap - Shows fallback font immediately while custom font loads
+ * Formats ordered by preference: woff2 (best compression) -> woff -> ttf
+ */
+
+/* Regular weight */
 @font-face {
     font-family: "Latin Modern";
     font-style: normal;
@@ -31,6 +42,7 @@
         url("/fonts/LM-regular.ttf") format("truetype");
 }
 
+/* Italic */
 @font-face {
     font-family: "Latin Modern";
     font-style: italic;
@@ -42,6 +54,7 @@
         url("/fonts/LM-italic.ttf") format("truetype");
 }
 
+/* Bold */
 @font-face {
     font-family: "Latin Modern";
     font-style: normal;
@@ -53,6 +66,7 @@
         url("/fonts/LM-bold.ttf") format("truetype");
 }
 
+/* Bold Italic */
 @font-face {
     font-family: "Latin Modern";
     font-style: italic;
@@ -63,6 +77,10 @@
         url("/fonts/LM-bold-italic.woff") format("woff"),
         url("/fonts/LM-bold-italic.ttf") format("truetype");
 }
+
+/* ==========================================================================
+   Base Styles
+   ========================================================================== */
 
 html {
     font-size: 12pt;
