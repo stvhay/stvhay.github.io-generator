@@ -34,5 +34,5 @@ weight = 510
 
 [[menus.main]]
 name = 'Contact'
-url = '/#contact'
+pageRef = '/contact'
 weight = 1000
