@@ -5,8 +5,23 @@ pkgs.mkShell {
     # Hugo static site generator (extended version)
     hugo
 
-    # LaTeX toolchain for PDF generation
-    texlive.combined.scheme-full
+    # LaTeX toolchain for PDF generation (minimal setup matching CI)
+    (texlive.combine {
+      inherit (texlive)
+        scheme-basic
+        latex-bin
+        latexmk
+
+        # Core LaTeX packages (texlive-latex-base, texlive-latex-extra)
+        amsmath tools graphics
+
+        # Bibliography support (texlive-bibtex-extra)
+        biber biblatex logreq xstring
+
+        # Font packages (texlive-fonts-recommended, texlive-fonts-extra)
+        collection-fontsrecommended
+        collection-fontsextra;
+    })
 
     # ExifTool for PDF metadata manipulation
     exiftool
