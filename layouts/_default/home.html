@@ -2,7 +2,7 @@
   <section id="home" class="container">
     {{- partial "section.html" (.Site.GetPage "/about") }}
   </section>
-  <section id="{{ .Title }}" class="container">
+  <section id="portfolio" class="container">
     {{ range where site.RegularPages "Section" "portfolio" }}
       <div class="post">
         <h3><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h3>
