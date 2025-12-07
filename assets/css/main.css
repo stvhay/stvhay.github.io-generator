@@ -8,8 +8,10 @@
     --color-bg-body: #e9ecef;
     --color-bg-container: #ffffff;
     --color-bg-header: black;
+    --color-bg-card: transparent;
     --color-text-primary: #343a40;
     --color-text-light: #f8f9fa;
+    --color-text-muted: inherit;
     --color-accent: #007bff;
     --color-accent-hover: #0056b3;
     --color-border: #ced4da;
@@ -268,62 +270,30 @@ footer p {
 
 /* Dark mode styles */
 @media (prefers-color-scheme: dark) {
-    body {
-        background-color: #121212;
-        color: #e0e0e0;
-    }
-
-    header,
-    nav,
-    footer {
-        background-color: #1f1f1f;
-        color: #e0e0e0;
-    }
-
-    nav a {
-        color: #e0e0e0;
-    }
-
-    nav a:hover {
-        color: #f9ff99;
-    }
-
-    .container {
-        background: #111;
-        border-radius: 8px;
-    }
-
-    h2 {
-        color: #e0e0e0;
+    :root {
+        --color-bg-body: #121212;
+        --color-bg-container: #111;
+        --color-bg-header: #1f1f1f;
+        --color-bg-card: #222;
+        --color-text-primary: #e0e0e0;
+        --color-text-light: #e0e0e0;
+        --color-text-muted: #ccc;
+        --color-accent: #ffffff;
+        --color-accent-hover: #f9ff99;
+        --color-border: #444;
+        --shadow-sm: 0 0 1.25rem rgba(255, 255, 255, 0.05);
+        --shadow-md: 0 0.3125rem 0.625rem rgba(128, 128, 128, 0.3);
     }
 
     .card {
-        border: 1px solid #444;
-        background-color: #222;
-    }
-
-    .card:hover {
-        box-shadow: 0 0.3125rem 0.625rem rgba(128, 128, 128, 0.3);
-    }
-
-    .post-text h3 a {
-        color: #e0e0e0;
-    }
-
-    .post-text h3 a:hover {
-        color: #f9ff99;
-    }
-
-    a {
-        color: #ffffff;
+        background-color: var(--color-bg-card);
     }
 
     a:hover {
-        color: #f9ff99;
         text-decoration: underline;
     }
 
     ul {
-        color: #ccc;
+        color: var(--color-text-muted);
     }
 }
