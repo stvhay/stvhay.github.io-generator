@@ -4,11 +4,11 @@
     <h2>{{ .Title }}</h2>
     {{- range .Pages }}
       <div class="post card">
-        <h3><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h3>
         <div class="post-img">
           {{- partial "thumb.html" (dict "page" .) }}
         </div>
         <div class="post-text">
+          <h3><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h3>
           <i>{{- partial "date.html" . }}</i>
           <br>
           {{ .Summary }}

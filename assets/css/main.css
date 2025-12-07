@@ -186,9 +186,7 @@ ul {
     gap: 0 1.25rem;
     align-items: flex-start;
     padding: 1.25rem;
-    grid-template-areas:
-        "image heading"
-        "image text";
+    grid-template-areas: "image text";
 }
 
 .post-img {
@@ -200,10 +198,6 @@ ul {
     height: auto;
     border-radius: var(--border-radius);
     object-fit: cover;
-}
-
-.post h3 {
-    grid-area: heading;
 }
 
 .post-text {
@@ -249,7 +243,6 @@ ul {
     .post {
         grid-template-columns: 1fr;
         grid-template-areas:
-            "heading"
             "image"
             "text";
         text-align: center;

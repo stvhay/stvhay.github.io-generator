@@ -5,11 +5,11 @@
   <section id="portfolio" class="container">
     {{ range where site.RegularPages "Section" "portfolio" }}
       <div class="post card">
-        <h3><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h3>
         <div class="post-img">
           {{- partial "thumb.html" (dict "page" .) }}
         </div>
         <div class="post-text">
+          <h3><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h3>
           {{ .Summary }}
           <span class="section-mark">({{ .Section }})</span>
         </div>
