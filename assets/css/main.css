@@ -87,7 +87,7 @@ nav {
 
 nav a {
     color: #f8f9fa;
-    margin: 0 20px;
+    margin: 0 1.25rem;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease;
@@ -98,24 +98,24 @@ nav a:hover {
 }
 
 section {
-    padding: 30px 20px;
+    padding: 1.875rem 1.25rem;
 }
 
 .container {
     max-width: 100ch;
     margin: auto;
     background: #ffffff;
-    padding: 20px;
+    padding: 1.25rem;
     border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    margin-bottom: 10px;
-    margin-top: 20px;
+    box-shadow: 0 0 1.25rem rgba(0, 0, 0, 0.1);
+    margin-bottom: 0.625rem;
+    margin-top: 1.25rem;
 }
 
 h2 {
     font-size: 2rem;
     color: black;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
 }
 
 p {
@@ -131,20 +131,20 @@ ul {
     position: relative;
     display: grid;
     grid-template-columns: 150px 1fr;
-    gap: 0px 20px;
+    gap: 0 1.25rem;
     align-items: flex-start;
     border: 1px solid #ced4da;
-    padding: 20px;
+    padding: 1.25rem;
     transition: box-shadow 0.3s ease;
     grid-template-areas:
         "image heading"
         "image text";
     border-radius: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
 }
 
 .post:hover {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.15);
 }
 
 .post-img {
@@ -179,7 +179,7 @@ ul {
 
 .article {
     position: relative;
-    gap: 20px;
+    gap: 1.25rem;
     align-items: flex-start;
     border: 1px solid #ced4da;
     padding: 2rem;
@@ -188,17 +188,17 @@ ul {
         "image heading"
         "image text";
     border-radius: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
 }
 
 .article-img {
     float: left;
-    width: 40ex;
+    width: 25rem;
 }
 
 .article-img img {
-    width: 40ex;
-    padding: 10px 20px 10px 0px;
+    width: 100%;
+    padding: 0.625rem 1.25rem 0.625rem 0;
 }
 
 .article p {
@@ -206,13 +206,13 @@ ul {
 }
 
 .article:hover {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.15);
 }
 
 .section-mark {
-    position: absolute; 
-    bottom: 10px; 
-    right: 20px;
+    position: absolute;
+    bottom: 0.625rem;
+    right: 1.25rem;
 }
 
 @media (max-width: 768px) {
@@ -226,7 +226,7 @@ ul {
     }
 
     .post-img {
-        margin-bottom: 20px;
+        margin-bottom: 1.25rem;
     }
 
     .post-text {
@@ -290,7 +290,7 @@ footer p {
     }
 
     .post:hover {
-        box-shadow: 0 5px 10px rgba(128, 128, 128, 0.3);
+        box-shadow: 0 0.3125rem 0.625rem rgba(128, 128, 128, 0.3);
     }
 
     .post-text h3 a {
@@ -307,7 +307,7 @@ footer p {
     }
 
     .article:hover {
-        box-shadow: 0 5px 10px rgba(128, 128, 128, 0.3);
+        box-shadow: 0 0.3125rem 0.625rem rgba(128, 128, 128, 0.3);
     }
 
     a {
