@@ -10,7 +10,7 @@ Renders a post card with thumbnail, title, and summary.
 {{- $page := .page }}
 {{- $showDate := .showDate | default false }}
 
-<div class="post card">
+<article class="post card">
   <div class="post-img">
     {{- partial "thumb.html" (dict "page" $page) }}
   </div>
@@ -23,4 +23,4 @@ Renders a post card with thumbnail, title, and summary.
     {{ $page.Summary }}
     <span class="section-mark">({{ $page.Section }})</span>
   </div>
-</div>
+</article>

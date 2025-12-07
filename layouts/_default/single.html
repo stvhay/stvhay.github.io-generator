@@ -1,12 +1,12 @@
 {{- define "main" }}
   <section class="container">
-    <div class="article card">
+    <article class="article card">
       <h1>{{ .Title }}</h1>
       {{- partial "date.html" . }}
       <br>
       {{- partial "thumb.html" (dict "page" . "class" "article-img") }}
       {{ .Content }}
-    </div>
+    </article>
   </section>
   {{- partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
 {{- end }}
