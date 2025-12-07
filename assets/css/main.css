@@ -15,8 +15,6 @@
     --color-accent-hover: #0056b3;
     --color-border: #ced4da;
     --color-border-hover: #0069d9;
-    --shadow-sm: 0 0 1.25rem rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.15);
     --border-radius: 8px;
 }
 
@@ -314,8 +312,6 @@ footer p {
         --color-accent-hover: #f9ff99;
         --color-border: #444;
         --color-border-hover: #888;
-        --shadow-sm: 0 0 1.25rem rgba(255, 255, 255, 0.05);
-        --shadow-md: 0 0.3125rem 0.625rem rgba(128, 128, 128, 0.3);
     }
 
     .card {
