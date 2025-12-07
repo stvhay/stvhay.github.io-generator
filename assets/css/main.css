@@ -227,6 +227,16 @@ ul {
     .post-text {
         text-align: left;
     }
+
+    .article-img {
+        float: none;
+        width: 100%;
+        margin-bottom: 1.25rem;
+    }
+
+    .article-img img {
+        padding: 0;
+    }
 }
 
 a {
