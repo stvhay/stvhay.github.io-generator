@@ -179,14 +179,9 @@ ul {
 
 .article {
     position: relative;
-    gap: 1.25rem;
-    align-items: flex-start;
     border: 1px solid #ced4da;
     padding: 2rem;
     transition: box-shadow 0.3s ease;
-    grid-template-areas:
-        "image heading"
-        "image text";
     border-radius: 8px;
     margin-bottom: 1.25rem;
 }
