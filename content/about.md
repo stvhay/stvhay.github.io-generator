@@ -14,4 +14,4 @@ perception in the human visual system. Recent advances in neural network
 training methods, architectures, and fundamental neural units, are revolutionizing
 our own understanding of the human brain, and allowing us to probe our understanding
 of subjective experience, perceptual diversity, and human brain neural architectures. 
-([CV](/docs/cv-steve-hay.pdf "Steve Hay CV"))
+([CV](/docs/cv/cv-steve-hay.pdf "Steve Hay CV"))
