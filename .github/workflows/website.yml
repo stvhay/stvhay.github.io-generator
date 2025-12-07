@@ -12,9 +12,10 @@ jobs:
       - uses: awalsh128/cache-apt-pkgs-action@latest
         with:
           packages: texlive-latex-base texlive-latex-extra \
-            texlive-bibtex-extra latexmk biber \
+            texlive-bibtex-extra texlive-fonts-recommended \
+            texlive-fonts-extra latexmk biber \
             libimage-exiftool-perl
-          version: 1.0
+          version: 1.1
 
       - name: Get GitHub Actions bot details
         id: bot-details

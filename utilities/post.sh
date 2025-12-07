@@ -1,6 +1,7 @@
 # shellcheck shell=bash
 post()
-( 
+(
+set -eu
 pushd "${hugo_repo_dir:?}"  || return
 
     usage()
@@ -23,6 +24,7 @@ EOF
     page_group=writing
     single_md=false
     convert=false
+    local args=()
     while [[ $# -gt 0 ]]
     do
         case "$1" in
@@ -32,8 +34,9 @@ EOF
                     page_group="$2"
                     shift 2
                 else
-                    >&2 echo "Error: --option requires a value"
+                    >&2 echo "Error: --page requires a value"
                     >&2 usage
+                    exit 1
                 fi
             ;;
             --single)
@@ -79,7 +82,10 @@ EOF
         then
             if [[ ! -d "${post_path}" ]]
             then
-                hugo new content "${post_path}.md"
+                hugo new content "${post_path}.md" || {
+                    >&2 echo "Failed to create new post"
+                    exit 1
+                }
             else
                 >&2 echo "Already exists: ${post_path}"
                 >&2 echo "Convert manually."
@@ -92,10 +98,13 @@ EOF
         then
             if [[ ! -f "${post_path}.md" ]]
             then
-                hugo new content "${post_path}.md"
+                hugo new content "${post_path}.md" || {
+                    >&2 echo "Failed to create new post"
+                    exit 1
+                }
             else
                 if ! $convert
-                then 
+                then
                     >&2 echo "Already exists: ${post_path}.md"
                     exit 1
                 fi
