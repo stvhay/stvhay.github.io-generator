@@ -140,9 +140,7 @@ ul {
     align-items: flex-start;
     border: 1px solid #ced4da;
     padding: 20px;
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease;
     grid-template-areas:
         "image heading"
         "image text";
@@ -151,7 +149,6 @@ ul {
 }
 
 .post:hover {
-    transform: translateY(-10px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
@@ -191,9 +188,7 @@ ul {
     align-items: flex-start;
     border: 1px solid #ced4da;
     padding: 2rem;
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease;
     grid-template-areas:
         "image heading"
         "image text";
@@ -217,7 +212,6 @@ ul {
 }
 
 .article:hover {
-    transform: translateY(-10px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
