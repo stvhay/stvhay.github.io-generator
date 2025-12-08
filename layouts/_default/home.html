@@ -1,6 +1,7 @@
 {{- define "main" }}
   <section id="home" class="container">
-    {{- partial "section.html" (.Site.GetPage "/about") }}
+    <h1>{{ (.Site.GetPage "/about").Title }}</h1>
+    {{ (.Site.GetPage "/about").Content }}
   </section>
   <section id="portfolio" class="container">
     {{ range where site.RegularPages "Section" "portfolio" }}

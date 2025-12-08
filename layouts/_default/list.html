@@ -1,7 +1,7 @@
 {{- define "main" }}
   {{ .Content }}
   <section id="{{ .Title }}" class="container">
-    <h2>{{ .Title }}</h2>
+    <h1>{{ .Title }}</h1>
     {{- range .Pages }}
       {{- partial "post-card.html" (dict "page" . "showDate" true) }}
     {{- end }}

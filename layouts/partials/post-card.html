@@ -15,7 +15,7 @@ Renders a post card with thumbnail, title, and summary.
     {{- partial "thumb.html" (dict "page" $page) }}
   </div>
   <div class="post-text">
-    <h3><a href="{{ $page.RelPermalink }}">{{ $page.LinkTitle }}</a></h3>
+    <h2><a href="{{ $page.RelPermalink }}">{{ $page.LinkTitle }}</a></h2>
     {{- if $showDate }}
       <i>{{- partial "date.html" $page }}</i>
       <br>
