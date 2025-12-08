@@ -9,4 +9,4 @@ scores across the dimensions and establish minimum and maximum criteria for
 each.
 
 Sample quizzes are provided for aphantasia (VVIQ) and personality (OCEAN)
-tests. The VVIQ test is online [here](https://www.sadied.com/viv-q).
+tests. [Try the VVIQ test online](https://www.sadied.com/viv-q).
