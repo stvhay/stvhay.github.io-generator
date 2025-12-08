@@ -5,6 +5,8 @@ from pathlib import Path
 import pytest
 from bs4 import BeautifulSoup
 
+from conftest import is_static_file
+
 
 def parse_html(file_path: Path) -> BeautifulSoup:
     """Parse an HTML file and return a BeautifulSoup object."""
@@ -18,11 +20,14 @@ class TestPageDescriptions:
 
     def test_all_content_pages_have_descriptions(self, public_dir):
         """Verify that all content pages have descriptions in meta tags."""
-        # Get all HTML files except category/tag index pages
+        # Get all HTML files except category/tag index pages and static files
         html_files = []
         for html_file in public_dir.rglob("*.html"):
             # Skip Hugo-generated taxonomy pages
             if "categories" in html_file.parts or "tags" in html_file.parts:
+                continue
+            # Skip static files (interactive demos/tools)
+            if is_static_file(html_file, public_dir):
                 continue
             html_files.append(html_file)
 
@@ -73,7 +78,7 @@ class TestPageTitles:
             )
         )
 
-    def test_titles_are_descriptive(self, html_files):
+    def test_titles_are_descriptive(self, html_files, public_dir):
         """Verify that page titles are not too short or generic."""
         MIN_TITLE_LENGTH = 10
         GENERIC_TITLES = ["Untitled", "New Page", "Page", "Home"]
@@ -81,6 +86,10 @@ class TestPageTitles:
         short_or_generic_titles = []
 
         for html_file in html_files:
+            # Skip static files (interactive demos/tools)
+            if is_static_file(html_file, public_dir):
+                continue
+
             soup = parse_html(html_file)
             title_tag = soup.find("title")
 
@@ -192,13 +201,17 @@ class TestContentQuality:
             f"{chr(10).join(str(p) for p in pages_with_lorem)}"
         )
 
-    def test_pages_have_sufficient_content(self, html_files):
+    def test_pages_have_sufficient_content(self, html_files, public_dir):
         """Verify that pages have a reasonable amount of content."""
         MIN_CONTENT_LENGTH = 100  # Minimum characters in body text
 
         pages_with_little_content = []
 
         for html_file in html_files:
+            # Skip static files (interactive demos/tools)
+            if is_static_file(html_file, public_dir):
+                continue
+
             soup = parse_html(html_file)
 
             # Get main content area if possible, otherwise use body
