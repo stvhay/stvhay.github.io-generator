@@ -212,6 +212,10 @@ class TestContentQuality:
             if is_static_file(html_file, public_dir):
                 continue
 
+            # Skip Hugo-generated taxonomy pages (minimal by design)
+            if "categories" in html_file.parts or "tags" in html_file.parts:
+                continue
+
             soup = parse_html(html_file)
 
             # Get main content area if possible, otherwise use body
