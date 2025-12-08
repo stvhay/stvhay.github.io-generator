@@ -4,3 +4,11 @@ node_modules/
 .DS_Store
 public
 .direnv/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Temporary files
+tmp/
