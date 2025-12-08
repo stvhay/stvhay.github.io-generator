@@ -5,7 +5,7 @@ pluralizelisttitles = false
 enableEmoji = true
 
 [params]
-description = "This is my blog."
+description = "Steven Hay - Engineer and researcher transitioning to computational neuroscience. Writings on neural computation, machine learning, and systems engineering."
 author = "Steven Hay"
 
 [outputs]

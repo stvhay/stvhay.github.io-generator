@@ -11,7 +11,7 @@
   <meta name="author" content="{{ $author }}">
 {{ end }}
 
-<link rel="canonical" href="{{ .Params.canonicalUrl }}">
+<link rel="canonical" href="{{ .Permalink }}">
 
 {{- range .AlternativeOutputFormats -}}
   <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}" title="{{ $.Site.Title }}">
