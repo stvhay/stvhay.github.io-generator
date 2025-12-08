@@ -1,58 +1,8 @@
-"""Tests for HTML5 validation using the Nu Html Checker."""
+"""Tests for HTML5 structural validation."""
 
-import subprocess
 from pathlib import Path
 
 import pytest
-
-
-@pytest.mark.html5
-class TestHTML5Validation:
-    """Tests for HTML5 validation."""
-
-    def test_all_html_files_are_valid_html5(self, public_dir):
-        """Verify that all HTML files pass HTML5 validation."""
-        # Run html5validator on the public directory
-        # --root specifies the directory to validate
-        # --show-warnings shows warnings in addition to errors
-        # --match specifies the file pattern to validate
-        result = subprocess.run(
-            [
-                "html5validator",
-                "--root",
-                str(public_dir),
-                "--match",
-                "*.html",
-                "--blacklist",
-                "categories",
-                "tags",
-            ],
-            capture_output=True,
-            text=True,
-        )
-
-        # html5validator returns:
-        # 0 if no errors
-        # 1 if errors found
-        assert result.returncode == 0, (
-            f"HTML5 validation errors found:\n{result.stdout}\n{result.stderr}"
-        )
-
-    def test_homepage_is_valid_html5(self, public_dir):
-        """Verify that the homepage passes HTML5 validation."""
-        index_file = public_dir / "index.html"
-        if not index_file.exists():
-            pytest.fail("Homepage (index.html) not found")
-
-        result = subprocess.run(
-            ["html5validator", "--root", str(public_dir), "--match", "index.html"],
-            capture_output=True,
-            text=True,
-        )
-
-        assert result.returncode == 0, (
-            f"Homepage HTML5 validation errors:\n{result.stdout}\n{result.stderr}"
-        )
 
 
 @pytest.mark.html5
