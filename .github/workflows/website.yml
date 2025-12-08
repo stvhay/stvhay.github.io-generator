@@ -39,6 +39,9 @@ jobs:
       - name: Run HTML validation tests
         run: nix develop --command htmltest
 
+      - name: Run pytest validation tests
+        run: nix develop --command pytest
+
       - name: Publish website
         run: |
           git -C public commit -m "${{ github.event.head_commit.message }}" || true
