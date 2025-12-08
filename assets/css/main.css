@@ -128,7 +128,7 @@ nav a:hover {
     color: var(--color-accent);
 }
 
-nav a:focus {
+nav a:focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 2px;
     color: var(--color-accent);
@@ -148,7 +148,7 @@ a:hover {
     color: var(--color-accent-hover);
 }
 
-a:focus {
+a:focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 2px;
     color: var(--color-accent-hover);
