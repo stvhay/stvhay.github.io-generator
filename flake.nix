@@ -47,6 +47,8 @@
 
             # Testing tools
             htmltest     # HTML validation and link checking
+            python3      # Python runtime for pytest
+            python3Packages.pytest  # Python testing framework
 
             # Node.js tools (for prettier formatting)
             nodejs
@@ -60,6 +62,7 @@
             echo "  - exiftool: $(exiftool -ver)"
             echo "  - latexmk: $(latexmk -v 2>&1 | head -n1)"
             echo "  - htmltest: $(htmltest --version 2>&1)"
+            echo "  - pytest: $(pytest --version 2>&1 | head -n1)"
             echo ""
             echo "Run './build' to build the website"
           '';
