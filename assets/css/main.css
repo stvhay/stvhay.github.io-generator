@@ -19,6 +19,26 @@
 }
 
 /* ==========================================================================
+   Accessibility Utilities
+   ========================================================================== */
+
+/*
+ * Screen reader only - visually hides content while keeping it accessible
+ * Used for headings that provide document structure but aren't needed visually
+ */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* ==========================================================================
    Font Declarations
    ========================================================================== */
 
@@ -187,10 +207,22 @@ section {
     margin-top: 1.25rem;
 }
 
+h1 {
+    font-size: 2.5rem;
+    color: var(--color-text-primary);
+    margin-bottom: 1.5rem;
+}
+
 h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: var(--color-text-primary);
     margin-bottom: 1.25rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
 }
 
 p {
@@ -244,14 +276,17 @@ ul {
     grid-area: text;
 }
 
-.post-text h3 a {
+.post-text h2 {
+    font-size: 1.25rem;
+}
+
+.post-text h2 a {
     text-decoration: none;
     color: var(--color-text-primary);
-    font-size: 1.5rem;
     transition: color 0.3s ease;
 }
 
-.post-text h3 a:hover {
+.post-text h2 a:hover {
     color: var(--color-accent);
 }
 
