@@ -45,6 +45,9 @@
             openssl      # For SHA-384 hashing
             git          # Version control
 
+            # Testing tools
+            htmltest     # HTML validation and link checking
+
             # Node.js tools (for prettier formatting)
             nodejs
             nodePackages.prettier
@@ -56,6 +59,7 @@
             echo "  - hugo: $(hugo version 2>&1 | head -n1)"
             echo "  - exiftool: $(exiftool -ver)"
             echo "  - latexmk: $(latexmk -v 2>&1 | head -n1)"
+            echo "  - htmltest: $(htmltest --version 2>&1)"
             echo ""
             echo "Run './build' to build the website"
           '';
