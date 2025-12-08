@@ -1,0 +1,45 @@
+# htmltest configuration for Hugo static site testing
+# Documentation: https://github.com/wjdp/htmltest
+
+# Directory containing HTML files to test
+DirectoryPath: "public"
+
+# Check all internal links work correctly
+CheckInternalLinks: true
+
+# Check internal hash anchors (e.g., #section-id) resolve correctly
+CheckInternalHash: true
+
+# Verify external links work (can be slow, consider disabling for local dev)
+CheckExternal: true
+
+# Enforce HTTPS for external links
+EnforceHTTPS: true
+
+# Cache external link checks to speed up repeated runs (2 weeks)
+ExternalTimeout: 15
+CacheExpires: "336h"
+
+# Verify all images have alt attributes
+CheckImages: true
+
+# Check script tags reference valid files
+CheckScripts: true
+
+# Ensure favicon is present
+CheckFavicon: true
+
+# Verify meta refresh tags have valid URLs
+CheckMetaRefresh: true
+
+# Ignore Hugo-generated taxonomy pages (often empty by design)
+IgnoreDirs:
+  - "categories"
+  - "tags"
+
+# Ignore known external links that may have issues
+# IgnoreURLs:
+#   - "https://example.com"
+
+# Log level: 0=errors only, 1=warnings, 2=info, 3=debug
+LogLevel: 1
