@@ -74,3 +74,34 @@
 \newcommand{\nobreakvspace}[1]{\nopagebreak[4]\vspace{#1}\nopagebreak[4]} % A custom vspace command with custom before and after spacing lengths that do not break the page
 
 \newcommand{\spacedhrule}[2]{\breakvspace{#1}\hrule\nobreakvspace{#2}} % Defines a horizontal line with some vertical space before and after it
+
+%----------------------------------------------------------------------------------------
+%	SEMANTIC FORMATTING COMMANDS
+%----------------------------------------------------------------------------------------
+
+% Standard section break - horizontal rule with consistent spacing
+\newcommand{\sectionbreak}{\spacedhrule{0.5em}{-0.4em}}
+
+% Contact information formatting - takes name, email, phone, github, address
+\newcommand{\contactinfo}[5]{%
+    \maintitle{#1}{}\\
+    \noindent\href{mailto:#2}{#2}\bull
+    #3\bull
+    \href{#4}{#4}\\
+    #5
+}
+
+% Summary environment - two-column layout with appropriate spacing
+\newenvironment{summary}{%
+    \roottitle{Summary}
+    \vspace{-1.3em}
+    \begin{multicols}{2}
+}{%
+    \end{multicols}
+}
+
+% Continuation item - for additional entries under the same organization/section
+\newcommand{\continuation}[1]{\headedsubsection{}{}{#1}}
+
+% Skills section item - inline heading with consistent spacing
+\newcommand{\skillitem}[2]{\inlineheadsection{#1}{#2}\vspace{0.3em}}
