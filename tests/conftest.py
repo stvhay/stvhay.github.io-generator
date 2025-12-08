@@ -33,3 +33,18 @@ def html_file(request) -> Iterator[Path]:
 def parse_html_file(file_path: Path) -> str:
     """Read and return HTML file contents."""
     return file_path.read_text(encoding="utf-8")
+
+
+def is_static_file(file_path: Path, public_dir: Path) -> bool:
+    """
+    Check if a file originated from static/ directory.
+
+    These files are copied as-is by Hugo and are typically interactive
+    demos or tools that don't need full SEO/content requirements.
+    """
+    try:
+        rel_path = file_path.relative_to(public_dir)
+        static_paths = ['s3m/', 'plasma/', 'cns/']
+        return any(str(rel_path).startswith(p) for p in static_paths)
+    except ValueError:
+        return False

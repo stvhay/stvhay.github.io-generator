@@ -5,6 +5,8 @@ from pathlib import Path
 import pytest
 from bs4 import BeautifulSoup
 
+from conftest import is_static_file
+
 
 def parse_html(file_path: Path) -> BeautifulSoup:
     """Parse an HTML file and return a BeautifulSoup object."""
@@ -16,11 +18,15 @@ def parse_html(file_path: Path) -> BeautifulSoup:
 class TestARIALandmarks:
     """Tests for ARIA landmarks and semantic HTML."""
 
-    def test_pages_have_main_landmark(self, html_files):
+    def test_pages_have_main_landmark(self, html_files, public_dir):
         """Verify that pages have a main landmark."""
         pages_without_main = []
 
         for html_file in html_files:
+            # Skip static files (interactive demos/tools)
+            if is_static_file(html_file, public_dir):
+                continue
+
             soup = parse_html(html_file)
 
             # Check for <main> tag or role="main"
@@ -34,11 +40,15 @@ class TestARIALandmarks:
             f"{chr(10).join(str(p) for p in pages_without_main)}"
         )
 
-    def test_pages_have_navigation_landmark(self, html_files):
+    def test_pages_have_navigation_landmark(self, html_files, public_dir):
         """Verify that pages have a navigation landmark."""
         pages_without_nav = []
 
         for html_file in html_files:
+            # Skip static files (interactive demos/tools)
+            if is_static_file(html_file, public_dir):
+                continue
+
             soup = parse_html(html_file)
 
             # Check for <nav> tag or role="navigation"
@@ -57,11 +67,15 @@ class TestARIALandmarks:
 class TestFormAccessibility:
     """Tests for form accessibility."""
 
-    def test_all_form_inputs_have_labels(self, html_files):
+    def test_all_form_inputs_have_labels(self, html_files, public_dir):
         """Verify that all form inputs have associated labels."""
         inputs_without_labels = []
 
         for html_file in html_files:
+            # Skip static files (interactive demos/tools)
+            if is_static_file(html_file, public_dir):
+                continue
+
             soup = parse_html(html_file)
             inputs = soup.find_all(["input", "select", "textarea"])
 
@@ -106,11 +120,15 @@ class TestFormAccessibility:
             f"{chr(10).join(f'{p}: {t} ({n})' for p, t, n in inputs_without_labels)}"
         )
 
-    def test_form_buttons_have_accessible_names(self, html_files):
+    def test_form_buttons_have_accessible_names(self, html_files, public_dir):
         """Verify that all buttons have accessible names."""
         buttons_without_names = []
 
         for html_file in html_files:
+            # Skip static files (interactive demos/tools)
+            if is_static_file(html_file, public_dir):
+                continue
+
             soup = parse_html(html_file)
             buttons = soup.find_all(["button", "input"])
 
