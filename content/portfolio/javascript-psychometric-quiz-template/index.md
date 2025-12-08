@@ -1,6 +1,7 @@
 +++
 title = 'Javascript Psychometric Quiz Template'
 weight = 51
+description = 'Browser-based quiz template for multi-dimensional psychometric tests with scoring and criteria validation.'
 +++
 
 This is a browser Javascript template to administer and score an online user

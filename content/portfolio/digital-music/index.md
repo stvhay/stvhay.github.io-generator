@@ -1,6 +1,7 @@
 +++
 title = 'Digital Music'
 weight = 13
+description = '16-bit Scream Tracker 3 music compositions created for PC demos, playable in emulated hardware.'
 +++
 
 ## Scream Tracker 3 Music (16-bit/8-channel)
