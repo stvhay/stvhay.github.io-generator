@@ -5,6 +5,8 @@ from pathlib import Path
 import pytest
 from bs4 import BeautifulSoup
 
+from conftest import is_static_file
+
 
 def parse_html(file_path: Path) -> BeautifulSoup:
     """Parse an HTML file and return a BeautifulSoup object."""
@@ -16,11 +18,15 @@ def parse_html(file_path: Path) -> BeautifulSoup:
 class TestCanonicalURLs:
     """Tests for canonical URL meta tags."""
 
-    def test_all_pages_have_canonical_url(self, html_files):
+    def test_all_pages_have_canonical_url(self, html_files, public_dir):
         """Verify that all HTML pages have a canonical URL."""
         missing_canonical = []
 
         for html_file in html_files:
+            # Skip static files (interactive demos/tools)
+            if is_static_file(html_file, public_dir):
+                continue
+
             soup = parse_html(html_file)
             canonical = soup.find("link", {"rel": "canonical"})
 
@@ -59,11 +65,15 @@ class TestOpenGraphTags:
 
     REQUIRED_OG_TAGS = ["og:title", "og:description", "og:type", "og:url"]
 
-    def test_all_pages_have_required_og_tags(self, html_files):
+    def test_all_pages_have_required_og_tags(self, html_files, public_dir):
         """Verify that all pages have required Open Graph tags."""
         pages_missing_tags = {}
 
         for html_file in html_files:
+            # Skip static files (interactive demos/tools)
+            if is_static_file(html_file, public_dir):
+                continue
+
             soup = parse_html(html_file)
             missing_tags = []
 
@@ -110,11 +120,15 @@ class TestTwitterCardTags:
 
     REQUIRED_TWITTER_TAGS = ["twitter:card", "twitter:title", "twitter:description"]
 
-    def test_all_pages_have_required_twitter_tags(self, html_files):
+    def test_all_pages_have_required_twitter_tags(self, html_files, public_dir):
         """Verify that all pages have required Twitter Card tags."""
         pages_missing_tags = {}
 
         for html_file in html_files:
+            # Skip static files (interactive demos/tools)
+            if is_static_file(html_file, public_dir):
+                continue
+
             soup = parse_html(html_file)
             missing_tags = []
 
@@ -159,11 +173,15 @@ class TestTwitterCardTags:
 class TestDescriptionTags:
     """Tests for page description meta tags."""
 
-    def test_all_pages_have_description(self, html_files):
+    def test_all_pages_have_description(self, html_files, public_dir):
         """Verify that all pages have a meta description tag."""
         missing_description = []
 
         for html_file in html_files:
+            # Skip static files (interactive demos/tools)
+            if is_static_file(html_file, public_dir):
+                continue
+
             soup = parse_html(html_file)
             description = soup.find("meta", {"name": "description"})
 
