@@ -2,6 +2,7 @@
 date = '2025-05-27T15:48:07-04:00'
 draft = false
 title = 'Computational Neuroscience Meets the 17th Century'
+description = "Exploring how Berkeley's idealism offers a useful perspective for understanding perception and consciousness in neuroscience, and why our subjective experience is more like a controlled hallucination than direct perception."
 +++
 *Do we live in a world of ideas?* :bulb:
 <!--more-->

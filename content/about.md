@@ -1,5 +1,6 @@
 +++
 title = 'Welcome'
+description = 'About Steven Hay - Engineer learning computational neuroscience with interests in early visual processing and machine learning.'
 weight = 1
 +++
 I'm Steve, an engineer learning neuroscience.
