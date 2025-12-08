@@ -49,6 +49,8 @@
             htmltest     # HTML validation and link checking
             python3      # Python runtime for pytest
             python3Packages.pytest  # Python testing framework
+            python3Packages.beautifulsoup4  # HTML parsing for tests
+            python3Packages.lxml  # XML/HTML parser for BeautifulSoup
 
             # Node.js tools (for prettier formatting)
             nodejs
