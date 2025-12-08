@@ -116,6 +116,22 @@ nav {
     padding: 0.5rem 0;
 }
 
+/* Fade gradient below sticky nav so content fades as it scrolls under */
+nav::after {
+    content: "";
+    position: absolute;
+    bottom: -1rem; /* Extend below the nav bar into content area */
+    left: 0;
+    right: 0;
+    height: 1rem;
+    background: linear-gradient(
+        to bottom,
+        var(--color-bg-body) 0%,
+        transparent 100%
+    );
+    pointer-events: none; /* Don't interfere with clicks on content below */
+}
+
 nav a {
     color: var(--color-text-light);
     margin: 0 1.25rem;
