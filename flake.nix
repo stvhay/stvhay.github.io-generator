@@ -51,6 +51,7 @@
             python3Packages.pytest  # Python testing framework
             python3Packages.beautifulsoup4  # HTML parsing for tests
             python3Packages.lxml  # XML/HTML parser for BeautifulSoup
+            python3Packages.pyyaml  # YAML parsing for htmltest config
 
             # Node.js tools (for prettier formatting)
             nodejs
