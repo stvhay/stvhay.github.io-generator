@@ -48,7 +48,49 @@ htmltest
 # Run specific test markers
 pytest tests/ -m meta
 pytest tests/ -m "not external"
+
+# Start local development server with live reload (recommended during development)
+hugo server -D
+
+# Or bind to specific address/port
+hugo server --bind 0.0.0.0 --port 1313 -D
 ```
+
+### Local Development Server
+
+Hugo includes a built-in development server with **live reload** - changes to content, templates, or assets are automatically reflected in the browser without manual refresh.
+
+**Starting the dev server:**
+```bash
+nix develop --command hugo server -D
+```
+
+**What it does:**
+- Serves site at http://localhost:1313 by default
+- Watches for file changes and rebuilds automatically
+- Includes draft content with `-D` flag
+- Shows build errors in real-time
+- Fast rebuilds (typically < 100ms)
+
+**IMPORTANT: Keep dev server running during all development work**
+
+The Hugo dev server should be running continuously whenever you're actively developing. This provides instant feedback and catches errors immediately.
+
+**Recommended workflow:**
+1. **Start dev server first**: `nix develop --command hugo server -D`
+2. **Leave it running** in a dedicated terminal window
+3. Open browser to http://localhost:1313
+4. Edit content, templates, or CSS in your editor
+5. Changes appear instantly in browser (no manual refresh needed)
+6. Watch terminal for build errors/warnings
+7. When done with changes, run `./build` for full production build
+8. Run tests before committing
+
+**Differences from production build:**
+- Dev server keeps content in memory (doesn't write to `public/`)
+- Includes draft/future content with `-D` flag
+- Faster builds (skips some optimizations)
+- Always run `./build` before final testing and deployment
 
 ## Git Commit Standards
 
