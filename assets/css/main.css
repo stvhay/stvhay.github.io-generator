@@ -16,6 +16,9 @@
     --color-border: #ced4da;
     --color-border-hover: #0069d9;
     --border-radius: 8px;
+    --color-button-bg: #0069d9;
+    --color-button-text: #ffffff;
+    --color-button-bg-hover: #0056b3;
 }
 
 /* ==========================================================================
@@ -359,7 +362,7 @@ footer p {
    Email Scrambler Animation
    ========================================================================== */
 
-.scrambled-email {
+.scrambled-email-display {
     font-family: monospace;
     font-size: inherit;
     letter-spacing: 0.05em;
@@ -369,30 +372,30 @@ footer p {
     white-space: normal;
 }
 
-.scrambled-email.scrambled {
+.scrambled-email-display.scrambled {
     opacity: 0.8;
 }
 
-.scrambled-email.revealed {
+.scrambled-email-display.revealed {
     cursor: pointer;
 }
 
-.scrambled-email span {
+.scrambled-email-display span {
     display: inline;
     transition: all 0.1s ease;
 }
 
-.scrambled-email .swapping {
+.scrambled-email-display .swapping {
     color: var(--color-accent);
     transform: scale(1.2);
 }
 
-.reveal-button {
+.reveal-email-button {
     padding: 0.25rem 0.5rem;
     font-size: 0.85rem;
-    background-color: #0069d9;
-    color: white;
-    border: 1px solid #0069d9;
+    background-color: var(--color-button-bg);
+    color: var(--color-button-text);
+    border: 1px solid var(--color-button-bg);
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -401,11 +404,13 @@ footer p {
     white-space: nowrap;
 }
 
-.reveal-button:hover:not(:disabled) {
-    background-color: #0056b3;
+.reveal-email-button:hover:not(:disabled) {
+    background-color: var(--color-button-bg-hover);
+    border-color: var(--color-button-bg-hover);
+    color: var(--color-accent-hover);
 }
 
-.reveal-button:disabled {
+.reveal-email-button:disabled {
     opacity: 0.6;
     cursor: not-allowed;
 }
@@ -423,6 +428,9 @@ footer p {
         --color-accent-hover: #f9ff99;
         --color-border: #444;
         --color-border-hover: #888;
+        --color-button-bg: #444;
+        --color-button-text: #e0e0e0;
+        --color-button-bg-hover: #666;
     }
 
     .card {
