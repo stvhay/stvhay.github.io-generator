@@ -46,57 +46,27 @@
    ========================================================================== */
 
 /*
- * Latin Modern font family - Professional typeface for body text
+ * Source Serif 4 - Variable font for body text
  * font-display: swap - Shows fallback font immediately while custom font loads
- * Formats ordered by preference: woff2 (best compression) -> woff -> ttf
+ * Using weight 300 for normal text, 400 for bold
  */
 
-/* Regular weight */
+/* Regular (variable font covers all weights) */
 @font-face {
-    font-family: "Latin Modern";
+    font-family: "Source Serif 4";
     font-style: normal;
-    font-weight: normal;
+    font-weight: 100 900;
     font-display: swap;
-    src:
-        url("/fonts/LM-regular.woff2") format("woff2"),
-        url("/fonts/LM-regular.woff") format("woff"),
-        url("/fonts/LM-regular.ttf") format("truetype");
+    src: url("/fonts/SourceSerif4-VariableFont_opsz,wght.ttf") format("truetype");
 }
 
-/* Italic */
+/* Italic (variable font covers all weights) */
 @font-face {
-    font-family: "Latin Modern";
+    font-family: "Source Serif 4";
     font-style: italic;
-    font-weight: normal;
+    font-weight: 100 900;
     font-display: swap;
-    src:
-        url("/fonts/LM-italic.woff2") format("woff2"),
-        url("/fonts/LM-italic.woff") format("woff"),
-        url("/fonts/LM-italic.ttf") format("truetype");
-}
-
-/* Bold */
-@font-face {
-    font-family: "Latin Modern";
-    font-style: normal;
-    font-weight: bold;
-    font-display: swap;
-    src:
-        url("/fonts/LM-bold.woff2") format("woff2"),
-        url("/fonts/LM-bold.woff") format("woff"),
-        url("/fonts/LM-bold.ttf") format("truetype");
-}
-
-/* Bold Italic */
-@font-face {
-    font-family: "Latin Modern";
-    font-style: italic;
-    font-weight: bold;
-    font-display: swap;
-    src:
-        url("/fonts/LM-bold-italic.woff2") format("woff2"),
-        url("/fonts/LM-bold-italic.woff") format("woff"),
-        url("/fonts/LM-bold-italic.ttf") format("truetype");
+    src: url("/fonts/SourceSerif4-Italic-VariableFont_opsz,wght.ttf") format("truetype");
 }
 
 /* ==========================================================================
@@ -108,11 +78,16 @@ html {
 }
 
 body {
-    font-family: "Latin Modern", sans-serif;
+    font-family: "Source Serif 4", serif;
+    font-weight: 300;
     background-color: var(--color-bg-body);
     color: var(--color-text-primary);
     line-height: 1.4;
     text-rendering: optimizeLegibility;
+}
+
+b, strong {
+    font-weight: 600;
 }
 
 header,
@@ -130,7 +105,7 @@ header {
 
 .site-title {
     font-size: 2.5rem;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 nav {
@@ -160,7 +135,7 @@ nav a {
     color: var(--color-text-light);
     margin: 0 1.25rem;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
     transition: color 0.3s ease;
 }
 
@@ -210,6 +185,10 @@ section {
     padding: 1.25rem;
     margin-bottom: 0.625rem;
     margin-top: 1.25rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
 }
 
 h1 {
