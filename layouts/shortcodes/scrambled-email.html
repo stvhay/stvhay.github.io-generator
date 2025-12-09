@@ -1,6 +1,6 @@
 {{- $scrambled := .Get 0 -}}
 <span class="email-scrambler-widget" data-scrambled="{{ $scrambled }}" data-swap-delay="40">
-  <a href="#" class="scrambled-email-display">{{ $scrambled }}</a>
+  <a href="mailto:noscript@example.com" class="scrambled-email-display">{{ $scrambled }}</a>
   <button class="reveal-email-button">Reveal Contact Info</button>
 </span>
 
