@@ -159,3 +159,12 @@ See `.github/workflows/website.yml` for details.
 - [prettier](https://prettier.io) - HTML formatting
 - [exiftool](https://exiftool.org/) - PDF metadata management for build caching
 - [GitHub Pages](https://pages.github.com/) - Hosting
+
+## AI-Assisted Development
+
+This project is developed with [Claude](https://claude.ai/) as an AI coding assistant, using [Claude Code](https://claude.ai/code) for collaborative development. Claude assists with code generation, refactoring, testing, and documentation.
+
+Commits co-authored by Claude are marked with:
+```
+Co-Authored-By: Claude <noreply@anthropic.com>
+```
