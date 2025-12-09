@@ -4,10 +4,9 @@
 
 **Build & Test:**
 - Build: `nix develop --command ./build`
-- Test: `nix develop --command pytest tests/ -m "not external" -v`
-- Validate: `nix develop --command htmltest`
+- Test: `nix develop --command pytest tests/ -m "not external" -v` (includes htmltest)
 - Dev server: `nix develop --command hugo server -D` (keep running during development)
-- Full check: `nix develop --command bash -c './build && htmltest && pytest tests/ -m "not external"'`
+- Full check: `nix develop --command bash -c './build && pytest tests/ -m "not external"'`
 
 **Common Commands:**
 - New post: `hugo new content/writing/post-title/index.md`
@@ -82,7 +81,8 @@ EOF
 - **Test both happy paths and edge cases**
 - **All tests must pass before pushing**
 - Use markers to run subsets: `pytest tests/ -m meta`, `pytest tests/ -m "not external"`
-- Test files: `test_accessibility.py`, `test_content_requirements.py`, `test_email_scrambler.py`, `test_html5_validation.py`, `test_ignored_urls.py`, `test_meta_tags.py`, `test_structured_data.py`
+- Test files: `test_accessibility.py`, `test_content_requirements.py`, `test_email_scrambler.py`, `test_html5_validation.py`, `test_htmltest.py`, `test_ignored_urls.py`, `test_meta_tags.py`, `test_structured_data.py`
+- **htmltest is integrated** into pytest suite via `test_htmltest.py` - validates all HTML links, images, and structure
 
 ## Security Standards (OWASP-based)
 
