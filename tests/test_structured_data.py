@@ -6,11 +6,7 @@ from pathlib import Path
 import pytest
 from bs4 import BeautifulSoup
 
-
-def parse_html(file_path: Path) -> BeautifulSoup:
-    """Parse an HTML file and return a BeautifulSoup object."""
-    with open(file_path, "r", encoding="utf-8") as f:
-        return BeautifulSoup(f.read(), "lxml")
+from conftest import parse_html
 
 
 def extract_json_ld(soup: BeautifulSoup) -> list[dict]:

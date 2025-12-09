@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Iterator
 
 import pytest
+from bs4 import BeautifulSoup
 
 
 @pytest.fixture(scope="session")
@@ -33,6 +34,12 @@ def html_file(request) -> Iterator[Path]:
 def parse_html_file(file_path: Path) -> str:
     """Read and return HTML file contents."""
     return file_path.read_text(encoding="utf-8")
+
+
+def parse_html(file_path: Path) -> BeautifulSoup:
+    """Parse an HTML file and return a BeautifulSoup object."""
+    with open(file_path, "r", encoding="utf-8") as f:
+        return BeautifulSoup(f.read(), "lxml")
 
 
 def is_static_file(file_path: Path, public_dir: Path) -> bool:
