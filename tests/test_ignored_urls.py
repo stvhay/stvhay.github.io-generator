@@ -59,9 +59,9 @@ class TestIgnoredURLs:
             # Some sites may redirect, which is fine
             if http_code.startswith(("2", "3")):
                 continue
-            # 403 Forbidden means the resource exists but has very aggressive bot blocking
-            # This is acceptable for ignored URLs, but worth noting
-            elif http_code == "403":
+            # 403 Forbidden and 429 Too Many Requests mean the resource exists
+            # but has aggressive bot blocking/rate limiting - acceptable for ignored URLs
+            elif http_code in ("403", "429"):
                 blocked_urls.append((url, http_code))
             # Other error codes (404, 500, etc.) suggest broken links
             else:
@@ -69,7 +69,7 @@ class TestIgnoredURLs:
 
         if blocked_urls:
             print(
-                f"\nNOTE: The following URLs return 403 even with browser user agent (very aggressive bot protection):\n"
+                f"\nNOTE: The following URLs return 403/429 even with browser user agent (aggressive bot protection):\n"
                 f"{chr(10).join(f'{url}: HTTP {code}' for url, code in blocked_urls)}"
             )
 
