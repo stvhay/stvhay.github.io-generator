@@ -64,17 +64,28 @@ async function unscrambleEmail(scrambled, element, swapDelay = 80) {
   const chars = scrambled.split("");
   const swaps = getUnscrambleSwaps(scrambled.length);
 
+  // Helper to render characters as span elements using DOM APIs
+  function renderChars(chars, highlightIndices = []) {
+    // Clear existing content
+    while (element.firstChild) {
+      element.removeChild(element.firstChild);
+    }
+
+    // Create and append span for each character
+    chars.forEach((char, idx) => {
+      const span = document.createElement("span");
+      span.textContent = char;
+      if (highlightIndices.includes(idx)) {
+        span.className = "swapping";
+      }
+      element.appendChild(span);
+    });
+  }
+
   // Animate each swap
   for (const [i, j] of swaps) {
     // Highlight the characters being swapped
-    element.innerHTML = chars
-      .map((char, idx) => {
-        if (idx === i || idx === j) {
-          return `<span class="swapping">${char}</span>`;
-        }
-        return `<span>${char}</span>`;
-      })
-      .join("");
+    renderChars(chars, [i, j]);
 
     // Wait a bit to show the highlight
     await new Promise((resolve) => setTimeout(resolve, swapDelay));
@@ -83,9 +94,7 @@ async function unscrambleEmail(scrambled, element, swapDelay = 80) {
     [chars[i], chars[j]] = [chars[j], chars[i]];
 
     // Update display with swapped characters
-    element.innerHTML = chars
-      .map((char) => `<span>${char}</span>`)
-      .join("");
+    renderChars(chars);
 
     // Small delay between swaps
     await new Promise((resolve) => setTimeout(resolve, swapDelay / 2));
