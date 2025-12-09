@@ -5,15 +5,15 @@
 }
 
 :root {
-    --color-bg-body: #e9ecef;
-    --color-bg-header: black;
-    --color-bg-card: transparent;
-    --color-text-primary: #343a40;
-    --color-text-light: #f8f9fa;
-    --color-text-muted: inherit;
+    --color-bg-body: #faf7f2;
+    --color-bg-header: #f2efe9;
+    --color-bg-card: #f2efe9;
+    --color-text-primary: #1a1a1a;
+    --color-text-light: #1a1a1a;
+    --color-text-muted: #4a4a4a;
     --color-accent: #0069d9;
     --color-accent-hover: #0056b3;
-    --color-border: #ced4da;
+    --color-border: #e0e0e0;
     --color-border-hover: #0069d9;
     --border-radius: 8px;
     --color-button-bg: #0069d9;
@@ -454,15 +454,15 @@ footer p {
 
 /* Light theme - explicit override for dark system preference */
 [data-theme="light"] {
-    --color-bg-body: #e9ecef;
-    --color-bg-header: black;
-    --color-bg-card: transparent;
-    --color-text-primary: #343a40;
-    --color-text-light: #f8f9fa;
-    --color-text-muted: inherit;
+    --color-bg-body: #faf7f2;
+    --color-bg-header: #f2efe9;
+    --color-bg-card: #f2efe9;
+    --color-text-primary: #1a1a1a;
+    --color-text-light: #1a1a1a;
+    --color-text-muted: #4a4a4a;
     --color-accent: #0069d9;
     --color-accent-hover: #0056b3;
-    --color-border: #ced4da;
+    --color-border: #e0e0e0;
     --color-border-hover: #0069d9;
     --color-button-bg: #0069d9;
     --color-button-text: #ffffff;
@@ -470,11 +470,11 @@ footer p {
 }
 
 [data-theme="light"] .card {
-    background-color: transparent;
+    background-color: var(--color-bg-card);
 }
 
 [data-theme="light"] ul {
-    color: inherit;
+    color: var(--color-text-muted);
 }
 
 /* Dark theme variables - shared between media query and override */
