@@ -82,7 +82,7 @@ EOF
 - **Test both happy paths and edge cases**
 - **All tests must pass before pushing**
 - Use markers to run subsets: `pytest tests/ -m meta`, `pytest tests/ -m "not external"`
-- Test files: `test_meta_tags.py`, `test_accessibility.py`, `test_html5_validation.py`, etc.
+- Test files: `test_accessibility.py`, `test_content_requirements.py`, `test_email_scrambler.py`, `test_html5_validation.py`, `test_ignored_urls.py`, `test_meta_tags.py`, `test_structured_data.py`
 
 ## Security Standards (OWASP-based)
 
