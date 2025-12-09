@@ -5,22 +5,7 @@
  * Usage: node scramble-email.js your.email@example.com
  */
 
-function scrambleEmail(email) {
-  if (!email || typeof email !== "string") {
-    return "";
-  }
-
-  const chars = email.split("");
-  const len = email.length;
-
-  for (let i = 0; i < len - 1; i++) {
-    const swapTarget = (i + len) % (len - i);
-    const j = i + swapTarget;
-    [chars[i], chars[j]] = [chars[j], chars[i]];
-  }
-
-  return chars.join("");
-}
+const { scrambleEmail } = require("../static/js/email-scrambler.js");
 
 // Get email from command line arguments
 const email = process.argv[2];
