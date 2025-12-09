@@ -28,7 +28,7 @@
 - **Content**: Markdown in `content/`
 - **Templates**: Hugo templates in `layouts/` (partials, shortcodes, default)
 - **Assets**: Static files in `static/` (CSS, JS, images, PDFs)
-- **Tests**: pytest in `tests/` with markers: `meta`, `structured_data`, `html5`, `content`, `accessibility`, `external`
+- **Tests**: pytest in `tests/` with markers: `meta`, `structured_data`, `html5`, `content`, `accessibility`, `javascript`, `external`
 - **Build**: Nix flake for reproducible environment
 - **Output**: `public/` (git-ignored)
 
@@ -43,10 +43,11 @@
 
 **Critical: Atomic Commits**
 - One logical change = one commit
-- ✅ Good: "Add favicon link to HTML head"
+- ✅ Good: "feat: Add favicon link to HTML head"
+- ✅ Good: "fix: Correct MP3 file paths in digital music page"
 - ❌ Bad: "Fix favicon, MP3 paths, and update ignore list"
 
-**Commit message format:**
+**Commit message format (type prefix required):**
 ```
 <type>: <description>
 
@@ -57,7 +58,13 @@
 Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>
 ```
 
-**Types:** `feat`, `fix`, `docs`, `refactor`, `test`, `chore`
+**Types (always use one):**
+- `feat:` - New feature
+- `fix:` - Bug fix
+- `docs:` - Documentation only
+- `refactor:` - Code change that neither fixes a bug nor adds a feature
+- `test:` - Adding or updating tests
+- `chore:` - Build process, dependencies, tooling
 
 **Use HEREDOC for multi-line messages:**
 ```bash
@@ -220,7 +227,7 @@ Check if framework provides built-in solution:
 ### Always Do
 - ✅ Read files before editing
 - ✅ Run tests after changes
-- ✅ Atomic commits (one logical change each)
+- ✅ Atomic commits with type prefix (feat:, fix:, refactor:, etc.)
 - ✅ Ask before pushing
 - ✅ Use nix develop for all commands
 - ✅ Write comprehensive tests
