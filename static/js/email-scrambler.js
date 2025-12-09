@@ -160,6 +160,46 @@ function setupEmailReveal(buttonId, emailDisplayId, scrambledEmail, swapDelay = 
   });
 }
 
+/**
+ * Auto-initialize all email scrambler widgets on the page
+ * Looks for elements with class "email-scrambler-widget" and data attributes
+ */
+function initializeEmailScramblers() {
+  const widgets = document.querySelectorAll(".email-scrambler-widget");
+
+  widgets.forEach((widget, index) => {
+    const scrambled = widget.dataset.scrambled;
+    const swapDelay = parseInt(widget.dataset.swapDelay || "80", 10);
+
+    const emailDisplay = widget.querySelector(".scrambled-email-display");
+    const button = widget.querySelector(".reveal-email-button");
+
+    if (!emailDisplay || !button || !scrambled) {
+      console.error("Email scrambler widget missing required elements or data");
+      return;
+    }
+
+    // Generate unique IDs for this widget instance
+    const displayId = `email-display-${index}`;
+    const buttonId = `reveal-email-btn-${index}`;
+
+    emailDisplay.id = displayId;
+    button.id = buttonId;
+
+    // Initialize the email reveal functionality
+    setupEmailReveal(buttonId, displayId, scrambled, swapDelay);
+  });
+}
+
+// Auto-initialize when DOM is ready
+if (typeof document !== "undefined") {
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializeEmailScramblers);
+  } else {
+    initializeEmailScramblers();
+  }
+}
+
 // Export for use in other scripts if needed
 if (typeof module !== "undefined" && module.exports) {
   module.exports = {
