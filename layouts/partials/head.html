@@ -49,7 +49,6 @@
 
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://stvhay.github.io;">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<meta http-equiv="Content-Security-Policy" content="frame-ancestors 'none';">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 
 <title>
@@ -61,7 +60,6 @@
 </title>
 
 {{- partialCached "head/css.html" . }}
-{{- partialCached "head/js.html" . }}
 
 {{- /* Structured data for search engines */ -}}
 {{- partial "structured-data.html" . }}
