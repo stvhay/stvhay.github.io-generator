@@ -165,7 +165,8 @@ nav a {
 }
 
 nav a:hover {
-    color: var(--color-accent);
+    color: var(--color-accent-hover);
+    text-decoration: underline;
 }
 
 nav a:focus-visible {
@@ -186,6 +187,7 @@ a {
 
 a:hover {
     color: var(--color-accent-hover);
+    text-decoration: underline;
 }
 
 a:focus-visible {
@@ -290,7 +292,8 @@ ul {
 }
 
 .post-text h2 a:hover {
-    color: var(--color-accent);
+    color: var(--color-accent-hover);
+    text-decoration: underline;
 }
 
 .article {
@@ -408,6 +411,7 @@ footer p {
     background-color: var(--color-button-bg-hover);
     border-color: var(--color-button-bg-hover);
     color: var(--color-accent-hover);
+    text-decoration: underline;
 }
 
 .reveal-email-button:disabled {
@@ -435,10 +439,6 @@ footer p {
 
     .card {
         background-color: var(--color-bg-card);
-    }
-
-    a:hover {
-        text-decoration: underline;
     }
 
     ul {
