@@ -1,0 +1,22 @@
+{{- $scrambled := .Get 0 -}}
+<a href="#" id="email-display" class="scrambled-email">{{ $scrambled }}</a> <button id="reveal-email-btn" class="reveal-button">Reveal Contact Info</button>
+
+<noscript>
+  <p><em>JavaScript required to view email address. Please enable JavaScript or contact me via <a href="https://www.linkedin.com/in/steve-hay-8763636b">LinkedIn</a>.</em></p>
+</noscript>
+
+<script src="/js/email-scrambler.js"></script>
+<script>
+  // Initialize on this page
+  (function() {
+    function initEmailReveal() {
+      setupEmailReveal("reveal-email-btn", "email-display", "{{ $scrambled }}", 40);
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initEmailReveal);
+    } else {
+      initEmailReveal();
+    }
+  })();
+</script>

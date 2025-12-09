@@ -7,4 +7,6 @@ I'm always interested in hearing from people working on interesting problems in 
 
 Whether you'd like to discuss research, collaborate on a project, or just say hello, feel free to reach out.
 
-You can contact me via [email](mailto:me@firstnamelastname.com) or connect with me on [LinkedIn](https://www.linkedin.com/in/steve-hay-8763636b).
+You can contact me via email: {{< scrambled-email "msvh.mnt@ceeaeoy" >}}
+
+You can also connect with me on [LinkedIn](https://www.linkedin.com/in/steve-hay-8763636b).

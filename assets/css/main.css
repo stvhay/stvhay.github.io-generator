@@ -355,6 +355,61 @@ footer p {
     margin-top: 1rem;
 }
 
+/* ==========================================================================
+   Email Scrambler Animation
+   ========================================================================== */
+
+.scrambled-email {
+    font-family: monospace;
+    font-size: inherit;
+    letter-spacing: 0.05em;
+    cursor: default;
+    text-decoration: underline;
+    display: inline;
+    white-space: normal;
+}
+
+.scrambled-email.scrambled {
+    opacity: 0.8;
+}
+
+.scrambled-email.revealed {
+    cursor: pointer;
+}
+
+.scrambled-email span {
+    display: inline;
+    transition: all 0.1s ease;
+}
+
+.scrambled-email .swapping {
+    color: var(--color-accent);
+    transform: scale(1.2);
+}
+
+.reveal-button {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.85rem;
+    background-color: #0069d9;
+    color: white;
+    border: 1px solid #0069d9;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    vertical-align: baseline;
+    margin-left: 0.5rem;
+    white-space: nowrap;
+}
+
+.reveal-button:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+.reveal-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
 /* Dark mode styles */
 @media (prefers-color-scheme: dark) {
     :root {
