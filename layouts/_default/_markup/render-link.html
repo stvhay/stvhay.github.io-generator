@@ -1,9 +1,13 @@
 {{- /*
     Modifies link rendering to add target="_blank" if the link begins with "_"
     or is an external link.
+
+    Security note: .Text uses safeHTML to allow formatting (em, strong, code) in link text.
+    This is safe for this personal site with trusted markdown content.
+    For sites with untrusted content, use: {{- .Text | htmlEscape -}}
     */
 -}}
-<a 
+<a
     href="{{ if strings.HasPrefix .Destination "_" }}{{ strings.TrimPrefix "_" .Destination | safeURL }}{{ else }}{{ .Destination | safeURL }}{{ end }}"
     {{ with .Title}}title="{{ . }}"{{ end }}
     {{ if or (strings.HasPrefix .Destination "_") (and (strings.HasPrefix .Destination "http") (not (strings.HasPrefix .Destination (site.BaseURL | string)))) }} target="_blank" rel="noopener noreferrer"{{ end }}>
