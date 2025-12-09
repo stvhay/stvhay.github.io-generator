@@ -84,65 +84,58 @@ EOF
 - Test files: `test_accessibility.py`, `test_content_requirements.py`, `test_email_scrambler.py`, `test_html5_validation.py`, `test_htmltest.py`, `test_ignored_urls.py`, `test_meta_tags.py`, `test_structured_data.py`
 - **htmltest is integrated** into pytest suite via `test_htmltest.py` - validates all HTML links, images, and structure
 
-## Security Standards (OWASP-based)
+## Security Standards (Static Site Client-Side)
 
-### 1. XSS Prevention
-- ✅ Use `textContent`, never `innerHTML` with untrusted data
+Based on OWASP Client-Side Security Risks. Most traditional web app security concerns (SQL injection, authentication, SSRF) don't apply to static sites.
+
+### 1. Client-Side XSS Prevention
+- ✅ Use `textContent`, never `innerHTML` with dynamic data
 - ✅ No `eval()`, `Function()`, or inline event handlers (`onclick=""`)
-- ✅ Maintain strict CSP in `layouts/partials/head.html`
-- ✅ Hugo templates: use `{{ . | safeHTML }}` only when absolutely necessary
+- ✅ Hugo templates: use `{{ . | safeHTML }}` only for trusted content with documentation
+- All JavaScript in this site runs on static, trusted content - no user input processing
 
 ### 2. Content Security Policy
 - Current: `default-src 'self'; script-src 'self' https://stvhay.github.io;`
-- ❌ Never add `'unsafe-inline'` or `'unsafe-eval'` in production
-- ✅ Use external script files, not inline `<script>` tags
-- Test changes in dev first, check browser console for violations
+- ❌ Never add `'unsafe-inline'` or `'unsafe-eval'`
+- ✅ All scripts in external files (no inline `<script>` tags)
+- Test in dev server, check browser console for CSP violations
 
-### 3. JavaScript Dependencies
-- ✅ Minimize third-party libraries
-- ✅ Pin versions in flake.nix
-- ✅ Review code before including
-- ✅ Use SRI for CDN scripts
-- Before adding library: Is it maintained? Any known vulnerabilities? Can we avoid it?
+### 3. Third-Party Dependencies
+- ✅ Minimize external libraries (currently: js-dos.js for demos)
+- ✅ Document purpose, license, security notes in README
+- ✅ Pin versions, review code before including
+- Before adding: Is it maintained? Known vulnerabilities? Can we avoid it?
 
-### 4. Sensitive Data
-- ❌ Never store passwords, tokens, API keys, or PII in browser storage
-- ❌ Never commit secrets (even in comments)
-- ✅ Use memory-only variables for sensitive client-side data
-- **Pre-commit check:** `grep -r "@.*\.com" --include="*.js" --include="*.md"` (for email obfuscation features)
+### 4. Sensitive Data Protection
+- ✅ Email addresses obfuscated client-side (scrambled-email shortcode)
+- ❌ Never commit secrets, even in comments
+- ❌ No API keys, tokens, or credentials in source
+- Static sites served over HTTPS (GitHub Pages handles this)
 
-### 5. Supply Chain
-- ✅ Use Nix for reproducible builds (pinned dependencies)
-- ✅ Review changes to `flake.nix` and `flake.lock`
-- ✅ Keep updated: `nix flake update`
+### 5. Supply Chain Security
+- ✅ Nix flakes provide reproducible builds with pinned dependencies
+- ✅ Review all changes to `flake.nix` and `flake.lock`
+- ✅ Regular updates: `nix flake update`
 
 ### Security Pre-Commit Checklist
 
-Run for any commit touching JavaScript, HTML templates, contact forms, email handling, or CSP:
+Run for commits touching JavaScript, HTML templates, or CSP:
 
-**1. Exposed sensitive data:**
-- [ ] No plaintext emails (if hiding them)
-- [ ] No API keys, tokens, passwords
-- [ ] No secrets in comments
-
-**2. JavaScript security:**
-- [ ] No innerHTML with untrusted data
+**Client-side XSS:**
+- [ ] No innerHTML with dynamic data
 - [ ] No eval() or Function()
-- [ ] No inline event handlers
-- [ ] User input sanitized/escaped
+- [ ] No inline event handlers or scripts
+- [ ] textContent used for DOM manipulation
 
-**3. CSP compliance:**
-- [ ] Scripts from allowed domains only
-- [ ] No inline scripts in production
-- [ ] No unsafe-inline or unsafe-eval
+**CSP compliance:**
+- [ ] Scripts only from allowed domains
+- [ ] No unsafe-inline or unsafe-eval added
+- [ ] Test in browser console for violations
 
-**4. Dependencies:**
-- [ ] No unvetted third-party libraries
-- [ ] CDN resources use HTTPS
-
-**5. XSS testing:**
-- [ ] Try injecting `<script>alert('XSS')</script>`
-- [ ] Verify textContent used, not innerHTML
+**Dependencies & data:**
+- [ ] Third-party code reviewed and documented
+- [ ] No exposed emails, secrets, or credentials
+- [ ] HTTPS used for all external resources
 
 ## Code Quality Standards
 
@@ -328,8 +321,7 @@ pytest tests/ --cov --cov-report=term-missing -m "not external"
 - Nix Flakes: https://nixos.wiki/wiki/Flakes
 
 **Security:**
-- [OWASP Top 10: 2025](https://owasp.org/Top10/)
-- [OWASP Client-Side Security Risks](https://owasp.org/www-project-top-10-client-side-security-risks/)
+- [OWASP Client-Side Security Risks](https://owasp.org/www-project-top-10-client-side-security-risks/) - Primary reference for static site security
 
 **Accessibility:**
 - [WCAG 2.1](https://www.w3.org/WAI/WCAG21/quickref/)
