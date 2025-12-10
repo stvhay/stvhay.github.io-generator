@@ -142,7 +142,7 @@ pushd "${hugo_repo_dir:?}" || return
     if [[ $pretty_enabled == true ]]
     then
         echo "Formatting content..."
-        npx prettier public --write --ignore-path=.prettierignore || exit 1
+        prettier public --write --ignore-path=.prettierignore || exit 1
     fi
 
 
