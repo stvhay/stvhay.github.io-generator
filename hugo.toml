@@ -8,6 +8,29 @@ enableEmoji = true
 description = "Steven Hay - Engineer and researcher transitioning to computational neuroscience. Writings on neural computation, machine learning, and systems engineering."
 author = "Steven Hay"
 
+# Module mounts: declaring any mount disables Hugo's defaults, so all
+# project dirs are listed explicitly. The final mount maps LaTeX build
+# output to the /docs/ URL while keeping generated PDFs out of static/.
+[module]
+  [[module.mounts]]
+    source = "archetypes"
+    target = "archetypes"
+  [[module.mounts]]
+    source = "assets"
+    target = "assets"
+  [[module.mounts]]
+    source = "content"
+    target = "content"
+  [[module.mounts]]
+    source = "layouts"
+    target = "layouts"
+  [[module.mounts]]
+    source = "static"
+    target = "static"
+  [[module.mounts]]
+    source = "latex/output"
+    target = "static/docs"
+
 [outputs]
 home = ['html', 'rss']
 

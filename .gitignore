@@ -12,3 +12,6 @@ __pycache__/
 
 # Temporary files
 tmp/
+
+# LaTeX build output (mounted to static/docs/ via hugo.toml)
+latex/output/
