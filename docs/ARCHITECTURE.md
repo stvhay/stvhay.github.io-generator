@@ -22,6 +22,25 @@ generated commit to the hosting repo.
 **no `.gitmodules`** — the README's "git submodule" wording is historical
 and inaccurate.
 
+### Portability seam
+
+The build's contract with the outside world is **a directory of static
+files at `public/`**. The "push to a separate hosting repo" pattern is
+just one consumer of that directory. Any other consumer of a static-file
+tree can replace it without touching anything upstream of `public/`:
+
+| Target                | Replacement                                  |
+| --------------------- | -------------------------------------------- |
+| S3 / CloudFront       | `aws s3 sync public/ s3://bucket/`           |
+| Generic SSH host      | `rsync -avz --delete public/ host:/var/www/` |
+| Netlify               | `netlify deploy --dir=public --prod`         |
+| Cloudflare Pages / R2 | `wrangler pages publish public/`             |
+
+This is the durable virtue of the dual-repo pattern over alternatives
+like `actions/deploy-pages` (which couples the project to GitHub Pages
+specifically). The filesystem boundary is host-agnostic; the dual-repo
+choreography on top of it is a swappable thin layer.
+
 ## Toolchain
 
 Everything runs inside `nix develop`. The flake (`flake.nix`) pins:
