@@ -5,6 +5,10 @@ node_modules/
 public
 .direnv/
 
+# Local agent state (Claude Code) — instructions, settings, and runtime
+# state live here and are not part of the project repo.
+.claude/
+
 # Python
 __pycache__/
 *.pyc
