@@ -55,7 +55,7 @@
 
             # Node.js tools (for prettier formatting)
             nodejs
-            nodePackages.prettier
+            prettier
           ];
 
           shellHook = ''
