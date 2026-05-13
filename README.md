@@ -7,6 +7,7 @@ A Hugo-based static site generator with LaTeX document compilation and automated
 ## Overview
 
 This repository generates a static website from Markdown and LaTeX sources:
+
 - Compiles LaTeX documents to PDFs (with smart caching)
 - Builds a Hugo static site from Markdown content
 - Formats HTML output with prettier
@@ -15,7 +16,9 @@ This repository generates a static website from Markdown and LaTeX sources:
 ## Architecture
 
 - **Source repository** (this repo): Hugo source, LaTeX files, and build scripts
-- **Public repository** (`public/`): Git submodule pointing to [stvhay.github.io](https://github.com/stvhay/stvhay.github.io/) for GitHub Pages hosting
+- **Hosting repository** ([stvhay.github.io](https://github.com/stvhay/stvhay.github.io/)): Separate repository that serves GitHub Pages. The build script clones it into `public/` (gitignored) and pushes generated output there. Not a git submodule.
+
+See [`docs/`](docs/) for in-depth architecture, design, and workflow documentation.
 
 ### LaTeX Build System
 
@@ -66,7 +69,8 @@ content/              # Hugo content (Markdown)
 layouts/              # Hugo templates
 static/               # Static assets
 latex/                # LaTeX sources + latex.manifest
-public/               # Generated site (git submodule)
+public/               # Generated site (clone of hosting repo, gitignored)
+docs/                 # Repo documentation (architecture, design, workflows)
 utilities/            # Build script modules
 ```
 
