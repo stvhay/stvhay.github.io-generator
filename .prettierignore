@@ -2,3 +2,9 @@
 build
 coverage
 *.css
+
+# Hugo source templates use {{- /* ... */ -}} action comments and {{ }}
+# expressions that prettier's HTML parser misinterprets — auto-formatting
+# collapses comment blocks and breaks indentation around action blocks.
+layouts/
+archetypes/

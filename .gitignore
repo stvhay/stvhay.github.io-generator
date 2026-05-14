@@ -17,5 +17,8 @@ __pycache__/
 # Temporary files
 tmp/
 
+# Playwright MCP scratch (page snapshots saved by browser_navigate, etc.)
+.playwright-mcp/
+
 # LaTeX build output (mounted to static/docs/ via hugo.toml)
 latex/output/
