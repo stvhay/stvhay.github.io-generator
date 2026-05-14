@@ -2,18 +2,33 @@
 
 `htmltest` validates the rendered site under `public/` for broken
 internal links, missing image alt text, broken anchors, scripts that
-don't resolve, etc. It runs as part of the pytest suite
-(`tests/test_htmltest.py`) and in CI.
+don't resolve, etc.
 
-## Quick triage
+## Where it runs
+
+The pytest test `tests/test_htmltest.py::test_htmltest_passes` invokes
+`htmltest` (full check, including external links) with a 180s timeout
+and is marked `@pytest.mark.external`. This means:
+
+- `pytest -m "not external"` (local fast loop) **skips** htmltest.
+- `pytest` (CI default) runs it.
+
+For local fast feedback on broken internal links during iteration, call
+htmltest directly:
 
 ```bash
-nix develop --command ./build         # produces public/
-nix develop --command htmltest        # direct run, full output
+nix develop --command ./build                  # produces public/
+nix develop --command htmltest --skip-external # internal only, ~1s
 ```
 
-The pytest wrapper at `tests/test_htmltest.py` invokes the same binary
-but captures output and applies a timeout.
+For a full check matching CI exactly:
+
+```bash
+nix develop --command htmltest                 # full check, ~10–60s depending on cache
+```
+
+If `--skip-external` passes but the full run fails, it's almost always
+a flaky upstream — see the IgnoreURLs guidance below.
 
 ## Common failure modes
 
