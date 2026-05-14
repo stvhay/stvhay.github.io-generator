@@ -41,6 +41,28 @@
     border-width: 0;
 }
 
+/*
+ * Skip-to-content link - hidden until keyboard-focused, then appears
+ * pinned to the top-left so keyboard users can jump past the masthead
+ * and nav directly to <main>.
+ */
+.skip-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.5rem 1rem;
+    background: var(--color-bg-card);
+    color: var(--color-text-primary);
+    border: 2px solid var(--color-accent);
+    transform: translateY(-150%);
+    transition: transform 0.2s ease;
+    z-index: 2000;
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
 /* ==========================================================================
    Font Declarations
    ========================================================================== */
