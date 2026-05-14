@@ -18,7 +18,11 @@ Renders a post card with thumbnail, title, and summary.
       <i>{{- partial "date.html" $page }}</i>
       <br>
     {{- end }}
-    {{ $page.Summary }}
+    {{- with $page.Description }}
+      <p>{{ . }}</p>
+    {{- else }}
+      {{ $page.Summary }}
+    {{- end }}
     <span class="section-mark">({{ $page.Section }})</span>
   </div>
 </article>
