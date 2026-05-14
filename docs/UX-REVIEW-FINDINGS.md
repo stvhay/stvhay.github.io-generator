@@ -16,7 +16,7 @@ Severity legend:
 | 2   | C   | [x]    | Card summary renders full markdown including headings/lists             | `layouts/partials/post-card.html`, `content/portfolio/*/index.md` |
 | 3   | C   | [x]    | Invalid block elements inside `<p>` on contact page                     | `layouts/shortcodes/scrambled-email.html`, `content/contact.md`   |
 | 4   | A   | [x]    | List pages have no visible heading (`sr-only` h1)                       | `layouts/_default/list.html`                                      |
-| 5   | A   | [ ]    | Section `id` derived from raw `.Title` (spaces invalid)                 | `layouts/_default/list.html`                                      |
+| 5   | A   | [x]    | Section `id` derived from raw `.Title` (spaces invalid)                 | `layouts/_default/list.html`                                      |
 | 6   | A   | [ ]    | Site title is not a link to home                                        | `layouts/partials/header.html`                                    |
 | 7   | A   | [ ]    | No skip-to-content link                                                 | `layouts/_default/baseof.html`, CSS                               |
 | 8   | A   | [ ]    | `prefers-reduced-motion` ignored by email scrambler                     | `static/js/email-scrambler.js`, `assets/css/main.css`             |
