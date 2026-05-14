@@ -12,7 +12,7 @@ Severity legend:
 
 | #   | Sev | Status | Issue                                                                   | Primary file(s)                                                   |
 | --- | --- | ------ | ----------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| 1   | C   | [ ]    | Nested `.post-img` wrappers in every post card                          | `layouts/partials/post-card.html`, `layouts/partials/thumb.html`  |
+| 1   | C   | [x]    | Nested `.post-img` wrappers in every post card                          | `layouts/partials/post-card.html`, `layouts/partials/thumb.html`  |
 | 2   | C   | [ ]    | Card summary renders full markdown including headings/lists             | `layouts/partials/post-card.html`, `content/portfolio/*/index.md` |
 | 3   | C   | [ ]    | Invalid block elements inside `<p>` on contact page                     | `layouts/shortcodes/scrambled-email.html`, `content/contact.md`   |
 | 4   | A   | [ ]    | List pages have no visible heading (`sr-only` h1)                       | `layouts/_default/list.html`                                      |
