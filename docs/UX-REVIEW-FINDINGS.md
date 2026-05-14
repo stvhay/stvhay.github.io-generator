@@ -17,7 +17,7 @@ Severity legend:
 | 3   | C   | [x]    | Invalid block elements inside `<p>` on contact page                     | `layouts/shortcodes/scrambled-email.html`, `content/contact.md`   |
 | 4   | A   | [x]    | List pages have no visible heading (`sr-only` h1)                       | `layouts/_default/list.html`                                      |
 | 5   | A   | [x]    | Section `id` derived from raw `.Title` (spaces invalid)                 | `layouts/_default/list.html`                                      |
-| 6   | A   | [ ]    | Site title is not a link to home                                        | `layouts/partials/header.html`                                    |
+| 6   | A   | [x]    | Site title is not a link to home                                        | `layouts/partials/header.html`                                    |
 | 7   | A   | [ ]    | No skip-to-content link                                                 | `layouts/_default/baseof.html`, CSS                               |
 | 8   | A   | [ ]    | `prefers-reduced-motion` ignored by email scrambler                     | `static/js/email-scrambler.js`, `assets/css/main.css`             |
 | 9   | A   | [ ]    | Theme-toggle initial label is wrong for half of users                   | `layouts/partials/footer.html`, `static/js/theme-init.js`         |
