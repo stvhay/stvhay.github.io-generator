@@ -340,9 +340,10 @@ ul {
 }
 
 .section-mark {
-    position: absolute;
-    bottom: 0.625rem;
-    right: 1.25rem;
+    display: block;
+    text-align: right;
+    color: var(--color-text-muted);
+    margin-top: 0.5rem;
 }
 
 @media (max-width: 768px) {
