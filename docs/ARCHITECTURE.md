@@ -154,9 +154,8 @@ and the pre-commit checklist live in the gitignored agent instructions
 
 Notable in-template choices:
 
-- Strict CSP: `default-src 'self'; script-src 'self' https://stvhay.github.io;`
-  declared in `layouts/partials/head.html`. No `unsafe-inline`, no
-  `unsafe-eval`.
+- Strict CSP: `default-src 'self'; script-src 'self';` declared in
+  `layouts/partials/head.html`. No `unsafe-inline`, no `unsafe-eval`.
 - All scripts external; no inline `<script>` or `on*=""` handlers.
 - `layouts/_default/_markup/render-link.html` uses `safeHTML` on link text
   to preserve markdown formatting inside links; this is safe because all
