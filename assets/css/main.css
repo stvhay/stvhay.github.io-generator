@@ -473,37 +473,24 @@ footer p {
 
 /*
  * Theme override via data attribute on <html> element.
- * data-theme="light" forces light mode regardless of system preference.
- * data-theme="dark" forces dark mode regardless of system preference.
- * No data-theme attribute = follow system preference (default).
+ * Light values live in :root (declared at the top of this file).
+ * Dark values are applied in two places: the media query (for users
+ * whose system prefers dark and have no explicit override), and an
+ * explicit [data-theme="dark"] selector (for users who flipped the
+ * toggle from system-light to dark). data-theme="light" needs no
+ * rule of its own — it falls back through to :root's defaults.
+ * The .card and ul rules use the variables and so apply to every
+ * theme without per-theme repetition.
  */
 
-/* Light theme - explicit override for dark system preference */
-[data-theme="light"] {
-    --color-bg-body: #faf7f2;
-    --color-bg-header: #f2efe9;
-    --color-bg-card: #f2efe9;
-    --color-text-primary: #1a1a1a;
-    --color-text-light: #1a1a1a;
-    --color-text-muted: #4a4a4a;
-    --color-accent: #0069d9;
-    --color-accent-hover: #0056b3;
-    --color-border: #e0e0e0;
-    --color-border-hover: #0069d9;
-    --color-button-bg: #0069d9;
-    --color-button-text: #ffffff;
-    --color-button-bg-hover: #0056b3;
-}
-
-[data-theme="light"] .card {
+.card {
     background-color: var(--color-bg-card);
 }
 
-[data-theme="light"] ul {
+ul {
     color: var(--color-text-muted);
 }
 
-/* Dark theme variables - shared between media query and override */
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
         --color-bg-body: #121212;
@@ -520,17 +507,8 @@ footer p {
         --color-button-text: #e0e0e0;
         --color-button-bg-hover: #666;
     }
-
-    :root:not([data-theme="light"]) .card {
-        background-color: var(--color-bg-card);
-    }
-
-    :root:not([data-theme="light"]) ul {
-        color: var(--color-text-muted);
-    }
 }
 
-/* Dark theme - explicit override for light system preference */
 [data-theme="dark"] {
     --color-bg-body: #121212;
     --color-bg-header: #1f1f1f;
@@ -545,12 +523,4 @@ footer p {
     --color-button-bg: #444;
     --color-button-text: #e0e0e0;
     --color-button-bg-hover: #666;
-}
-
-[data-theme="dark"] .card {
-    background-color: var(--color-bg-card);
-}
-
-[data-theme="dark"] ul {
-    color: var(--color-text-muted);
 }
