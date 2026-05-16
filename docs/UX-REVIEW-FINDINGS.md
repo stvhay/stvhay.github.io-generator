@@ -32,10 +32,10 @@ Severity legend:
 | 18  | Q   | [x]    | CSP allows `https://stvhay.github.io` for scripts but no script uses it | `layouts/partials/head.html`                                      |
 | 19  | Q   | [x]    | Theme variables duplicated across `:root`, `@media`, and `[data-theme]` | `assets/css/main.css`                                             |
 | 20  | Q   | [x]    | `terms.html` uses non-semantic `<div>Tags:</div>` label                 | `layouts/partials/terms.html`                                     |
-| 21  | Q   | [ ]    | `<br>` used for spacing after date                                      | `layouts/_default/single.html`, `layouts/partials/post-card.html` |
+| 21  | Q   | [x]    | `<br>` used for spacing after date                                      | `layouts/_default/single.html`, `layouts/partials/post-card.html` |
 | 22  | Q   | [x]    | Pre-reveal email is real `<a href="mailto:noscript@example.com">`       | `layouts/shortcodes/scrambled-email.html`                         |
 | 23  | Q   | [x]    | Render-link `_` prefix convention undocumented                          | `layouts/_default/_markup/render-link.html`                       |
-| 24  | Q   | [ ]    | `<i>` used purely for italic date                                       | `layouts/partials/post-card.html`, CSS                            |
+| 24  | Q   | [x]    | `<i>` used purely for italic date                                       | `layouts/partials/post-card.html`, CSS                            |
 
 ## Verification protocol
 

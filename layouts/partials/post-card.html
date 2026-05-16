@@ -15,8 +15,7 @@ Renders a post card with thumbnail, title, and summary.
   <div class="post-text">
     <h2><a href="{{ $page.RelPermalink }}">{{ $page.LinkTitle }}</a></h2>
     {{- if $showDate }}
-      <i>{{- partial "date.html" $page }}</i>
-      <br>
+      {{- partial "date.html" $page }}
     {{- end }}
     {{- with $page.Description }}
       <p>{{ . }}</p>

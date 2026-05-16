@@ -305,6 +305,13 @@ ul {
     grid-area: text;
 }
 
+.post-text time {
+    display: block;
+    font-style: italic;
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
+}
+
 .post-text h2 {
     font-size: 1.25rem;
 }
@@ -322,6 +329,13 @@ ul {
 
 .article {
     padding: 2rem;
+}
+
+.article > time {
+    display: block;
+    font-style: italic;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
 }
 
 .article-img {
