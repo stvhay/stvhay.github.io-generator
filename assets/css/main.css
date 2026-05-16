@@ -324,6 +324,7 @@ ul {
 .article-img {
     float: left;
     width: 25rem;
+    max-width: 45%;
 }
 
 .article-img img {
