@@ -453,7 +453,7 @@ footer p {
 .reveal-email-button:hover:not(:disabled) {
     background-color: var(--color-button-bg-hover);
     border-color: var(--color-button-bg-hover);
-    color: var(--color-accent-hover);
+    color: var(--color-button-text);
     text-decoration: underline;
 }
 
