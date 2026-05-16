@@ -82,6 +82,20 @@ async function unscrambleEmail(scrambled, element, swapDelay = 80) {
     });
   }
 
+  // Respect prefers-reduced-motion: apply all swaps without delays or
+  // highlight animation, then render the final string once.
+  const prefersReducedMotion =
+    typeof window !== "undefined" &&
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReducedMotion) {
+    for (const [i, j] of swaps) {
+      [chars[i], chars[j]] = [chars[j], chars[i]];
+    }
+    renderChars(chars);
+    return chars.join("");
+  }
+
   // Animate each swap
   for (const [i, j] of swaps) {
     // Highlight the characters being swapped
@@ -110,7 +124,12 @@ async function unscrambleEmail(scrambled, element, swapDelay = 80) {
  * @param {string} scrambledEmail - The scrambled email address
  * @param {number} swapDelay - Animation speed in milliseconds (default 80)
  */
-function setupEmailReveal(buttonId, emailDisplayId, scrambledEmail, swapDelay = 80) {
+function setupEmailReveal(
+  buttonId,
+  emailDisplayId,
+  scrambledEmail,
+  swapDelay = 80,
+) {
   const button = document.getElementById(buttonId);
   const emailDisplay = document.getElementById(emailDisplayId);
 

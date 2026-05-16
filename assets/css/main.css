@@ -42,6 +42,24 @@
 }
 
 /*
+ * Honor user motion preference: shrink durations to effectively zero
+ * for any animations or transitions site-wide. Applies to button
+ * hovers, theme transitions, and the skip-link slide-in. The email
+ * scrambler's per-character animation is also handled in JS so that
+ * the result renders instantly with no intermediate frames.
+ */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/*
  * Skip-to-content link - hidden until keyboard-focused, then appears
  * pinned to the top-left so keyboard users can jump past the masthead
  * and nav directly to <main>.
