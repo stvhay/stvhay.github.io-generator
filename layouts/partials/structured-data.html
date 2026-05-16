@@ -42,7 +42,7 @@
 </script>
 {{- end -}}
 
-{{- if eq .Title "About" -}}
+{{- if and .File (eq .File.LogicalName "about.md") -}}
 {{- /* Person schema for about page */ -}}
 <script type="application/ld+json">
 {
