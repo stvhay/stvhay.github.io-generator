@@ -20,7 +20,7 @@ Severity legend:
 | 6   | A   | [x]    | Site title is not a link to home                                        | `layouts/partials/header.html`                                    |
 | 7   | A   | [x]    | No skip-to-content link                                                 | `layouts/_default/baseof.html`, CSS                               |
 | 8   | A   | [x]    | `prefers-reduced-motion` ignored by email scrambler                     | `static/js/email-scrambler.js`, `assets/css/main.css`             |
-| 9   | A   | [ ]    | Theme-toggle initial label is wrong for half of users                   | `layouts/partials/footer.html`, `static/js/theme-init.js`         |
+| 9   | A   | [x]    | Theme-toggle initial label is wrong for half of users                   | `layouts/partials/footer.html`, `static/js/theme-toggle.js`       |
 | 10  | A   | [x]    | CV menu link `target="_blank"` lacks `rel="noopener"`                   | `layouts/partials/menu.html`                                      |
 | 11  | V   | [ ]    | `h3` (1.25rem) barely larger than `p` (1.2rem)                          | `assets/css/main.css`                                             |
 | 12  | V   | [ ]    | `.section-mark` overlay overlaps long content                           | `assets/css/main.css`, `layouts/partials/post-card.html`          |
