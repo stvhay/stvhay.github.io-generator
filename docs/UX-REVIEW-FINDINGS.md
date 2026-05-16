@@ -34,7 +34,7 @@ Severity legend:
 | 20  | Q   | [x]    | `terms.html` uses non-semantic `<div>Tags:</div>` label                 | `layouts/partials/terms.html`                                     |
 | 21  | Q   | [ ]    | `<br>` used for spacing after date                                      | `layouts/_default/single.html`, `layouts/partials/post-card.html` |
 | 22  | Q   | [x]    | Pre-reveal email is real `<a href="mailto:noscript@example.com">`       | `layouts/shortcodes/scrambled-email.html`                         |
-| 23  | Q   | [ ]    | Render-link `_` prefix convention undocumented                          | `layouts/_default/_markup/render-link.html`                       |
+| 23  | Q   | [x]    | Render-link `_` prefix convention undocumented                          | `layouts/_default/_markup/render-link.html`                       |
 | 24  | Q   | [ ]    | `<i>` used purely for italic date                                       | `layouts/partials/post-card.html`, CSS                            |
 
 ## Verification protocol

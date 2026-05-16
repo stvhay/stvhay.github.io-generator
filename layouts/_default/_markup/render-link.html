@@ -1,6 +1,19 @@
 {{- /*
-    Modifies link rendering to add target="_blank" if the link begins with "_"
-    or is an external link.
+    Modifies link rendering to add target="_blank" and rel="noopener noreferrer"
+    if the link begins with "_" or points to an external origin.
+
+    Underscore convention: writing [foo](_https://example.com) in markdown
+    forces the link to open in a new tab even when it's internal — useful for
+    same-origin links like PDFs that the reader will want to keep alongside
+    the post. The leading "_" is stripped from the actual href.
+
+    Examples:
+      [Open PDF](_https://example.com/file.pdf)
+        → <a href="https://example.com/file.pdf" target="_blank" rel="…">
+      [Spec](https://w3.org/TR/wcag)
+        → <a href="…" target="_blank" rel="…">  (external auto-detect)
+      [Home](/)
+        → <a href="/">  (internal, no new tab)
 
     Security note: .Text uses safeHTML to allow formatting (em, strong, code) in link text.
     This is safe for this personal site with trusted markdown content.
