@@ -25,7 +25,7 @@ Severity legend:
 | 11  | V   | [x]    | `h3` (1.25rem) barely larger than `p` (1.2rem)                          | `assets/css/main.css`                                             |
 | 12  | V   | [ ]    | `.section-mark` overlay overlaps long content                           | `assets/css/main.css`, `layouts/partials/post-card.html`          |
 | 13  | V   | [ ]    | Mobile nav has no responsive layout                                     | `assets/css/main.css`                                             |
-| 14  | V   | [ ]    | Light-mode theme-toggle hover hardcodes dark-mode yellow                | `assets/css/main.css`                                             |
+| 14  | V   | [x]    | Light-mode theme-toggle hover hardcodes dark-mode yellow                | `assets/css/main.css`                                             |
 | 15  | V   | [ ]    | `.reveal-email-button:hover` has low contrast (color collision)         | `assets/css/main.css`                                             |
 | 16  | V   | [ ]    | `.article-img` fixed at 25rem dominates mid-width screens               | `assets/css/main.css`                                             |
 | 17  | Q   | [ ]    | Person structured data never fires (about page title is "Welcome")      | `layouts/partials/structured-data.html`                           |

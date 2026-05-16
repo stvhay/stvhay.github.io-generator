@@ -396,7 +396,7 @@ footer p {
 }
 
 .theme-toggle-btn:hover {
-    text-decoration-color: #f9ff99;
+    text-decoration-color: var(--color-accent-hover);
 }
 
 .theme-toggle-btn:focus-visible {
