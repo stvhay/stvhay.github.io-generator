@@ -46,6 +46,8 @@ IgnoreURLs:
   - "https://doi.org/10.1364/josaa.4.002379"
   - "https://v8.js-dos.com"
   - "https://www.linkedin.com/in/steve-hay-8763636b"
+  - "https://youtu.be"
+  - "https://www.youtube.com"
 
 # Log level: 0=errors only, 1=warnings, 2=info, 3=debug
 LogLevel: 1
