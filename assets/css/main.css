@@ -155,6 +155,10 @@ nav {
     top: 0; /* Stick to the top of the viewport */
     z-index: 1000;
     padding: 0.5rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 2.5rem;
 }
 
 /* Fade gradient below sticky nav so content fades as it scrolls under */
@@ -175,7 +179,6 @@ nav::after {
 
 nav a {
     color: var(--color-text-light);
-    margin: 0 1.25rem;
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s ease;

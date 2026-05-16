@@ -24,7 +24,7 @@ Severity legend:
 | 10  | A   | [x]    | CV menu link `target="_blank"` lacks `rel="noopener"`                   | `layouts/partials/menu.html`                                      |
 | 11  | V   | [x]    | `h3` (1.25rem) barely larger than `p` (1.2rem)                          | `assets/css/main.css`                                             |
 | 12  | V   | [ ]    | `.section-mark` overlay overlaps long content                           | `assets/css/main.css`, `layouts/partials/post-card.html`          |
-| 13  | V   | [ ]    | Mobile nav has no responsive layout                                     | `assets/css/main.css`                                             |
+| 13  | V   | [x]    | Mobile nav has no responsive layout                                     | `assets/css/main.css`                                             |
 | 14  | V   | [x]    | Light-mode theme-toggle hover hardcodes dark-mode yellow                | `assets/css/main.css`                                             |
 | 15  | V   | [x]    | `.reveal-email-button:hover` has low contrast (color collision)         | `assets/css/main.css`                                             |
 | 16  | V   | [x]    | `.article-img` fixed at 25rem dominates mid-width screens               | `assets/css/main.css`                                             |
