@@ -3,7 +3,8 @@
     <article class="article card">
       <h1>{{ .Title }}</h1>
       {{- partial "date.html" . }}
-      {{- partial "thumb.html" (dict "page" . "class" "article-img") }}
+      {{- /* Hero image is above the fold — load eagerly. */}}
+      {{- partial "thumb.html" (dict "page" . "class" "article-img" "eager" true) }}
       {{ .Content }}
     </article>
   </section>

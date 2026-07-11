@@ -1,9 +1,20 @@
+{{- /*
+Renders a page's thumbnail image with intrinsic dimensions.
+
+@context {page} page The page whose bundled image to render.
+@context {string} imgName Base name of the image resource (optional, default "img").
+@context {string} class CSS class for the wrapper div (optional, default "post-img").
+@context {bool} eager Load immediately instead of lazily — use for above-the-fold images (optional, default false).
+
+@example: {{ partial "thumb.html" (dict "page" . "class" "article-img" "eager" true) }}
+*/}}
 
 {{- $page := .page }}
 {{- $imgName := .imgName | default "img" }}
 {{- $formats := (slice "webp" "png" "jpg" "jpeg") }}
 {{- $altText := $page.Title }}
 {{- $cssClass := .class | default "post-img" }}
+{{- $eager := .eager | default false }}
 
 {{- $found := false }}
 {{- range $formats }}
@@ -11,7 +22,11 @@
     {{- $imgPath := printf "%s.%s" $imgName . }}
     {{- with $page.Resources.GetMatch $imgPath }}
       <div class="{{ $cssClass }}">
-        <img src="{{ .RelPermalink }}" alt="{{ $altText }}">
+        {{- /* width/height reserve layout space (no shift while loading);
+               below-the-fold thumbnails defer via loading="lazy". */}}
+        <img src="{{ .RelPermalink }}" alt="{{ $altText }}"
+          width="{{ .Width }}" height="{{ .Height }}"
+          {{- if not $eager }} loading="lazy"{{ end }} decoding="async">
       </div>
       {{- $found = true }}
     {{- end }}
