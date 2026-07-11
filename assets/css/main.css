@@ -397,6 +397,64 @@ ul {
     clear: both;
 }
 
+/*
+ * Code, tables, and quotes. Articles render inside .card (which uses
+ * --color-bg-card), so code blocks use the body background plus a
+ * border to stand apart. Wide content scrolls within its own box
+ * instead of widening the page on narrow viewports.
+ */
+code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.9em;
+    background-color: var(--color-bg-body);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 0.1em 0.3em;
+}
+
+pre {
+    overflow-x: auto;
+    background-color: var(--color-bg-body);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 0.95rem;
+}
+
+table {
+    /* block + overflow lets wide tables scroll instead of overflowing */
+    display: block;
+    overflow-x: auto;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+}
+
+th,
+td {
+    border: 1px solid var(--color-border);
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+}
+
+th {
+    background-color: var(--color-bg-body);
+}
+
+blockquote {
+    border-left: 3px solid var(--color-accent);
+    padding-left: 1rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-text-muted);
+    font-style: italic;
+}
+
 .section-mark {
     display: block;
     text-align: right;
