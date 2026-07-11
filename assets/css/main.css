@@ -122,7 +122,7 @@ body {
     font-weight: 300;
     background-color: var(--color-bg-body);
     color: var(--color-text-primary);
-    line-height: 1.4;
+    line-height: 1.5;
     text-rendering: optimizeLegibility;
 }
 
