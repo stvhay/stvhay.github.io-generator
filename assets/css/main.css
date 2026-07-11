@@ -359,6 +359,13 @@ ul {
 
 .article {
     padding: 2rem;
+    /*
+     * Cap the reading measure: the 100ch .container gives ~90+
+     * characters per line, past the comfortable 60-75 for serif
+     * prose. 45rem ≈ 70-75 characters at the 1.2rem body size.
+     */
+    max-width: 45rem;
+    margin-inline: auto;
     /* Bare-URL footnote citations otherwise force horizontal scroll on
        narrow viewports; break-word only splits words that overflow. */
     overflow-wrap: break-word;
