@@ -54,6 +54,38 @@ class TestCanonicalURLs:
 
 
 @pytest.mark.meta
+class TestViewport:
+    """Tests for the responsive viewport meta tag."""
+
+    def test_all_pages_have_complete_viewport(self, html_files, public_dir):
+        """Verify pages declare width=device-width and initial-scale=1.
+
+        Without initial-scale=1 some mobile browsers render the page
+        zoomed out instead of at the device width.
+        """
+        bad_viewport = []
+
+        for html_file in html_files:
+            # Skip static files (interactive demos/tools)
+            if is_static_file(html_file, public_dir):
+                continue
+
+            soup = parse_html(html_file)
+            viewport = soup.find("meta", {"name": "viewport"})
+            content = viewport.get("content", "") if viewport else ""
+
+            if "width=device-width" not in content or "initial-scale=1" not in content:
+                bad_viewport.append(
+                    (html_file.relative_to(public_dir), content or "missing")
+                )
+
+        assert not bad_viewport, (
+            f"The following pages have missing or incomplete viewport meta:\n"
+            f"{chr(10).join(f'{p}: {c}' for p, c in bad_viewport)}"
+        )
+
+
+@pytest.mark.meta
 class TestOpenGraphTags:
     """Tests for Open Graph meta tags."""
 
