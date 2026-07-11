@@ -49,9 +49,6 @@
 {{- range .AlternativeOutputFormats -}}
   <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}" title="{{ $.Site.Title }}">
 {{ end }}
-{{- with .OutputFormats.Get "RSS" -}}
-  <link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="{{ $.Site.Title }}" />
-{{- end }}
 
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self';">
 <meta name="referrer" content="strict-origin-when-cross-origin">
