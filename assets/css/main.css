@@ -329,6 +329,9 @@ ul {
 
 .article {
     padding: 2rem;
+    /* Bare-URL footnote citations otherwise force horizontal scroll on
+       narrow viewports; break-word only splits words that overflow. */
+    overflow-wrap: break-word;
 }
 
 .article > time {
