@@ -526,16 +526,12 @@ footer p {
  * explicit [data-theme="dark"] selector (for users who flipped the
  * toggle from system-light to dark). data-theme="light" needs no
  * rule of its own — it falls back through to :root's defaults.
- * The .card and ul rules use the variables and so apply to every
+ * The .card rule uses the variables and so applies to every
  * theme without per-theme repetition.
  */
 
 .card {
     background-color: var(--color-bg-card);
-}
-
-ul {
-    color: var(--color-text-muted);
 }
 
 @media (prefers-color-scheme: dark) {
