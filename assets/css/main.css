@@ -266,6 +266,24 @@ h3 {
     margin-bottom: 1rem;
 }
 
+/*
+ * Body copy is 1.2rem, larger than the browser's ~1rem default for
+ * h4-h6; without explicit sizes those headings render smaller than
+ * the paragraphs they introduce.
+ */
+h4 {
+    font-size: 1.3rem;
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+}
+
+h5,
+h6 {
+    font-size: 1.2rem;
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+}
+
 p {
     font-size: 1.2rem;
     margin-bottom: 1.5rem;
