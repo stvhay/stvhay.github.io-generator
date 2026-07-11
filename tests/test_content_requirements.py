@@ -174,6 +174,31 @@ class TestHeadingHierarchy:
 
 
 @pytest.mark.content
+class TestNotFoundPage:
+    """Tests for the custom 404 page served by GitHub Pages."""
+
+    def test_404_page_exists(self, public_dir):
+        """Verify that the build emits a 404.html at the site root."""
+        assert (public_dir / "404.html").exists(), (
+            "public/404.html is missing. GitHub Pages falls back to its "
+            "generic 404 page without it."
+        )
+
+    def test_404_page_links_home(self, public_dir):
+        """Verify the 404 page offers navigation back into the site."""
+        page = public_dir / "404.html"
+        if not page.exists():
+            pytest.fail("public/404.html is missing")
+
+        soup = parse_html(page)
+        main = soup.find("main")
+        assert main is not None, "404 page must use the site layout with <main>"
+
+        home_links = [a for a in main.find_all("a") if a.get("href") == "/"]
+        assert home_links, "404 page must link back to the home page"
+
+
+@pytest.mark.content
 class TestContentQuality:
     """Tests for basic content quality."""
 
