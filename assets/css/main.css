@@ -535,7 +535,8 @@ footer p {
     font-size: inherit;
     letter-spacing: 0.05em;
     cursor: default;
-    text-decoration: underline;
+    /* Not a real link until revealed — no link affordance before then. */
+    text-decoration: none;
     display: inline;
     white-space: normal;
 }
@@ -546,6 +547,7 @@ footer p {
 
 .scrambled-email-display.revealed {
     cursor: pointer;
+    text-decoration: underline;
 }
 
 .scrambled-email-display span {
