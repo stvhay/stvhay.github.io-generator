@@ -195,6 +195,18 @@ nav a:focus-visible {
     color: var(--color-accent);
 }
 
+/*
+ * Current-section indicator. menu.html stamps .active/aria-current on
+ * the current page's menu entry and .ancestor on its section when
+ * viewing a child page (e.g. a single post under Writing).
+ */
+nav a.active,
+nav a.ancestor {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.4em;
+}
+
 /* ==========================================================================
    Link Styles
    ========================================================================== */
