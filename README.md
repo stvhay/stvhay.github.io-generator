@@ -93,6 +93,13 @@ GitHub Actions builds and deploys on push to `main`. See `.github/workflows/webs
 - [exiftool](https://exiftool.org/) - PDF metadata for build caching
 - [GitHub Pages](https://pages.github.com/) - Hosting
 
+### Asset Licenses
+
+- Favicon artwork (`static/favicon.ico`, `static/favicon.svg`,
+  `static/apple-touch-icon.png`) is the robot emoji (U+1F916) from
+  [Twemoji](https://github.com/jdecked/twemoji), © Twitter/X and other
+  contributors, licensed [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
 ## AI-Assisted Development
 
 This project is developed with [Claude Code](https://claude.ai/code) as an AI coding assistant. Commits co-authored by Claude are marked with `Co-Authored-By: Claude <noreply@anthropic.com>`.

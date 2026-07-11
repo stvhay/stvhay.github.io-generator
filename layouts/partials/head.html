@@ -13,7 +13,12 @@
 {{ end }}
 
 <link rel="canonical" href="{{ .Permalink }}">
-<link rel="icon" href="/favicon.ico">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+{{- /* Match the browser UI (mobile address bar) to the header color */}}
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2efe9">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1f1f1f">
 
 <!-- Open Graph meta tags for social media sharing -->
 <meta property="og:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}">
