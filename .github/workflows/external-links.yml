@@ -1,0 +1,74 @@
+# Scheduled external link check.
+#
+# Checks the published site (the stvhay.github.io hosting repo — the
+# HTML actually deployed, no build required) with lychee using the
+# policy in lychee.toml. External link rot shouldn't block builds, so
+# this never fails; it files a GitHub issue instead.
+#
+# Internal links are validated per-commit by htmltest (offline) in the
+# website workflow. Security: link checking needs no secrets, so this
+# runs only on schedule/dispatch with minimal permissions — never use
+# pull_request_target here.
+name: external-links
+
+on:
+  schedule:
+    - cron: "17 6 * * 1" # weekly, Monday 06:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lychee:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write # to file the link-rot report
+    steps:
+      - name: Checkout generator repo (lychee.toml)
+        uses: actions/checkout@v7
+
+      - name: Checkout published site
+        uses: actions/checkout@v7
+        with:
+          repository: stvhay/stvhay.github.io
+          path: site
+
+      - name: Restore lychee cache
+        uses: actions/cache/restore@v6
+        with:
+          path: .lycheecache
+          key: lychee-${{ github.run_id }}
+          restore-keys: lychee-
+
+      - name: Check external links
+        id: lychee
+        uses: lycheeverse/lychee-action@v2
+        env:
+          # Avoids rate-limiting on github.com links
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          fail: false
+          args: >-
+            --no-progress
+            --config lychee.toml
+            --root-dir ${{ github.workspace }}/site
+            "site/**/*.html"
+
+      - name: Save lychee cache
+        if: always()
+        uses: actions/cache/save@v6
+        with:
+          path: .lycheecache
+          key: lychee-${{ github.run_id }}
+
+      - name: File link-rot issue
+        if: steps.lychee.outputs.exit_code != 0
+        uses: peter-evans/create-issue-from-file@v6
+        with:
+          title: External link rot report
+          content-filepath: ./lychee/out.md
+          labels: |
+            link-rot
+            automated
