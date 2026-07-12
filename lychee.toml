@@ -1,0 +1,32 @@
+# lychee configuration — external link checking for the built site.
+#
+# Run by the scheduled workflow (.github/workflows/external-links.yml)
+# against the published HTML, and locally via:
+#   nix develop --command bash -c 'lychee --root-dir "$(pwd)/public" "public/**/*.html"'
+# (--root-dir lets root-relative internal links parse; the scheme
+# filter below then excludes them from checking.)
+#
+# htmltest owns internal link/structure checks (per-commit, offline);
+# lychee owns external links (scheduled, network).
+
+# Remote links only — internal root-relative links are htmltest's job.
+scheme = ["https", "http"]
+
+# Bot-blocked is not broken. Academic publishers, WorldCat, and LinkedIn
+# reject non-browser clients with 403 (or LinkedIn's nonstandard 999);
+# 429 means rate-limited. All imply the resource exists — a dead link
+# returns 404/410. Optica's DOI resolver returns 202, hence the range.
+accept = ["200..=299", "403", "429", "999"]
+
+# Clears naive user-agent sniffing (frontiersin, doi.org resolvers).
+user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+
+# Retry transient failures (429s, flaky hosts) before reporting.
+max_retries = 3
+
+# Academic DOI redirect chains can be slow (4 hops via frontiersin).
+timeout = 30
+
+# Skip recently-checked URLs across runs (CI persists .lycheecache).
+cache = true
+max_cache_age = "1d"

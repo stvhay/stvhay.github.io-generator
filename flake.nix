@@ -46,7 +46,8 @@
             git          # Version control
 
             # Testing tools
-            htmltest     # HTML validation and link checking
+            htmltest     # HTML validation and internal link checking
+            lychee       # External link checking (config: lychee.toml)
             python3      # Python runtime for pytest
             python3Packages.pytest  # Python testing framework
             python3Packages.beautifulsoup4  # HTML parsing for tests
@@ -65,6 +66,7 @@
             echo "  - exiftool: $(exiftool -ver)"
             echo "  - latexmk: $(latexmk -v 2>&1 | head -n1)"
             echo "  - htmltest: $(htmltest --version 2>&1)"
+            echo "  - lychee: $(lychee --version 2>&1)"
             echo "  - pytest: $(pytest --version 2>&1 | head -n1)"
             echo ""
             echo "Run './build' to build the website"

@@ -22,3 +22,5 @@ tmp/
 
 # LaTeX build output (mounted to static/docs/ via hugo.toml)
 latex/output/
+# lychee external link check cache (see lychee.toml)
+.lycheecache

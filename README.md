@@ -91,6 +91,8 @@ GitHub Actions builds and deploys on push to `main`. See `.github/workflows/webs
 - [pdfTeX](https://tug.org/applications/pdftex/) via latexmk - LaTeX compilation
 - [prettier](https://prettier.io) - HTML formatting
 - [exiftool](https://exiftool.org/) - PDF metadata for build caching
+- [htmltest](https://github.com/wjdp/htmltest) - Internal link and HTML structure validation
+- [lychee](https://github.com/lycheeverse/lychee) - External link checking (scheduled CI)
 - [GitHub Pages](https://pages.github.com/) - Hosting
 
 ### Asset Licenses
