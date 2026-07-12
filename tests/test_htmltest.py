@@ -1,9 +1,9 @@
 """Run htmltest as part of the pytest suite.
 
-Marked ``external`` because htmltest validates external links and is
-network-dependent. Local fast iteration uses ``htmltest --skip-external``
-directly from the shell; pytest is the canonical entry point for the
-full check (CI, pre-publish verification).
+htmltest is configured for internal links and HTML structure only
+(CheckExternal: false in .htmltest.yml), so it is fast, offline, and
+runs in the default suite. External links are checked separately by
+lychee on a schedule (.github/workflows/external-links.yml).
 """
 
 import subprocess
@@ -12,9 +12,8 @@ import pytest
 
 
 @pytest.mark.html5
-@pytest.mark.external
 def test_htmltest_passes(public_dir):
-    """Validate the generated site with htmltest, including external links."""
+    """Validate the generated site's internal links and structure."""
     if not public_dir.exists():
         pytest.fail(
             f"Public directory not found at {public_dir}. "

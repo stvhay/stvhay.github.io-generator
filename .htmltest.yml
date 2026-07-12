@@ -1,5 +1,12 @@
 # htmltest configuration for Hugo static site testing
 # Documentation: https://github.com/wjdp/htmltest
+#
+# htmltest validates internal links and HTML structure only — fast and
+# offline, so it runs in the default pytest suite on every commit.
+# External links are checked separately by lychee (lychee.toml) on a
+# schedule (.github/workflows/external-links.yml), which knows how to
+# treat bot-blocked 403/429 responses as alive instead of ignoring
+# those URLs entirely.
 
 # Directory containing HTML files to test
 DirectoryPath: "public"
@@ -10,15 +17,8 @@ CheckInternalLinks: true
 # Check internal hash anchors (e.g., #section-id) resolve correctly
 CheckInternalHash: true
 
-# Verify external links work (can be slow, consider disabling for local dev)
-CheckExternal: true
-
-# Enforce HTTPS for external links
-EnforceHTTPS: true
-
-# Cache external link checks to speed up repeated runs (2 weeks)
-ExternalTimeout: 15
-CacheExpires: "336h"
+# External links are lychee's job (see header comment)
+CheckExternal: false
 
 # Verify all images have alt attributes
 CheckImages: true
@@ -38,16 +38,6 @@ IgnoreDirs:
   - "categories"
   - "tags"
   - "cns"
-
-# Ignore external URLs that block bot user agents (but work in browsers)
-IgnoreURLs:
-  - "https://search.worldcat.org"
-  - "https://doi.org/10.1126/sciadv.adr6698"
-  - "https://doi.org/10.1364/josaa.4.002379"
-  - "https://v8.js-dos.com"
-  - "https://www.linkedin.com/in/steve-hay-8763636b"
-  - "https://youtu.be"
-  - "https://www.youtube.com"
 
 # Log level: 0=errors only, 1=warnings, 2=info, 3=debug
 LogLevel: 1
