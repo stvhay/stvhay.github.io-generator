@@ -44,6 +44,10 @@ git clone git@github.com:stvhay/stvhay.github.io.git public
 
 **`./build`** - Compiles LaTeX, builds Hugo site, formats HTML, stages changes.
 
+**`./render <file.tex>`** - Compiles a single LaTeX document without building the
+site. Documents under `latex/` render to `latex/output/`; documents elsewhere
+render beside their source. Use `-o DIR` to choose a destination.
+
 **`./publish [message]`** - Commits and pushes to both repositories.
 
 ### Utility Functions
