@@ -51,7 +51,7 @@ def is_static_file(file_path: Path, public_dir: Path) -> bool:
     """
     try:
         rel_path = file_path.relative_to(public_dir)
-        static_paths = ['s3m/', 'plasma/', 'cns/']
+        static_paths = ['s3m/', 'plasma/', 'cns/', 'docs/']
         return any(str(rel_path).startswith(p) for p in static_paths)
     except ValueError:
         return False

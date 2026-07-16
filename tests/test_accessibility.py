@@ -159,7 +159,7 @@ class TestFormAccessibility:
 class TestLinkAccessibility:
     """Tests for link accessibility."""
 
-    def test_links_have_descriptive_text(self, html_files):
+    def test_links_have_descriptive_text(self, html_files, public_dir):
         """Verify that links have descriptive text (not just 'click here')."""
         NON_DESCRIPTIVE_PHRASES = [
             "click here",
@@ -172,6 +172,11 @@ class TestLinkAccessibility:
         links_with_poor_text = []
 
         for html_file in html_files:
+            # Generated/static documents (e.g. LaTeXML output labels
+            # bibliography URLs "Link") are faithful renderings of their
+            # sources, not authored site content.
+            if is_static_file(html_file, public_dir):
+                continue
             soup = parse_html(html_file)
             links = soup.find_all("a")
 
