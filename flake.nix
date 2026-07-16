@@ -27,6 +27,9 @@
                 # Core LaTeX packages (texlive-latex-base, texlive-latex-extra)
                 amsmath tools graphics
 
+                # Document markup: quotations and list customization
+                csquotes enumitem
+
                 # Bibliography support (texlive-bibtex-extra)
                 biber biblatex logreq xstring
 
