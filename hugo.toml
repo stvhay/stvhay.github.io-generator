@@ -30,6 +30,11 @@ author = "Steven Hay"
   [[module.mounts]]
     source = "latex/output"
     target = "static/docs"
+  # The sitemap template reads the manifest to list generated HTML
+  # documents that no page links to (see layouts/sitemap.xml).
+  [[module.mounts]]
+    source = "latex/latex.manifest"
+    target = "assets/latex.manifest"
 
 [outputs]
 home = ['html', 'rss']

@@ -1,0 +1,31 @@
+{{ printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {{- range .Data.Pages }}
+  {{- if .Permalink }}
+  <url>
+    <loc>{{ .Permalink }}</loc>
+    {{- if not .Lastmod.IsZero }}
+    <lastmod>{{ safeHTML (.Lastmod.Format "2006-01-02T15:04:05-07:00") }}</lastmod>
+    {{- end }}
+  </url>
+  {{- end }}
+  {{- end }}
+  {{- /* Generated LaTeX documents are served from static/docs, not Hugo
+     pages, so they never appear in .Data.Pages. Listing the HTML versions
+     here makes them discoverable to crawlers even when site links
+     intentionally point at the PDF (e.g. the CV). Manifest lines are
+     "<doc.tex> [formats]"; only docs with an html format are listed. */}}
+  {{- with resources.Get "latex.manifest" }}
+  {{- range split .Content "\n" }}
+  {{- $line := trim . " \t" }}
+  {{- if and $line (not (hasPrefix $line "#")) }}
+  {{- $fields := split $line " " }}
+  {{- if in $fields "html" }}
+  <url>
+    <loc>{{ printf "docs/%s.html" (strings.TrimSuffix ".tex" (index $fields 0)) | absURL }}</loc>
+  </url>
+  {{- end }}
+  {{- end }}
+  {{- end }}
+  {{- end }}
+</urlset>
