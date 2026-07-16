@@ -390,11 +390,11 @@ ul {
 
 .article-img img {
     width: 100%;
+    /* Thumbnails carry width/height attributes for layout-shift
+       prevention; without height:auto the attribute height would win
+       over the scaled-down width and distort the image. */
+    height: auto;
     padding: 0.625rem 1.25rem 0.625rem 0;
-}
-
-.article p {
-    clear: both;
 }
 
 /*
@@ -482,6 +482,8 @@ blockquote {
     .article-img {
         float: none;
         width: 100%;
+        /* override the desktop float's 45% cap */
+        max-width: 100%;
         margin-bottom: 1.25rem;
     }
 
