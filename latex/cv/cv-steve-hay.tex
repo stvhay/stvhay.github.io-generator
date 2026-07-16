@@ -10,7 +10,12 @@
 
 % Never typeset in the PDF (no \maketitle); gives the LaTeXML-generated
 % HTML its document title instead of falling back to the first section.
+% site.css visually hides the resulting H1 (the letterhead already leads
+% with the name) while keeping it for assistive tech and crawlers.
 \title{Steven Hay --- Curriculum Vitae}
+
+% PDF title metadata (shown in PDF viewers and used by screen readers).
+\hypersetup{pdftitle={Steven Hay --- Curriculum Vitae}}
 
 \begin{document} 
     % NAME AND CONTACT INFORMATION

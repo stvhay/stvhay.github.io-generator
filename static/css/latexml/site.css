@@ -55,6 +55,24 @@ h1.ltx_title_document {
     font-size: 2.5rem;
 }
 
+/*
+ * The CV's letterhead already leads with the name, so its document
+ * title (kept for the <title> tag, crawlers, and assistive tech) would
+ * print the name twice. Visually hide it, mirroring the site's
+ * .sr-only utility. Keyed to the letterhead's oversized bold name
+ * span, which only the CV template produces.
+ */
+.ltx_document:has(#p1 span[style*="173%"]) > .ltx_title_document {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+}
+
 h2.ltx_title_section {
     font-size: 1.5rem;
 }
