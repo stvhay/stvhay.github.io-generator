@@ -1,3 +1,5 @@
-cv/cv-steve-hay.tex
-experience-prosopagnosia/experience-prosopagnosia.tex
-experience-prosopagnosia/experience-prosopagnosia-design.tex
+# Documents built for the website: "<document.tex> [formats]"
+# formats: any of "pdf" and "html"; a line with no formats builds pdf only.
+cv/cv-steve-hay.tex pdf html
+experience-prosopagnosia/experience-prosopagnosia.tex pdf html
+experience-prosopagnosia/experience-prosopagnosia-design.tex pdf html

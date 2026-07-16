@@ -8,19 +8,24 @@ set -eu
         cat << EOF
     Usage: render [options] <file.tex>
 
-    Compiles a single LaTeX document and leaves the PDF in its destination
+    Compiles a single LaTeX document and leaves the output in its destination
     directory, cleaning up intermediate files.
 
     Documents under latex/ render to latex/output/<dir>/, which is gitignored
     and mounted to static/docs by Hugo. Documents anywhere else render beside
     their source, so drafts are never staged for the website.
 
+    HTML output links the site-served stylesheets (/css/latexml/) and favicon,
+    so it displays fully styled only when served by the site (e.g. through
+    'hugo server'), not when opened directly from disk.
+
     Unlike ./build, this does not consult latex/latex.manifest, skip unchanged
     documents, or stamp the PDF with its source hash. Use ./build to produce
-    PDFs for publication.
+    documents for publication.
 
     Options:
-    -o, --output DIR  Write the PDF to DIR instead of the default destination
+    -f, --format FMT  Output format: pdf (default), html, or both
+    -o, --output DIR  Write the output to DIR instead of the default destination
     -h, --help        Display this help message and exit
 
     Arguments:
@@ -34,9 +39,23 @@ EOF
     # must happen before switching to the repository root below.
     tex_file=
     output_dir=
+    format=pdf
     while [[ $# -gt 0 ]]
     do
         case "$1" in
+            -f|--format)
+                case "${2:-}" in
+                    pdf|html|both)
+                        format="$2"
+                        shift 2
+                    ;;
+                    *)
+                        >&2 echo "Error: --format must be pdf, html, or both"
+                        >&2 usage
+                        exit 1
+                    ;;
+                esac
+            ;;
             -o|--output)
                 if [[ -n "${2:-}" && "$2" != -* ]]
                 then
@@ -88,12 +107,15 @@ EOF
         exit 1
     fi
 
-    if ! command -v latexmk >/dev/null 2>&1
-    then
-        >&2 echo "Error: latexmk not found. Run inside the nix environment:"
-        >&2 echo "    nix develop --command ./render $tex_file"
-        exit 1
-    fi
+    for tool in latexmk latexmlc
+    do
+        if ! command -v "$tool" >/dev/null 2>&1
+        then
+            >&2 echo "Error: $tool not found. Run inside the nix environment:"
+            >&2 echo "    nix develop --command ./render $tex_file"
+            exit 1
+        fi
+    done
 
     tex_dir=$(cd "$(dirname "$tex_file")" && pwd)
     tex_name=$(basename "$tex_file")
@@ -125,25 +147,35 @@ EOF
 
 
 
-    # Compile from the source directory so relative \addbibresource paths resolve
+    # Compile from the source directory so relative \bibliography paths resolve
     cd "$tex_dir" || exit 1
-    latex_log=$(mktemp) || exit 1
-    if ! latexmk -quiet -pdf "$tex_name" >"$latex_log" 2>&1
-    then
-        >&2 echo "Error compiling $tex_file"
-        >&2 cat "$latex_log"
-        rm -f "$latex_log"
-        exit 1
-    fi
-    rm -f "$latex_log"
-
-    latexmk -c >/dev/null 2>&1
-    rm -f "${base_name}".{dvi,bbl,fls,run.xml}
-
     mkdir -p "$output_dir"
-    if [[ "$output_dir" != "$tex_dir" ]]
+
+    if [[ "$format" == pdf || "$format" == both ]]
     then
-        mv "${base_name}.pdf" "${output_dir}/"
+        latex_log=$(mktemp) || exit 1
+        if ! latexmk -quiet -pdf "$tex_name" >"$latex_log" 2>&1
+        then
+            >&2 echo "Error compiling $tex_file"
+            >&2 cat "$latex_log"
+            rm -f "$latex_log"
+            exit 1
+        fi
+        rm -f "$latex_log"
+
+        latexmk -c >/dev/null 2>&1
+        rm -f "${base_name}".{dvi,bbl,fls,run.xml}
+
+        if [[ "$output_dir" != "$tex_dir" ]]
+        then
+            mv "${base_name}.pdf" "${output_dir}/"
+        fi
+        echo "Rendered: ${output_dir}/${base_name}.pdf"
     fi
-    echo "Rendered: ${output_dir}/${base_name}.pdf"
+
+    if [[ "$format" == html || "$format" == both ]]
+    then
+        renderhtml "$tex_name" "${output_dir}/${base_name}.html" || exit 1
+        echo "Rendered: ${output_dir}/${base_name}.html"
+    fi
 )

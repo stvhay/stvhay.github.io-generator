@@ -6,38 +6,9 @@ pushd "${hugo_repo_dir:?}" || return
 
     publish_repo=git@github.com:stvhay/stvhay.github.io.git
 
-    # These functions are used to mark the PDFs with the SHA-384 hash of the .tex
-    # file. This is used to detect if the .tex file is changed from what generated
-    # the PDF.
-    getpdfhash()   { exiftool -XMP-pdfx:texhash -b "$1"; }
-    getlatexhash() { openssl dgst -sha384 -r "$1" | cut -d ' ' -f 1; }
-    markpdf()
-    {
-        local tex_file="$1"
-        local pdf_file="${2:-${tex_file%.tex}.pdf}"
-        local config
-        config=$(mktemp) || exit 1
-
-        # configure exiftool to create the custom metadata
-        {
-            printf "%s\n" "%Image::ExifTool::UserDefined = ("
-            printf "%s\n" "    'Image::ExifTool::XMP::pdfx' => {"
-            printf "%s\n" "        texhash => { Writable => 'string' },"
-            printf "%s\n" "    },"
-            printf "%s\n" "); 1;"
-        } > "$config"
-
-        local hash
-        hash=$(getlatexhash "$tex_file") || exit 1
-        if ! exiftool -config "$config" \
-            -XMP-pdfx:texhash="$hash" \
-            "$pdf_file" >/dev/null
-        then
-            return 1
-        fi
-        rm -f "${pdf_file}_original"
-        rm -f "$config"
-    }
+    # Artifact hashing and generation helpers live in utilities/latex.sh.
+    # Manifest lines are "<doc.tex> [formats]" where formats is any of
+    # "pdf" and "html"; a line with no formats builds pdf only.
 
 
 
@@ -78,11 +49,17 @@ pushd "${hugo_repo_dir:?}" || return
         git -C public clean -fd >/dev/null
         git -C public checkout main .gitignore 2>/dev/null
 
-        # read from the manifest
-        while IFS= read -r tex_file
+        # read from the manifest; restore only the formats still requested
+        # so a format dropped from the manifest disappears from the site
+        while read -r tex_file formats
         do
-            pdf_file="${tex_file%.tex}.pdf"
-            git -C public checkout main "docs/$pdf_file" 2>/dev/null
+            [[ -z "$tex_file" || "$tex_file" == \#* ]] && continue
+            for format in ${formats:-pdf}
+            do
+                # tolerate artifacts not yet published (new docs or formats)
+                git -C public checkout main \
+                    "docs/${tex_file%.tex}.${format}" 2>/dev/null || true
+            done
         done < latex/latex.manifest
     else
         rm -rf public/*
@@ -96,41 +73,65 @@ pushd "${hugo_repo_dir:?}" || return
     mkdir -p latex
     cd "${base_dir}/latex" || exit 1
 
-    # read from the manifest and build what has changed
-    while IFS= read -r texfile
+    # read from the manifest and build what has changed, per format
+    while read -r texfile formats
     do
+        [[ -z "$texfile" || "$texfile" == \#* ]] && continue
         current_hash=$(getlatexhash "$texfile")
-        previous_hash=$(getpdfhash "${base_dir}/public/docs/${texfile%.tex}.pdf")
-        if [[ $current_hash != "$previous_hash" ]]
-        then
-            echo "Building: $texfile"
-            texdir=${texfile%/*}
-            filename=${texfile##*/}
+        texdir=${texfile%/*}
+        filename=${texfile##*/}
+        outdir="${base_dir}/latex/output/$texdir"
 
+        for format in ${formats:-pdf}
+        do
+            case $format in
+                pdf)  previous_hash=$(getpdfhash "${base_dir}/public/docs/${texfile%.tex}.pdf") ;;
+                html) previous_hash=$(gethtmlhash "${base_dir}/public/docs/${texfile%.tex}.html") ;;
+                *)
+                    >&2 echo "Unknown format '$format' for $texfile in latex.manifest"
+                    exit 1
+                ;;
+            esac
+            if [[ $current_hash == "$previous_hash" ]]
+            then
+                echo "Skipping: $texfile ($format unchanged)"
+                continue
+            fi
+
+            echo "Building: $texfile ($format)"
+            mkdir -p "$outdir"
             prev_dir=$PWD
             cd "$texdir" || continue
 
-            # Compile PDF, save output to temp log for error reporting
-            latex_log=$(mktemp)
-            if ! latexmk -quiet -pdf "$filename" >"$latex_log" 2>&1; then
-                >&2 echo "Error compiling $texfile"
-                >&2 cat "$latex_log"
-                rm -f "$latex_log"
-                cd "$prev_dir" || exit 1
-                exit 1
-            fi
-            rm -f "$latex_log"
+            case $format in
+                pdf)
+                    # Compile PDF, save output to temp log for error reporting
+                    latex_log=$(mktemp)
+                    if ! latexmk -quiet -pdf "$filename" >"$latex_log" 2>&1; then
+                        >&2 echo "Error compiling $texfile"
+                        >&2 cat "$latex_log"
+                        rm -f "$latex_log"
+                        cd "$prev_dir" || exit 1
+                        exit 1
+                    fi
+                    rm -f "$latex_log"
 
-            latexmk -c >/dev/null 2>&1
-            rm -f "${filename%.tex}".{dvi,bbl} ./*.fls
+                    latexmk -c >/dev/null 2>&1
+                    rm -f "${filename%.tex}".{dvi,bbl} ./*.fls
 
-            mkdir -p "${base_dir}/latex/output/$texdir"
-            markpdf "$filename"
-            mv "${filename%.tex}.pdf" "${base_dir}/latex/output/$texdir/"
+                    markpdf "$filename"
+                    mv "${filename%.tex}.pdf" "$outdir/"
+                ;;
+                html)
+                    if ! renderhtml "$filename" "$outdir/${filename%.tex}.html"
+                    then
+                        cd "$prev_dir" || exit 1
+                        exit 1
+                    fi
+                ;;
+            esac
             cd "$prev_dir" || continue
-        else
-            echo "Skipping: $texfile (unchanged)"
-        fi
+        done
     done < latex.manifest
     cd "${base_dir}" || exit 1
 
@@ -147,13 +148,14 @@ pushd "${hugo_repo_dir:?}" || return
 
 
 
-    # Clean any built .pdf files from the working directory.
+    # Clean any built artifacts from the working directory.
     # These files are used by Hugo (via the latex/output → static/docs mount
     # in hugo.toml) but are not checked into git, as they are regenerated
     # from .tex sources on each build.
-    while IFS= read -r texfile
+    while read -r texfile _
     do
-        rm -f "latex/output/${texfile%.tex}.pdf"
+        [[ -z "$texfile" || "$texfile" == \#* ]] && continue
+        rm -f "latex/output/${texfile%.tex}".{pdf,html}
     done < latex/latex.manifest
 
 
