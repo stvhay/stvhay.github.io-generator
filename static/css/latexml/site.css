@@ -117,16 +117,6 @@ a {
 }
 
 /*
- * Items whose tag is a bold run-in heading (CV roles and degrees) flow
- * their body below the heading instead of squeezing into the space
- * beside it. Genuine bullet lists have plain markers in the tag and
- * keep LaTeXML's inline layout.
- */
-li.ltx_item:has(> .ltx_tag .ltx_font_bold) > .ltx_tag + .ltx_para {
-    display: block;
-}
-
-/*
  * Contact separators: the CV's \bull macro emits 400%-size math dots
  * pulled below the baseline, which render as giant misaligned bullets.
  * The contact block is the document's first paragraph (#p1).

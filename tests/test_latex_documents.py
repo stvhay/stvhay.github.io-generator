@@ -142,6 +142,34 @@ class TestHtmlDocuments:
 
 
 @pytest.mark.content
+class TestSiteCssAnchors:
+    """site.css rules for generated documents key on LaTeXML markup
+    details; these anchors fail if a LaTeXML upgrade changes that markup,
+    so the rules don't silently stop applying (see docs/DESIGN.md)."""
+
+    CV = "cv/cv-steve-hay"
+
+    def cv_html(self, public_dir):
+        if self.CV not in html_documents():
+            pytest.skip("CV is not built as HTML")
+        return parse_html(public_dir / "docs" / f"{self.CV}.html")
+
+    def test_cv_letterhead_anchor(self, public_dir):
+        """The rule hiding the CV's duplicate document title matches
+        .ltx_document:has(#p1 span[style*="173%"]) > .ltx_title_document."""
+        soup = self.cv_html(public_dir)
+        assert soup.find("h1", class_="ltx_title_document"), (
+            "CV lost its document title heading"
+        )
+        p1 = soup.find(id="p1")
+        assert p1 is not None, "CV letterhead is no longer paragraph #p1"
+        assert p1.find("span", style=lambda s: s and "173%" in s), (
+            "letterhead name span no longer carries font-size 173%; the "
+            "title-hiding rule in static/css/latexml/site.css won't match"
+        )
+
+
+@pytest.mark.content
 class TestSitemap:
     """Tests for crawler discovery of generated HTML documents."""
 
