@@ -1,0 +1,8 @@
+# Keep GitHub Actions current; runtime deprecations (e.g. the Node 20
+# retirement) otherwise surface only as annotations nobody reads.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
