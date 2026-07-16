@@ -79,6 +79,27 @@ The override is persisted in `localStorage` under `theme-preference`.
 - `.article` / `.article-img` — float-based layout for inline images
   with prose. Collapses to block layout on mobile.
 
+## Generated documents (LaTeXML)
+
+Documents built from `latex/` (see `latex/README.md`) get their look
+from `static/css/latexml/`:
+
+- `LaTeXML.css` / `ltx-article.css` — unmodified copies from the
+  LaTeXML distribution, replaceable wholesale on upgrades. Never edit
+  these; site styling belongs in `site.css`.
+- `site.css` — renders each document as a card on the page background
+  (mirroring the site palette in both themes), matches the site's
+  typography (Source Serif 4, body weight 300, 1.5 line height, 600
+  bold, site heading scale), flattens the CV template's deep list
+  nesting, and provides an ink-friendly `@media print` layer.
+- Some rules key on LaTeXML markup details (e.g. the CV letterhead's
+  oversized name span); pytest anchor tests in
+  `tests/test_latex_documents.py` fail if a LaTeXML upgrade changes
+  that markup so the rules don't silently stop applying.
+- Document pages load no JavaScript, so dark mode follows
+  `prefers-color-scheme` only — the site's manual theme toggle does
+  not affect them.
+
 ## Accessibility notes
 
 - `.sr-only` utility for screen-reader-only headings (structural
