@@ -3,11 +3,9 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{amsmath}
-\usepackage[
-        bibencoding=utf8, 
-        style=alphabetic
-]{biblatex}
-\addbibresource{experience-prosopagnosia-design.bib}
+% Classic BibTeX (alpha style approximates biblatex's alphabetic labels);
+% biblatex has no LaTeXML binding, which blocks HTML generation.
+\bibliographystyle{alpha}
 
 \geometry{margin=1in}
 
@@ -322,6 +320,6 @@ The proposed software and hardware architecture leverages cutting-edge technolog
 
 This architecture not only serves the immediate goals of the project but also lays the groundwork for future research and development in assistive AR technologies and educational tools that foster empathy and understanding of perceptual diversity.
 
-\printbibliography
+\bibliography{experience-prosopagnosia-design}
 
 \end{document}

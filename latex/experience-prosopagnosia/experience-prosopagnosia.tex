@@ -3,11 +3,9 @@
 \usepackage{csquotes}
 \usepackage{enumitem}
 \usepackage{amsmath}
-\usepackage[
-        bibencoding=utf8, 
-        style=alphabetic
-]{biblatex}
-\addbibresource{experience-prosopagnosia.bib}
+% Classic BibTeX (alpha style approximates biblatex's alphabetic labels);
+% biblatex has no LaTeXML binding, which blocks HTML generation.
+\bibliographystyle{alpha}
 
 \title{
     Using Augmented Reality to Experience Prosopagnosia
@@ -74,5 +72,5 @@
     \subsection{Adaptations to a Wider Audience}
     Other simpler simulations of face blindness may also be considered that would be less immersive but accessible to a wider audience. Such a simulation could have farther reach than one requiring a headset. For example, a JavaScript plugin powered by a remote back-end (or possibly client-side using Web Assembly) in a web browser could be developed to find and alter faces on social media platforms such as Facebook or Instagram. Such a tool could be used to collect data from a larger and more diverse set of people.
     
-    \printbibliography
+    \bibliography{experience-prosopagnosia}
 \end{document}

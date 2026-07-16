@@ -30,9 +30,6 @@
                 # Document markup: quotations and list customization
                 csquotes enumitem
 
-                # Bibliography support (texlive-bibtex-extra)
-                biber biblatex logreq xstring
-
                 # Font packages (texlive-fonts-recommended, texlive-fonts-extra)
                 collection-fontsrecommended
                 collection-fontsextra
