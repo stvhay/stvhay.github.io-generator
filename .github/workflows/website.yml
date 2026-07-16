@@ -34,8 +34,18 @@ jobs:
           '
 
       - name: Publish website
+        # The message is passed through the environment, never interpolated
+        # into the script: ${{ }} substitutes literal text before the shell
+        # runs, so a message containing quotes (or worse) would break out of
+        # the -m argument and into the script.
+        env:
+          COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
         run: |
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
-          git -C public commit -m "${{ github.event.head_commit.message }}" || true
-          git -C public push || true
+          if git -C public diff --cached --quiet; then
+            echo "No site changes to publish"
+          else
+            git -C public commit -m "$COMMIT_MESSAGE"
+            git -C public push
+          fi
