@@ -118,6 +118,19 @@ class TestHtmlDocuments:
                     f"{doc}.html: linked resource {href} not in built site"
                 )
 
+    def test_documents_have_no_conversion_errors(self, public_dir):
+        """LaTeXML marks unconvertible input with ltx_ERROR spans (e.g. an
+        environment with no binding renders as literal '{name}' text);
+        none may reach the published site."""
+        for doc in html_documents():
+            html = (public_dir / "docs" / f"{doc}.html").read_text(
+                encoding="utf-8"
+            )
+            assert "ltx_ERROR" not in html, (
+                f"{doc}.html contains LaTeXML conversion errors; "
+                "see the build output and add or fix a .ltxml binding"
+            )
+
     def test_documents_have_title_and_language(self, public_dir):
         """Basic accessibility: a non-empty <title> and an html lang."""
         for doc in html_documents():

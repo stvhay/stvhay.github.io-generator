@@ -1,0 +1,29 @@
+# -*- mode: Perl -*-
+# LaTeXML binding for the subset of mdwtools' mdwlist.sty this site uses.
+#
+# LaTeXML 0.8.8 ships no mdwlist binding, so it falls back to interpreting
+# the raw package source and leaves "{basedescript}" ltx_ERROR markers in
+# the HTML. LaTeXML loads <package>.sty.ltxml from the document directory,
+# so this file shadows the raw package during HTML conversion only; the
+# PDF build is unaffected.
+#
+# basedescript's mandatory argument carries print-layout list dimensions
+# (\desclabelstyle, margin lengths), meaningless in HTML; it is parsed and
+# dropped, and the environment renders as a plain description list,
+# mirroring the {description} definition in LaTeX.pool.ltxml.
+package LaTeXML::Package::Pool;
+use strict;
+use warnings;
+use LaTeXML::Package;
+
+DefMacro('\desclabelstyle{}', '');
+DefRegister('\desclabelwidth', Dimension('2em'));
+
+DefEnvironment('{basedescript}{}',
+  "<ltx:description xml:id='#id'>#body</ltx:description>",
+  beforeDigest    => sub { Let('\makelabel', '\descriptionlabel'); },
+  properties      => sub { beginItemize('description', '@desc'); },
+  beforeDigestEnd => sub { Digest('\par'); },
+  mode            => 'text');
+
+1;

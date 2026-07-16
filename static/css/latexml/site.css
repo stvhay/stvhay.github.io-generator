@@ -43,6 +43,12 @@ a {
     color: #0069d9;
 }
 
+/* The generated footer timestamps builds with SOURCE_DATE_EPOCH (1980
+   under nix), which reads as nonsense; LaTeXML is credited in README. */
+.ltx_page_footer {
+    display: none;
+}
+
 @media (prefers-color-scheme: dark) {
     body {
         background-color: #121212;
