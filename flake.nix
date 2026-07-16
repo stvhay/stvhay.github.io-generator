@@ -38,6 +38,10 @@
                 mdwtools relsize hyperref xcolor url microtype tex-gyre geometry;
             })
 
+            # LaTeXML for LaTeX -> HTML conversion (accessible alternative
+            # to PDF; same engine arXiv uses for HTML papers)
+            perlPackages.LaTeXML
+
             # ExifTool for PDF metadata manipulation
             exiftool
 
@@ -65,6 +69,7 @@
             echo "  - hugo: $(hugo version 2>&1 | head -n1)"
             echo "  - exiftool: $(exiftool -ver)"
             echo "  - latexmk: $(latexmk -v 2>&1 | head -n1)"
+            echo "  - latexmlc: $(latexmlc --VERSION 2>&1 | sed 's/.*(\(.*\))/\1/')"
             echo "  - htmltest: $(htmltest --version 2>&1)"
             echo "  - lychee: $(lychee --version 2>&1)"
             echo "  - pytest: $(pytest --version 2>&1 | head -n1)"

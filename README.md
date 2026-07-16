@@ -93,6 +93,7 @@ GitHub Actions builds and deploys on push to `main`. See `.github/workflows/webs
 
 - [Hugo](https://gohugo.io/) - Static site generator
 - [pdfTeX](https://tug.org/applications/pdftex/) via latexmk - LaTeX compilation
+- [LaTeXML](https://math.nist.gov/~BMiller/LaTeXML/) - LaTeX to HTML conversion for accessible document versions
 - [prettier](https://prettier.io) - HTML formatting
 - [exiftool](https://exiftool.org/) - PDF metadata for build caching
 - [htmltest](https://github.com/wjdp/htmltest) - Internal link and HTML structure validation
@@ -105,6 +106,11 @@ GitHub Actions builds and deploys on push to `main`. See `.github/workflows/webs
   `static/apple-touch-icon.png`) is the robot emoji (U+1F916) from
   [Twemoji](https://github.com/jdecked/twemoji), © Twitter/X and other
   contributors, licensed [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+- Document stylesheets (`static/css/latexml/`) are copied from
+  [LaTeXML](https://github.com/brucemiller/LaTeXML) 0.8.8 (`LaTeXML.css`,
+  `ltx-article.css`), a public-domain work of NIST. Shared site-wide so
+  generated documents stay self-contained and the styling can be customized
+  to match the site.
 
 ## AI-Assisted Development
 
