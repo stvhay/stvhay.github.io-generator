@@ -8,3 +8,7 @@ coverage
 # collapses comment blocks and breaks indentation around action blocks.
 layouts/
 archetypes/
+
+# LaTeXML-generated documents carry a CSP whose hash covers the exact
+# bytes of their <style> element; reformatting would break the hash.
+public/docs/

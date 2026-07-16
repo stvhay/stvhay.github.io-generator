@@ -84,15 +84,26 @@ pushd "${hugo_repo_dir:?}" || return
 
         for format in ${formats:-pdf}
         do
+            # HTML artifacts also carry the post-processing pipeline
+            # version, so pipeline changes regenerate them even when
+            # the .tex source is unchanged.
             case $format in
-                pdf)  previous_hash=$(getpdfhash "${base_dir}/public/docs/${texfile%.tex}.pdf") ;;
-                html) previous_hash=$(gethtmlhash "${base_dir}/public/docs/${texfile%.tex}.html") ;;
+                pdf)
+                    previous_hash=$(getpdfhash "${base_dir}/public/docs/${texfile%.tex}.pdf")
+                    wanted_hash=$current_hash
+                ;;
+                html)
+                    html_artifact="${base_dir}/public/docs/${texfile%.tex}.html"
+                    previous_hash="$(gethtmlhash "$html_artifact")+$(gethtmlpipeline "$html_artifact")"
+                    # shellcheck disable=SC2154 # assigned in utilities/latex.sh
+                    wanted_hash="${current_hash}+${latexml_pipeline_version}"
+                ;;
                 *)
                     >&2 echo "Unknown format '$format' for $texfile in latex.manifest"
                     exit 1
                 ;;
             esac
-            if [[ $current_hash == "$previous_hash" ]]
+            if [[ $wanted_hash == "$previous_hash" ]]
             then
                 echo "Skipping: $texfile ($format unchanged)"
                 continue

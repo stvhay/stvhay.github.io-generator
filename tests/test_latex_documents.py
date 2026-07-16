@@ -131,6 +131,37 @@ class TestHtmlDocuments:
                 "see the build output and add or fix a .ltxml binding"
             )
 
+    def test_documents_carry_strict_csp(self, public_dir):
+        """Each document declares a per-page CSP that blocks all scripts
+        (default-src 'none') without 'unsafe-inline': inline styles are
+        converted to a <style> block allowed by hash. The hash must match
+        the block's exact bytes — reformatting the file breaks it, which
+        is why public/docs/ is excluded in .prettierignore."""
+        import base64
+
+        for doc in html_documents():
+            soup = parse_html(public_dir / "docs" / f"{doc}.html")
+            csp = soup.find("meta", {"http-equiv": "Content-Security-Policy"})
+            assert csp, f"{doc}.html: missing Content-Security-Policy meta"
+            policy = csp["content"]
+            assert "default-src 'none'" in policy, f"{doc}.html: weak CSP"
+            assert "'unsafe-inline'" not in policy, (
+                f"{doc}.html: CSP contains 'unsafe-inline'"
+            )
+            assert not soup.find_all("script"), f"{doc}.html: has scripts"
+            assert not soup.select("[style]"), (
+                f"{doc}.html: inline style attributes remain; conversion "
+                "in utilities/latexml_postprocess.py did not run"
+            )
+            style = soup.find("style")
+            if style is not None:
+                digest = hashlib.sha256(style.string.encode("utf-8")).digest()
+                expected = f"'sha256-{base64.b64encode(digest).decode()}'"
+                assert expected in policy, (
+                    f"{doc}.html: CSP style hash does not match the <style> "
+                    "block; was the file reformatted after generation?"
+                )
+
     def test_documents_have_title_and_language(self, public_dir):
         """Basic accessibility: a non-empty <title> and an html lang."""
         for doc in html_documents():
@@ -156,14 +187,14 @@ class TestSiteCssAnchors:
 
     def test_cv_letterhead_anchor(self, public_dir):
         """The rule hiding the CV's duplicate document title matches
-        .ltx_document:has(#p1 span[style*="173%"]) > .ltx_title_document."""
+        .ltx_document:has(#p1 .ltxs-font-size-173) > .ltx_title_document."""
         soup = self.cv_html(public_dir)
         assert soup.find("h1", class_="ltx_title_document"), (
             "CV lost its document title heading"
         )
         p1 = soup.find(id="p1")
         assert p1 is not None, "CV letterhead is no longer paragraph #p1"
-        assert p1.find("span", style=lambda s: s and "173%" in s), (
+        assert p1.find("span", class_="ltxs-font-size-173"), (
             "letterhead name span no longer carries font-size 173%; the "
             "title-hiding rule in static/css/latexml/site.css won't match"
         )

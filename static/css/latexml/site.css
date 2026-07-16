@@ -60,9 +60,10 @@ h1.ltx_title_document {
  * title (kept for the <title> tag, crawlers, and assistive tech) would
  * print the name twice. Visually hide it, mirroring the site's
  * .sr-only utility. Keyed to the letterhead's oversized bold name
- * span, which only the CV template produces.
+ * span, which only the CV template produces (inline style converted
+ * to a class by latexml_postprocess.py).
  */
-.ltx_document:has(#p1 span[style*="173%"]) > .ltx_title_document {
+.ltx_document:has(#p1 .ltxs-font-size-173) > .ltx_title_document {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -98,12 +99,6 @@ a {
     background-color: currentColor !important;
 }
 
-/* The generated footer timestamps builds with SOURCE_DATE_EPOCH (1980
-   under nix), which reads as nonsense; LaTeXML is credited in README. */
-.ltx_page_footer {
-    display: none;
-}
-
 /*
  * Document lists. The CV template builds its layout from lists nested
  * three deep; browser-default list padding compounds to ~120px of dead
@@ -119,13 +114,14 @@ a {
 /*
  * Contact separators: the CV's \bull macro emits 400%-size math dots
  * pulled below the baseline, which render as giant misaligned bullets.
- * The contact block is the document's first paragraph (#p1).
+ * The contact block is the document's first paragraph (#p1); the
+ * .ltxs-* classes are inline styles converted by latexml_postprocess.py.
  */
 #p1 math mo {
     font-size: 1.2em;
 }
 
-#p1 span[style*="position: relative"] {
+#p1 span[class*="ltxs-position-relative"] {
     position: static !important;
 }
 

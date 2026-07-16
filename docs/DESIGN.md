@@ -93,9 +93,14 @@ from `static/css/latexml/`:
   bold, site heading scale), flattens the CV template's deep list
   nesting, and provides an ink-friendly `@media print` layer.
 - Some rules key on LaTeXML markup details (e.g. the CV letterhead's
-  oversized name span); pytest anchor tests in
+  oversized name span, exposed as an `ltxs-*` class by
+  `utilities/latexml_postprocess.py`); pytest anchor tests in
   `tests/test_latex_documents.py` fail if a LaTeXML upgrade changes
   that markup so the rules don't silently stop applying.
+- Each document page carries its own Content-Security-Policy, stricter
+  than the site's: all scripts blocked, no `unsafe-inline` (inline
+  styles are converted to a CSP-hashed `<style>` block). See
+  `latex/README.md`.
 - Document pages load no JavaScript, so dark mode follows
   `prefers-color-scheme` only — the site's manual theme toggle does
   not affect them.

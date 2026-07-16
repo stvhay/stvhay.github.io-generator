@@ -49,6 +49,16 @@ site.
 PDF metadata) without being typeset as long as `\maketitle` is never
 called.
 
+`utilities/latexml_postprocess.py` finishes each generated page: it
+converts LaTeXML's inline style attributes into classes in one hashed
+`<style>` block, which lets every document carry a strict per-page
+Content-Security-Policy (`default-src 'none'`, no `unsafe-inline`).
+The build stamps pages with a pipeline version alongside the source
+hash — bump `latexml_pipeline_version` in `utilities/latex.sh` when
+post-processing changes so published documents regenerate. Generated
+pages must not be reformatted (the CSP hash covers the `<style>`
+bytes), so `public/docs/` is excluded in `.prettierignore`.
+
 ## Styling
 
 Generated HTML links the shared stylesheets in `static/css/latexml/`;
