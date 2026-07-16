@@ -5,6 +5,13 @@ on:
     branches:
       - main
 
+# Serialize deploys: parallel runs race on the publish push, and the
+# loser fails on a non-fast-forward. Queue instead of cancelling so
+# every push still deploys.
+concurrency:
+  group: website-deploy
+  cancel-in-progress: false
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
