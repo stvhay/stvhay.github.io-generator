@@ -49,6 +49,78 @@ a {
     display: none;
 }
 
+/*
+ * Document lists. The CV template builds its layout from lists nested
+ * three deep; browser-default list padding compounds to ~120px of dead
+ * margin, crippling narrow screens. One modest step per level instead.
+ */
+.ltx_itemize,
+.ltx_enumerate {
+    padding-left: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/*
+ * Items whose tag is a bold run-in heading (CV roles and degrees) flow
+ * their body below the heading instead of squeezing into the space
+ * beside it. Genuine bullet lists have plain markers in the tag and
+ * keep LaTeXML's inline layout.
+ */
+li.ltx_item:has(> .ltx_tag .ltx_font_bold) > .ltx_tag + .ltx_para {
+    display: block;
+}
+
+/*
+ * Contact separators: the CV's \bull macro emits 400%-size math dots
+ * pulled below the baseline, which render as giant misaligned bullets.
+ * The contact block is the document's first paragraph (#p1).
+ */
+#p1 math mo {
+    font-size: 1.2em;
+}
+
+#p1 span[style*="position: relative"] {
+    position: static !important;
+}
+
+@media (max-width: 768px) {
+    .ltx_itemize,
+    .ltx_enumerate {
+        padding-left: 0.9rem;
+    }
+}
+
+/*
+ * Print: ink-friendly page on white, no artificial column cap, and keep
+ * headings attached to the content they introduce. Placed last so it
+ * also wins over the dark-mode block when both media apply.
+ */
+@media print {
+    body {
+        background-color: #fff;
+        color: #000;
+    }
+
+    a {
+        color: inherit;
+    }
+
+    .ltx_page_main {
+        max-width: none;
+        padding: 0;
+    }
+
+    h1,
+    h2 {
+        break-after: avoid;
+    }
+
+    li.ltx_item {
+        break-inside: avoid;
+    }
+}
+
 @media (prefers-color-scheme: dark) {
     body {
         background-color: #121212;
