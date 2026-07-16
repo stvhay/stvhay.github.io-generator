@@ -22,5 +22,7 @@ tmp/
 
 # LaTeX build output (mounted to static/docs/ via hugo.toml)
 latex/output/
+# Private LaTeX drafts — not website content, never published
+latex-drafts/
 # lychee external link check cache (see lychee.toml)
 .lycheecache
