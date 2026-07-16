@@ -83,11 +83,19 @@ head = (
     '<link rel="icon" href="/favicon.svg" type="image/svg+xml">'
     '<link rel="stylesheet" href="/css/latexml/LaTeXML.css" type="text/css">'
     '<link rel="stylesheet" href="/css/latexml/ltx-article.css" type="text/css">'
+    '<link rel="stylesheet" href="/css/latexml/site.css" type="text/css">'
     f'<meta name="texhash" content="{texhash}">'
 )
 html = open(path, encoding="utf-8").read()
 if "</head>" not in html:
     sys.exit(f"no </head> in {path}")
+# LaTeXML declares the encoding with the legacy http-equiv form; swap it
+# for the HTML5 charset meta the site standard expects.
+html = html.replace(
+    '<meta http-equiv="content-type" content="text/html; charset=UTF-8">',
+    '<meta charset="utf-8">',
+    1,
+)
 open(path, "w", encoding="utf-8").write(html.replace("</head>", head + "</head>", 1))
 PYEOF
 }

@@ -108,9 +108,9 @@ GitHub Actions builds and deploys on push to `main`. See `.github/workflows/webs
   contributors, licensed [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 - Document stylesheets (`static/css/latexml/`) are copied from
   [LaTeXML](https://github.com/brucemiller/LaTeXML) 0.8.8 (`LaTeXML.css`,
-  `ltx-article.css`), a public-domain work of NIST. Shared site-wide so
-  generated documents stay self-contained and the styling can be customized
-  to match the site.
+  `ltx-article.css`), a public-domain work of NIST. They are kept unmodified
+  so upgrades can replace them wholesale; site-specific styling for generated
+  documents lives in `site.css` alongside them.
 
 ## AI-Assisted Development
 

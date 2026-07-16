@@ -1,0 +1,55 @@
+/*
+ * Site overrides for LaTeXML-generated documents.
+ *
+ * LaTeXML.css and ltx-article.css are unmodified copies from the LaTeXML
+ * distribution so they can be replaced wholesale on upgrades; everything
+ * matching this site's visual style belongs here. Loaded last, after the
+ * two stock sheets. Palette values mirror assets/css/main.css; documents
+ * have no theme-toggle script, so dark mode follows the system preference
+ * only.
+ */
+
+@font-face {
+    font-family: "Source Serif 4";
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("/fonts/SourceSerif4-VariableFont_opsz,wght.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Source Serif 4";
+    font-style: italic;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("/fonts/SourceSerif4-Italic-VariableFont_opsz,wght.ttf") format("truetype");
+}
+
+body {
+    font-family: "Source Serif 4", Georgia, serif;
+    background-color: #faf7f2;
+    color: #1a1a1a;
+    line-height: 1.6;
+}
+
+/* Stock LaTeXML lets text span the whole window; give it a page. */
+.ltx_page_main {
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem;
+}
+
+a {
+    color: #0069d9;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #121212;
+        color: #e0e0e0;
+    }
+
+    a {
+        color: #e0d890;
+    }
+}
