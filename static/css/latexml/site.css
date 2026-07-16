@@ -25,22 +25,59 @@
     src: url("/fonts/SourceSerif4-Italic-VariableFont_opsz,wght.ttf") format("truetype");
 }
 
+/* Typography mirrors the site's base styles exactly (main.css): body
+   weight 300 with 1.5 line height, bold at 600, site heading scale. */
 body {
     font-family: "Source Serif 4", Georgia, serif;
+    font-weight: 300;
     background-color: #faf7f2;
     color: #1a1a1a;
-    line-height: 1.6;
+    line-height: 1.5;
+    text-rendering: optimizeLegibility;
 }
 
-/* Stock LaTeXML lets text span the whole window; give it a page. */
+b,
+strong,
+.ltx_font_bold {
+    font-weight: 600;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 600;
+}
+
+h1.ltx_title_document {
+    font-size: 2.5rem;
+}
+
+h2.ltx_title_section {
+    font-size: 1.5rem;
+}
+
+/* Stock LaTeXML lets text span the whole window; render the document
+   as a card on the page background, like the site's article pages. */
 .ltx_page_main {
     max-width: 46rem;
-    margin: 0 auto;
-    padding: 2.5rem 1.25rem;
+    margin: 2rem auto;
+    padding: 2.5rem 2rem;
+    background-color: #f2efe9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
 }
 
 a {
     color: #0069d9;
+}
+
+/* LaTeXML emits \hrule as a span with inline "background: black";
+   currentColor keeps rules matching the text in every theme. */
+.ltx_rule {
+    background-color: currentColor !important;
 }
 
 /* The generated footer timestamps builds with SOURCE_DATE_EPOCH (1980
@@ -89,6 +126,11 @@ li.ltx_item:has(> .ltx_tag .ltx_font_bold) > .ltx_tag + .ltx_para {
     .ltx_enumerate {
         padding-left: 0.9rem;
     }
+
+    .ltx_page_main {
+        margin: 0.75rem;
+        padding: 1.5rem 1rem;
+    }
 }
 
 /*
@@ -108,7 +150,11 @@ li.ltx_item:has(> .ltx_tag .ltx_font_bold) > .ltx_tag + .ltx_para {
 
     .ltx_page_main {
         max-width: none;
+        margin: 0;
         padding: 0;
+        background-color: #fff;
+        border: none;
+        border-radius: 0;
     }
 
     h1,
@@ -125,6 +171,11 @@ li.ltx_item:has(> .ltx_tag .ltx_font_bold) > .ltx_tag + .ltx_para {
     body {
         background-color: #121212;
         color: #e0e0e0;
+    }
+
+    .ltx_page_main {
+        background-color: #222;
+        border-color: #444;
     }
 
     a {
