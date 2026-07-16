@@ -67,18 +67,29 @@ nix develop --command pytest tests/ -m "not external" # tests (no network)
 
 1. **Reset `public/`**: clone the hosting repo if needed, otherwise reset
    and pull. `git rm --cached` everything except `.gitignore` and previously
-   built PDFs (recovered from `main` via `git checkout main docs/...pdf`).
-2. **LaTeX compile, hash-cached**: for each entry in `latex/latex.manifest`,
-   compute SHA-384 of the `.tex` source and compare against `XMP-pdfx:texhash`
-   embedded in the existing PDF. If they match, skip. Otherwise: `latexmk`,
-   then `exiftool` to embed the new hash into the rebuilt PDF.
-3. **Place outputs**: built PDFs are moved to `latex/output/<doc>/<doc>.pdf`.
+   built document artifacts (recovered from `main` via
+   `git checkout main docs/...`; only the formats still requested by the
+   manifest are restored, so dropped formats disappear from the site).
+2. **LaTeX compile, hash-cached**: each `latex/latex.manifest` line is
+   `<doc.tex> [formats]` with formats `pdf` and/or `html` (default `pdf`).
+   For each requested artifact, compute SHA-384 of the `.tex` source and
+   compare against the hash stamped in the existing artifact
+   (`XMP-pdfx:texhash` metadata in PDFs, a `texhash` `<meta>` tag in HTML).
+   If they match, skip. Otherwise rebuild: `latexmk` + `exiftool` for PDFs;
+   `latexmlc` (LaTeXML) for HTML, followed by head fix-ups (HTML5 charset,
+   favicon, hash stamp, and links to the shared stylesheets under
+   `static/css/latexml/` — generated documents carry no resources of their
+   own). Helpers live in `utilities/latex.sh`, shared with `./render`.
+3. **Place outputs**: built artifacts land in `latex/output/<doc>/`.
    Hugo's `[module.mounts]` config (see `hugo.toml`) maps `latex/output` to
-   `static/docs`, so PDFs appear at site URL `/docs/<doc>/<doc>.pdf` (e.g.
-   `/docs/cv/cv-steve-hay.pdf`).
-4. **Run Hugo**: produces the static site in `public/`.
+   `static/docs`, so documents appear at site URL `/docs/<doc>/<doc>.<ext>`
+   (e.g. `/docs/cv/cv-steve-hay.pdf`).
+4. **Run Hugo**: produces the static site in `public/`. A custom
+   `layouts/_default/sitemap.xml` reads the manifest (mounted as an asset)
+   and lists each HTML document, since site links intentionally point at
+   the PDFs (the HTML versions exist for crawlers and accessibility).
 5. **Prettier**: format all generated HTML.
-6. **Clean**: remove built PDFs from `latex/output/` (they live in the
+6. **Clean**: remove built artifacts from `latex/output/` (they live in the
    hosting repo, not the source repo).
 7. **Report status** for both repos.
 
@@ -135,15 +146,15 @@ private out of courtesy to the professor).
 
 ## URL paths worth remembering
 
-| URL                                    | Source                                                               |
-| -------------------------------------- | -------------------------------------------------------------------- |
-| `/`                                    | `layouts/_default/home.html` + `content/_index` (none → empty)       |
-| `/portfolio/`, `/writing/`             | `layouts/_default/list.html` + each `content/<section>/_index.md`    |
-| `/portfolio/<slug>/` etc.              | `layouts/_default/single.html` + `content/<section>/<slug>/index.md` |
-| `/docs/cv/cv-steve-hay.pdf`            | `latex/output/cv/cv-steve-hay.pdf` (via Hugo mount)                  |
-| `/docs/experience-prosopagnosia/*.pdf` | same mechanism                                                       |
-| `/cns/`, `/plasma/`, `/s3m/`           | `static/` (served as-is)                                             |
-| `/js/`, `/favicon.ico`, `/robots.txt`  | `static/` (served as-is)                                             |
+| URL                                   | Source                                                               |
+| ------------------------------------- | -------------------------------------------------------------------- |
+| `/`                                   | `layouts/_default/home.html` + `content/_index` (none → empty)       |
+| `/portfolio/`, `/writing/`            | `layouts/_default/list.html` + each `content/<section>/_index.md`    |
+| `/portfolio/<slug>/` etc.             | `layouts/_default/single.html` + `content/<section>/<slug>/index.md` |
+| `/docs/cv/cv-steve-hay.{pdf,html}`    | `latex/output/cv/cv-steve-hay.*` (via Hugo mount)                    |
+| `/docs/experience-prosopagnosia/*`    | same mechanism (PDF and HTML per `latex/latex.manifest`)             |
+| `/cns/`, `/plasma/`, `/s3m/`          | `static/` (served as-is)                                             |
+| `/js/`, `/favicon.ico`, `/robots.txt` | `static/` (served as-is)                                             |
 
 ## Security model
 
