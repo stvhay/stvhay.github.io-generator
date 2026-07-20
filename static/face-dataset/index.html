@@ -100,10 +100,121 @@
       width: 7px;
     }
 
+    .categories {
+      display: grid;
+      gap: 16px;
+    }
+
+    .category {
+      background: var(--surface);
+      border: 1px solid var(--faint);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .category > summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 20px 52px 20px 20px;
+      position: relative;
+    }
+
+    .category > summary::-webkit-details-marker { display: none; }
+
+    .category > summary:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: -3px;
+    }
+
+    .category > summary::after {
+      color: var(--accent);
+      content: "+";
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+    }
+
+    .category[open] > summary {
+      border-bottom: 1px solid var(--faint);
+    }
+
+    .category[open] > summary::after { content: "−"; }
+
+    .category-summary-layout {
+      align-items: center;
+      display: grid;
+      gap: 20px;
+      grid-template-columns: minmax(0, 1fr) minmax(220px, 360px);
+    }
+
+    .category-title-row {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+    }
+
+    .category-title {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin: 0;
+    }
+
+    .category-count {
+      background: var(--accent-soft);
+      border-radius: 999px;
+      color: var(--accent);
+      font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 4px 8px;
+      text-transform: uppercase;
+    }
+
+    .category-description,
+    .category-method {
+      color: var(--secondary);
+      font-size: 13px;
+      line-height: 1.45;
+      margin: 8px 0 0;
+    }
+
+    .category-method { color: var(--muted); }
+
+    .method-label {
+      color: var(--secondary);
+      font-weight: 700;
+    }
+
+    .category-previews {
+      display: grid;
+      gap: 8px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .category-preview {
+      aspect-ratio: 4 / 3;
+      background: #f1f3f2;
+      border: 1px solid var(--faint);
+      border-radius: 4px;
+      display: block;
+      object-fit: cover;
+      width: 100%;
+    }
+
     .grid {
       display: grid;
       gap: 24px;
       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .category-grid {
+      background: var(--paper);
+      padding: 24px;
     }
 
     .card {
@@ -220,6 +331,8 @@
 
     @media (max-width: 720px) {
       header, main { padding: 24px 16px; }
+      .category-summary-layout { grid-template-columns: 1fr; }
+      .category-grid { padding: 16px; }
       .grid { grid-template-columns: 1fr; }
     }
   </style>
@@ -229,7 +342,7 @@
     <div class="header-inner">
       <p class="eyebrow">Synthetic face dataset</p>
       <h1>Face Space</h1>
-      <p class="lede">A working gallery for controlled identity, symmetry, pose, and independent feature transformations. This view updates as artifacts are generated.</p>
+      <p class="lede">A working gallery for controlled identity, symmetry, pose, independent feature transformations, and coarse 3D reconstruction. Open a category to explore the full set.</p>
     </div>
   </header>
 
@@ -238,7 +351,7 @@
       <div class="stage" id="stage">Loading stage…</div>
       <div class="sync"><span class="pulse"></span><span id="sync">Connecting…</span></div>
     </div>
-    <div id="gallery" class="grid" aria-live="polite" aria-busy="true"></div>
+    <div id="gallery" class="categories" aria-live="polite" aria-busy="true"></div>
   </main>
 
   <script>
@@ -246,6 +359,45 @@
     const stage = document.querySelector('#stage');
     const sync = document.querySelector('#sync');
     let lastRevision = '';
+
+    const categories = [
+      {
+        id: 'canonical',
+        title: 'Canonical identities',
+        summary: 'The approved male and female identity controls used throughout the dataset.',
+        method: 'Generated as neutral front-facing portraits, then selected by human review for identity and physical coherence.'
+      },
+      {
+        id: 'transformations',
+        title: 'Calibrated transformations',
+        summary: 'Controlled asymmetry, feature displacement, rotation, scaling, and an eye–mouth swap pilot.',
+        method: 'Each image conditions on a canonical identity while changing one intended feature or spatial relation.'
+      },
+      {
+        id: 'profiles',
+        title: 'Profiles and pilot views',
+        summary: 'Left and right profiles plus an early off-axis pose example.',
+        method: 'Views were generated from the canonical portrait with nominal yaw instructions and identity references.'
+      },
+      {
+        id: 'male-multiview',
+        title: 'Male multiview controls',
+        summary: 'A full yaw ring, pitch views, contact sheet, and ear details for the male control.',
+        method: 'Views were generated progressively from accepted neighbors; pose labels are nominal rather than measured.'
+      },
+      {
+        id: 'female-multiview',
+        title: 'Female multiview controls',
+        summary: 'A full yaw ring, pitch views, contact sheet, and ear details for the female control.',
+        method: 'Views were generated progressively from accepted neighbors; pose labels are nominal rather than measured.'
+      },
+      {
+        id: 'reconstructions',
+        title: '3D head reconstructions',
+        summary: 'Clay and textured turntables of the coarse male and female head models.',
+        method: 'Selected multiview images were fitted with KeenTools, then rendered as clay and textured review sheets.'
+      }
+    ];
 
     function textElement(tag, className, text) {
       const element = document.createElement(tag);
@@ -264,7 +416,7 @@
         const image = document.createElement('img');
         image.src = `${item.image}?v=${encodeURIComponent(revision)}`;
         image.alt = item.label;
-        image.loading = 'eager';
+        image.loading = 'lazy';
         imageShell.append(image);
       } else {
         imageShell.append(textElement('div', 'placeholder', item.status === 'generating' ? 'GENERATING…' : item.status.toUpperCase()));
@@ -295,6 +447,70 @@
       return card;
     }
 
+    function buildCategory(category, items, revision) {
+      const details = document.createElement('details');
+      details.className = 'category';
+
+      const summary = document.createElement('summary');
+      const layout = document.createElement('div');
+      layout.className = 'category-summary-layout';
+
+      const copy = document.createElement('div');
+      const titleRow = document.createElement('div');
+      titleRow.className = 'category-title-row';
+      titleRow.append(textElement('h2', 'category-title', category.title));
+      titleRow.append(textElement('span', 'category-count', `${items.length} images`));
+      copy.append(titleRow);
+      copy.append(textElement('p', 'category-description', category.summary));
+
+      const method = document.createElement('p');
+      method.className = 'category-method';
+      method.append(textElement('span', 'method-label', 'How it was made: '));
+      method.append(document.createTextNode(category.method));
+      copy.append(method);
+
+      const previews = document.createElement('div');
+      previews.className = 'category-previews';
+      previews.setAttribute('aria-hidden', 'true');
+      for (const item of items.slice(0, 3)) {
+        const preview = document.createElement('img');
+        preview.className = 'category-preview';
+        preview.src = `${item.image}?v=${encodeURIComponent(revision)}`;
+        preview.alt = '';
+        preview.loading = 'lazy';
+        previews.append(preview);
+      }
+
+      layout.append(copy, previews);
+      summary.append(layout);
+
+      const cards = document.createElement('div');
+      cards.className = 'grid category-grid';
+      let rendered = false;
+      details.addEventListener('toggle', () => {
+        if (details.open && !rendered) {
+          cards.replaceChildren(...items.map(item => buildCard(item, revision)));
+          rendered = true;
+        }
+      });
+
+      details.append(summary, cards);
+      return details;
+    }
+
+    function buildCategories(items, revision) {
+      const grouped = new Map(categories.map(category => [category.id, []]));
+      for (const item of items) {
+        const group = grouped.get(item.category);
+        if (!group) throw new Error(`unknown category: ${item.category || 'missing'}`);
+        group.push(item);
+      }
+
+      return categories
+        .filter(category => grouped.get(category.id).length > 0)
+        .map(category => buildCategory(category, grouped.get(category.id), revision));
+    }
+
     async function refresh() {
       try {
         const response = await fetch(`manifest.json?t=${Date.now()}`, { cache: 'no-store' });
@@ -302,7 +518,7 @@
         const data = await response.json();
         const revision = data.updated_at || JSON.stringify(data);
         if (revision !== lastRevision) {
-          gallery.replaceChildren(...data.items.map(item => buildCard(item, revision)));
+          gallery.replaceChildren(...buildCategories(data.items, revision));
           stage.textContent = data.stage;
           lastRevision = revision;
         }
