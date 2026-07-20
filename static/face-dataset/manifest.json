@@ -1,0 +1,518 @@
+{
+  "schema_version": 1,
+  "title": "Face Space \u2014 Controlled Variants",
+  "stage": "04 / Approved canonical 360\u00b0 multiview controls",
+  "updated_at": "2026-07-20T13:32:50Z",
+  "items": [
+    {
+      "id": "male-canonical",
+      "label": "Male canonical \u00b7 active control",
+      "sex": "male",
+      "status": "complete",
+      "image": "images/canonical/male-canonical.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Approved V5 \u00b7 natural asymmetry 2/5 \u00b7 active for all new variants",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "female-canonical",
+      "label": "Female canonical \u00b7 active control",
+      "sex": "female",
+      "status": "complete",
+      "image": "images/canonical/female-canonical.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Approved original female control",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "male-yaw-left-45",
+      "label": "Male Yaw Left 45",
+      "sex": "male",
+      "status": "complete",
+      "image": "images/multiview/male-yaw-left-45.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Multiview \u00b7 conditioned 45\u00b0 pilot \u00b7 generated and normalized",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "male-asymmetric-distributed",
+      "label": "Male Asymmetric Distributed",
+      "sex": "male",
+      "status": "complete",
+      "image": "images/asymmetry/male-asymmetric-distributed.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Distributed asymmetry \u00b7 accepted 5/5 calibration",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "female-asymmetric-distributed",
+      "label": "Female Asymmetric Distributed",
+      "sex": "female",
+      "status": "complete",
+      "image": "images/asymmetry/female-asymmetric-distributed.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Distributed asymmetry \u00b7 accepted 5/5",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "male-distortion-eye-into-nose",
+      "label": "Male unilateral eye vertical displacement",
+      "sex": "male",
+      "status": "complete",
+      "image": "images/distortions/01-male-eye-into-nose.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Vertical displacement \u00b7 strengthened from accepted 4/5 toward 5/5 \u00b7 age-match review pending",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "female-distortion-mouth-rotation",
+      "label": "Female Distortion Mouth Rotation",
+      "sex": "female",
+      "status": "complete",
+      "image": "images/distortions/02-female-mouth-rotated.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Mouth rotation \u00b7 accepted 5/5 calibration",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "male-distortion-ear-scale-translate",
+      "label": "Male Distortion Ear Scale Translate",
+      "sex": "male",
+      "status": "complete",
+      "image": "images/distortions/03-male-ear-scaled-raised.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Ear scale approximately 140% \u00b7 accepted 5/5 calibration",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "male-eye-pair-symmetry-preserving",
+      "label": "Male Eye Pair Symmetry Preserving",
+      "sex": "male",
+      "status": "complete",
+      "image": "images/transform-modes/eye-pair-symmetry-preserving.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Matched bilateral displacement \u00b7 strengthened after 3/5 rating \u00b7 review pending",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "male-eye-pair-asymmetry-only",
+      "label": "Male Eye Pair Asymmetry Only",
+      "sex": "male",
+      "status": "complete",
+      "image": "images/transform-modes/eye-pair-asymmetry-only.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Pair-center-preserving opposed eye shift \u00b7 accepted 4/5 calibration",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "male-eye-mouth-swap",
+      "label": "Male eye\u2013mouth swap pilot",
+      "sex": "male",
+      "status": "complete",
+      "image": "images/swaps/male-eye-mouth-swap.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Eye\u2013mouth swap \u00b7 anatomy/tissue realism needs rework \u00b7 current model limit suspected",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "male-profile-left",
+      "label": "Male Profile Left",
+      "sex": "male",
+      "status": "complete",
+      "image": "images/profiles/male-profile-left.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Full Left Profile \u00b7 yaw -90\u00b0 \u00b7 identity-conditioned \u00b7 accepted",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "male-profile-right",
+      "label": "Male Profile Right",
+      "sex": "male",
+      "status": "complete",
+      "image": "images/profiles/male-profile-right.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Full Right Profile \u00b7 yaw 90\u00b0 \u00b7 identity-conditioned \u00b7 accepted",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "female-profile-left",
+      "label": "Female Profile Left",
+      "sex": "female",
+      "status": "complete",
+      "image": "images/profiles/female-profile-left.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Full Left Profile \u00b7 yaw -90\u00b0 \u00b7 identity-conditioned \u00b7 accepted",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "female-profile-right",
+      "label": "Female Profile Right",
+      "sex": "female",
+      "status": "complete",
+      "image": "images/profiles/female-profile-right.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Full Right Profile \u00b7 yaw 90\u00b0 \u00b7 identity-conditioned \u00b7 accepted",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "male-yaw-ring-contact-sheet",
+      "label": "Male canonical \u00b7 360\u00b0 yaw ring",
+      "sex": "male",
+      "status": "complete",
+      "image": "images/multiview-controls/contact-sheets/male-yaw-ring.png",
+      "resolution": "1600 \u00d7 720",
+      "note": "12-view nominal 30\u00b0 ring \u00b7 approved control lineage \u00b7 live reconstruction input review",
+      "image_role": "contact_sheet"
+    },
+    {
+      "id": "male-yaw-neg030",
+      "label": "Male canonical yaw -30\u00b0",
+      "sex": "male",
+      "status": "complete",
+      "image": "images/multiview-controls/male/yaw-neg030.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Core 360\u00b0 ring \u00b7 nominal generator pose",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "male-yaw-pos030",
+      "label": "Male canonical yaw +30\u00b0",
+      "sex": "male",
+      "status": "complete",
+      "image": "images/multiview-controls/male/yaw-pos030.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Core 360\u00b0 ring \u00b7 nominal generator pose",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "male-yaw-neg060",
+      "label": "Male canonical yaw -60\u00b0",
+      "sex": "male",
+      "status": "complete",
+      "image": "images/multiview-controls/male/yaw-neg060.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Core 360\u00b0 ring \u00b7 nominal generator pose",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "male-yaw-pos060",
+      "label": "Male canonical yaw +60\u00b0",
+      "sex": "male",
+      "status": "complete",
+      "image": "images/multiview-controls/male/yaw-pos060.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Core 360\u00b0 ring \u00b7 nominal generator pose",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "male-yaw-neg090",
+      "label": "Male canonical yaw -90\u00b0",
+      "sex": "male",
+      "status": "complete",
+      "image": "images/multiview-controls/male/yaw-neg090.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Core 360\u00b0 ring \u00b7 nominal generator pose",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "male-yaw-pos090",
+      "label": "Male canonical yaw +90\u00b0",
+      "sex": "male",
+      "status": "complete",
+      "image": "images/multiview-controls/male/yaw-pos090.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Core 360\u00b0 ring \u00b7 nominal generator pose",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "male-yaw-neg120",
+      "label": "Male canonical yaw -120\u00b0",
+      "sex": "male",
+      "status": "complete",
+      "image": "images/multiview-controls/male/yaw-neg120.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Core 360\u00b0 ring \u00b7 nominal generator pose",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "male-yaw-pos120",
+      "label": "Male canonical yaw +120\u00b0",
+      "sex": "male",
+      "status": "complete",
+      "image": "images/multiview-controls/male/yaw-pos120.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Core 360\u00b0 ring \u00b7 nominal generator pose",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "male-yaw-neg150",
+      "label": "Male canonical yaw -150\u00b0",
+      "sex": "male",
+      "status": "complete",
+      "image": "images/multiview-controls/male/yaw-neg150.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Core 360\u00b0 ring \u00b7 nominal generator pose",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "male-yaw-pos150",
+      "label": "Male canonical yaw +150\u00b0",
+      "sex": "male",
+      "status": "complete",
+      "image": "images/multiview-controls/male/yaw-pos150.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Core 360\u00b0 ring \u00b7 nominal generator pose",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "male-yaw-pos180",
+      "label": "Male canonical yaw +180\u00b0",
+      "sex": "male",
+      "status": "complete",
+      "image": "images/multiview-controls/male/yaw-pos180.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Core 360\u00b0 ring \u00b7 nominal generator pose",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "male-pitch-neg025",
+      "label": "Male canonical pitch -25\u00b0",
+      "sex": "male",
+      "status": "complete",
+      "image": "images/multiview-controls/male/pitch-neg025.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Pitch supplement \u00b7 nominal generator pose",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "male-pitch-pos025",
+      "label": "Male canonical pitch +25\u00b0",
+      "sex": "male",
+      "status": "complete",
+      "image": "images/multiview-controls/male/pitch-pos025.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Pitch supplement \u00b7 nominal generator pose",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "male-ear-left-detail",
+      "label": "Male canonical left ear detail",
+      "sex": "male",
+      "status": "complete",
+      "image": "images/multiview-controls/male/ear-left-detail.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "High-resolution registration supplement",
+      "image_role": "detail_reference"
+    },
+    {
+      "id": "male-ear-right-detail",
+      "label": "Male canonical right ear detail",
+      "sex": "male",
+      "status": "complete",
+      "image": "images/multiview-controls/male/ear-right-detail.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "High-resolution registration supplement",
+      "image_role": "detail_reference"
+    },
+    {
+      "id": "female-yaw-ring-contact-sheet",
+      "label": "Female canonical \u00b7 360\u00b0 yaw ring",
+      "sex": "female",
+      "status": "complete",
+      "image": "images/multiview-controls/contact-sheets/female-yaw-ring.png",
+      "resolution": "1600 \u00d7 720",
+      "note": "12-view nominal 30\u00b0 ring \u00b7 approved control lineage \u00b7 live reconstruction input review",
+      "image_role": "contact_sheet"
+    },
+    {
+      "id": "female-yaw-neg030",
+      "label": "Female canonical yaw -30\u00b0",
+      "sex": "female",
+      "status": "complete",
+      "image": "images/multiview-controls/female/yaw-neg030.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Core 360\u00b0 ring \u00b7 nominal generator pose",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "female-yaw-pos030",
+      "label": "Female canonical yaw +30\u00b0",
+      "sex": "female",
+      "status": "complete",
+      "image": "images/multiview-controls/female/yaw-pos030.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Core 360\u00b0 ring \u00b7 nominal generator pose",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "female-yaw-neg060",
+      "label": "Female canonical yaw -60\u00b0",
+      "sex": "female",
+      "status": "complete",
+      "image": "images/multiview-controls/female/yaw-neg060.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Core 360\u00b0 ring \u00b7 nominal generator pose",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "female-yaw-pos060",
+      "label": "Female canonical yaw +60\u00b0",
+      "sex": "female",
+      "status": "complete",
+      "image": "images/multiview-controls/female/yaw-pos060.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Core 360\u00b0 ring \u00b7 nominal generator pose",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "female-yaw-neg090",
+      "label": "Female canonical yaw -90\u00b0",
+      "sex": "female",
+      "status": "complete",
+      "image": "images/multiview-controls/female/yaw-neg090.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Core 360\u00b0 ring \u00b7 nominal generator pose",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "female-yaw-pos090",
+      "label": "Female canonical yaw +90\u00b0",
+      "sex": "female",
+      "status": "complete",
+      "image": "images/multiview-controls/female/yaw-pos090.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Core 360\u00b0 ring \u00b7 nominal generator pose",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "female-yaw-neg120",
+      "label": "Female canonical yaw -120\u00b0",
+      "sex": "female",
+      "status": "complete",
+      "image": "images/multiview-controls/female/yaw-neg120.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Core 360\u00b0 ring \u00b7 nominal generator pose",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "female-yaw-pos120",
+      "label": "Female canonical yaw +120\u00b0",
+      "sex": "female",
+      "status": "complete",
+      "image": "images/multiview-controls/female/yaw-pos120.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Core 360\u00b0 ring \u00b7 nominal generator pose",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "female-yaw-neg150",
+      "label": "Female canonical yaw -150\u00b0",
+      "sex": "female",
+      "status": "complete",
+      "image": "images/multiview-controls/female/yaw-neg150.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Core 360\u00b0 ring \u00b7 nominal generator pose",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "female-yaw-pos150",
+      "label": "Female canonical yaw +150\u00b0",
+      "sex": "female",
+      "status": "complete",
+      "image": "images/multiview-controls/female/yaw-pos150.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Core 360\u00b0 ring \u00b7 nominal generator pose",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "female-yaw-pos180",
+      "label": "Female canonical yaw +180\u00b0",
+      "sex": "female",
+      "status": "complete",
+      "image": "images/multiview-controls/female/yaw-pos180.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Core 360\u00b0 ring \u00b7 nominal generator pose",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "female-pitch-neg025",
+      "label": "Female canonical pitch -25\u00b0",
+      "sex": "female",
+      "status": "complete",
+      "image": "images/multiview-controls/female/pitch-neg025.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Pitch supplement \u00b7 nominal generator pose",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "female-pitch-pos025",
+      "label": "Female canonical pitch +25\u00b0",
+      "sex": "female",
+      "status": "complete",
+      "image": "images/multiview-controls/female/pitch-pos025.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "Pitch supplement \u00b7 nominal generator pose",
+      "image_role": "normalized_portrait"
+    },
+    {
+      "id": "female-ear-left-detail",
+      "label": "Female canonical left ear detail",
+      "sex": "female",
+      "status": "complete",
+      "image": "images/multiview-controls/female/ear-left-detail.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "High-resolution registration supplement",
+      "image_role": "detail_reference"
+    },
+    {
+      "id": "female-ear-right-detail",
+      "label": "Female canonical right ear detail",
+      "sex": "female",
+      "status": "complete",
+      "image": "images/multiview-controls/female/ear-right-detail.png",
+      "resolution": "1024 \u00d7 1024",
+      "note": "High-resolution registration supplement",
+      "image_role": "detail_reference"
+    },
+    {
+      "id": "male-head-clay-yaw-ring",
+      "label": "Male 3D head \u00b7 clay turntable",
+      "sex": "male",
+      "status": "complete",
+      "image": "images/3d-heads/male-clay-yaw-ring.png",
+      "resolution": "1600 \u00d7 800",
+      "note": "Coarse reconstructed surface \u00b7 eight-view clay review \u00b7 geometry guide, not scan-level anatomy",
+      "image_role": "contact_sheet"
+    },
+    {
+      "id": "male-head-textured-fitted-views",
+      "label": "Male 3D head \u00b7 textured fitted views",
+      "sex": "male",
+      "status": "complete",
+      "image": "images/3d-heads/male-textured-fitted-views.png",
+      "resolution": "1600 \u00d7 800",
+      "note": "Textured reconstruction review \u00b7 fitted-camera viewpoints \u00b7 coarse identity and coverage check",
+      "image_role": "contact_sheet"
+    },
+    {
+      "id": "female-head-clay-yaw-ring",
+      "label": "Female 3D head \u00b7 clay turntable",
+      "sex": "female",
+      "status": "complete",
+      "image": "images/3d-heads/female-clay-yaw-ring.png",
+      "resolution": "1056 \u00d7 528",
+      "note": "Coarse reconstructed surface \u00b7 eight-view clay review \u00b7 geometry guide, not scan-level anatomy",
+      "image_role": "contact_sheet"
+    },
+    {
+      "id": "female-head-textured-yaw-ring",
+      "label": "Female 3D head \u00b7 textured turntable",
+      "sex": "female",
+      "status": "complete",
+      "image": "images/3d-heads/female-textured-yaw-ring.png",
+      "resolution": "1056 \u00d7 528",
+      "note": "Textured reconstruction review \u00b7 eight-view coverage check \u00b7 coarse guide with visible texture boundaries",
+      "image_role": "contact_sheet"
+    }
+  ]
+}
