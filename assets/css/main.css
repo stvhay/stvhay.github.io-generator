@@ -365,6 +365,7 @@ ul {
 }
 
 .article {
+    display: flow-root;
     padding: 2rem;
     /*
      * Cap the reading measure: the 100ch .container gives ~90+

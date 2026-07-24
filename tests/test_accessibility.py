@@ -276,6 +276,23 @@ class TestImageAccessibility:
 
 
 @pytest.mark.accessibility
+class TestResponsiveArticleLayout:
+    """Tests for single-page article layout containment."""
+
+    def test_article_contains_floated_hero(self):
+        """Short articles keep their floated hero inside the card."""
+        import re
+
+        css = (
+            Path(__file__).parent.parent / "assets" / "css" / "main.css"
+        ).read_text()
+        article = re.search(r"\.article\s*\{([^}]+)\}", css)
+
+        assert article
+        assert "display: flow-root" in article.group(1)
+
+
+@pytest.mark.accessibility
 class TestTouchTargets:
     """Tests for pointer target sizing."""
 
