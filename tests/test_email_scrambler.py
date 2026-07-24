@@ -48,6 +48,15 @@ def test_no_eval_usage(js_scrambler):
 
 
 @pytest.mark.javascript
+def test_visibility_changes_are_csp_safe(js_scrambler):
+    """Widget state uses native visibility rather than blocked inline styles."""
+    content = js_scrambler.read_text()
+    assert ".style." not in content
+    assert "button.hidden = true" in content
+    assert "button.hidden = false" in content
+
+
+@pytest.mark.javascript
 def test_uses_text_content(js_scrambler):
     """Verify textContent is used instead of innerHTML."""
     content = js_scrambler.read_text()

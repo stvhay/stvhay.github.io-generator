@@ -153,8 +153,8 @@ function setupEmailReveal(
   });
 
   button.addEventListener("click", async function () {
-    // Hide button immediately to prevent layout shift during animation
-    button.style.display = "none";
+    // Native hidden state works with the site's strict no-inline-style CSP.
+    button.hidden = true;
 
     try {
       // Unscramble with animation
@@ -178,7 +178,7 @@ function setupEmailReveal(
     } catch (error) {
       console.error("Error unscrambling email:", error);
       // Show button again with error message if something fails
-      button.style.display = "inline-block";
+      button.hidden = false;
       button.textContent = "Error - Refresh page";
       button.disabled = true;
     }
