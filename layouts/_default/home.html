@@ -3,9 +3,10 @@
     <h1>{{ (.Site.GetPage "/about").Title }}</h1>
     {{ (.Site.GetPage "/about").Content }}
   </section>
-  <section id="portfolio" class="container">
+  <section id="portfolio" class="container" aria-labelledby="portfolio-heading">
+    <h2 id="portfolio-heading">Portfolio</h2>
     {{ range where site.RegularPages "Section" "portfolio" }}
-      {{- partial "post-card.html" (dict "page" .) }}
+      {{- partial "post-card.html" (dict "page" . "headingLevel" 3) }}
     {{- end }}
   </section>
 

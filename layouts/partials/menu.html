@@ -42,6 +42,6 @@ Renders a menu for the given menu ID.
             {{- printf " %s=%q" $k $v | safeHTMLAttr -}}
           {{- end -}}
         {{- end -}}
-      >{{ $name }}</a>
+      >{{ $name }}{{ if and (eq .Params.target "_blank") (strings.HasSuffix .URL ".pdf") }}<span class="sr-only"> (PDF, opens in a new tab)</span>{{ end }}</a>
   {{- end -}}
 {{- end -}}

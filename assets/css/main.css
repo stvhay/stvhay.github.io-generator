@@ -345,18 +345,18 @@ ul {
     margin-bottom: 0.5rem;
 }
 
-.post-text h2 {
+.post-title {
     font-size: 1.25rem;
     line-height: 1.3;
 }
 
-.post-text h2 a {
+.post-title a {
     text-decoration: none;
     color: var(--color-text-primary);
     transition: color 0.3s ease;
 }
 
-.post-text h2 a:hover {
+.post-title a:hover {
     color: var(--color-accent-hover);
     text-decoration: underline;
 }
