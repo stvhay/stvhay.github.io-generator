@@ -56,13 +56,13 @@
       document.documentElement.removeAttribute("data-theme");
     }
 
-    const themeColor = document.querySelector('meta[name="theme-color"]');
-    if (themeColor) {
+    const themeColors = document.querySelectorAll('meta[name="theme-color"]');
+    themeColors.forEach((themeColor) => {
       themeColor.setAttribute(
         "content",
         THEME_COLORS[theme || getSystemTheme()],
       );
-    }
+    });
   }
 
   function updateButtonText(button) {

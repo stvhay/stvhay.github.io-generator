@@ -136,19 +136,22 @@ def test_theme_toggle_storage_key(js_theme_toggle):
 
 
 def test_theme_color_meta_precedes_blocking_init():
-    """Theme initialization can update browser chrome before first paint."""
+    """Browser chrome follows system color even when JavaScript is unavailable."""
     head = (
         Path(__file__).parent.parent / "layouts" / "partials" / "head.html"
     ).read_text()
-    assert head.count('name="theme-color"') == 1
+    assert head.count('name="theme-color"') == 2
+    assert "(prefers-color-scheme: light)" in head
+    assert "(prefers-color-scheme: dark)" in head
     assert head.index('name="theme-color"') < head.index("/js/theme-init.js")
 
 
 def test_theme_scripts_update_theme_color(js_theme_init, js_theme_toggle):
-    """Initial, manual, and system changes all synchronize browser chrome."""
+    """Initial, manual, and system changes synchronize both fallback metas."""
     for script in (js_theme_init, js_theme_toggle):
         content = script.read_text()
         assert 'meta[name="theme-color"]' in content
+        assert "querySelectorAll" in content
         assert "THEME_COLORS" in content
 
 

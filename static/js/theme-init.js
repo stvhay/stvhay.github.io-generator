@@ -22,8 +22,8 @@
         (window.matchMedia("(prefers-color-scheme: dark)").matches
             ? "dark"
             : "light");
-    var themeColor = document.querySelector('meta[name="theme-color"]');
-    if (themeColor) {
-        themeColor.setAttribute("content", THEME_COLORS[effective]);
+    var themeColors = document.querySelectorAll('meta[name="theme-color"]');
+    for (var i = 0; i < themeColors.length; i++) {
+        themeColors[i].setAttribute("content", THEME_COLORS[effective]);
     }
 })();
