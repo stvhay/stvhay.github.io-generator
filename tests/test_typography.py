@@ -29,7 +29,7 @@ def test_display_type_is_fluid_compact_and_balanced():
 def test_heading_roles_use_the_documented_scale():
     section = declarations("h2")
     minor = declarations("h3,\nh4,\nh5,\nh6")
-    card = declarations(".post-text h2")
+    card = declarations(".post-title")
 
     assert "font-size: 1.5rem" in section
     assert "line-height: 1.25" in section

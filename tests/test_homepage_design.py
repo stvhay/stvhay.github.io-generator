@@ -1,5 +1,7 @@
 """Regression tests for the generated homepage design."""
 
+from pathlib import Path
+
 from conftest import parse_html
 
 
@@ -25,3 +27,26 @@ def test_cv_link_discloses_pdf_and_new_tab_behavior(public_dir):
 
     assert cv_link.get_text(" ", strip=True) == "CV (PDF, opens in a new tab)"
     assert cv_link.find("span", class_="sr-only") is not None
+
+
+def test_homepage_features_only_the_first_editorially_weighted_project(public_dir):
+    homepage = parse_html(public_dir / "index.html")
+    portfolio = homepage.find("section", id="portfolio")
+    cards = portfolio.select("article.post.card")
+    featured = portfolio.select("article.featured-project")
+
+    assert len(cards) == 9
+    assert len(featured) == 1
+    assert featured[0] == cards[0]
+    assert featured[0].find(class_="featured-label").get_text(strip=True) == "Featured project"
+    assert "Using Augmented Reality" in featured[0].find(class_="post-title").get_text()
+    assert featured[0].find("source")["sizes"].endswith(", 240px")
+    assert cards[1].find("source")["sizes"].endswith(", 150px")
+
+
+def test_featured_project_has_larger_desktop_scale():
+    css = Path("assets/css/main.css").read_text()
+
+    assert ".featured-project" in css
+    assert "grid-template-columns: 240px 1fr" in css
+    assert ".featured-project .post-title" in css

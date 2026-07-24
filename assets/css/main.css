@@ -323,6 +323,23 @@ ul {
     grid-template-areas: "image text";
 }
 
+.featured-project {
+    grid-template-columns: 240px 1fr;
+    padding: 1.5rem;
+}
+
+.featured-label {
+    display: block;
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.featured-project .post-title {
+    font-size: 1.5rem;
+}
+
 .post-img {
     grid-area: image;
 }

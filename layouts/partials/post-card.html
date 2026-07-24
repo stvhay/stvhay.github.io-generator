@@ -4,6 +4,7 @@ Renders a post card with thumbnail, title, and summary.
 @context {page} page The page to render as a card.
 @context {bool} showDate Whether to show the date (optional, default false).
 @context {int} headingLevel Card heading level (optional, default 2).
+@context {bool} featured Give the card featured-project emphasis (optional, default false).
 
 @example: {{ partial "post-card.html" (dict "page" . "showDate" true "headingLevel" 2) }}
 */}}
@@ -11,10 +12,14 @@ Renders a post card with thumbnail, title, and summary.
 {{- $page := .page }}
 {{- $showDate := .showDate | default false }}
 {{- $headingLevel := .headingLevel | default 2 }}
+{{- $featured := .featured | default false }}
+{{- $sizes := "(max-width: 768px) calc(100vw - 5rem), 150px" }}
+{{- if $featured }}{{ $sizes = "(max-width: 768px) calc(100vw - 5rem), 240px" }}{{ end }}
 
-<article class="post card">
-  {{- partial "thumb.html" (dict "page" $page "decorative" true) }}
+<article class="post card{{ if $featured }} featured-project{{ end }}">
+  {{- partial "thumb.html" (dict "page" $page "decorative" true "sizes" $sizes) }}
   <div class="post-text">
+    {{- if $featured }}<span class="featured-label">Featured project</span>{{ end }}
     {{- if eq $headingLevel 3 }}
       <h3 class="post-title"><a href="{{ $page.RelPermalink }}">{{ $page.LinkTitle }}</a></h3>
     {{- else }}
