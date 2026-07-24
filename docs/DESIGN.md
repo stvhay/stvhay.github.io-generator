@@ -114,6 +114,9 @@ from `static/css/latexml/`:
   `:focus-visible` outlines without replacing them.
 - Theme toggle button has dynamic `aria-label` ("Switch to dark mode" /
   "Switch to light mode") that updates with the effective theme.
+- Post-card thumbnails use empty alt text because the adjacent heading names
+  the project. Meaningful article images declare alt text as page-resource
+  metadata (`resources.params.alt`) in the page bundle frontmatter.
 - The site target is **WCAG 2.1 Level AA**. New visual changes must
   preserve adequate contrast in both themes — verify with browser
   devtools or a contrast checker.

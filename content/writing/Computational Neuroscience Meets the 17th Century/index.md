@@ -3,6 +3,10 @@ date = '2025-05-27T15:48:07-04:00'
 draft = false
 title = 'Computational Neuroscience Meets the 17th Century'
 description = "How Berkeley's idealism offers a perspective for understanding perception in neuroscience and why our experience is more like controlled hallucination."
+[[resources]]
+src = 'img.jpg'
+[resources.params]
+alt = 'Portrait of George Berkeley seated in clerical dress.'
 +++
 *Do we live in a world of ideas?* :bulb:
 <!--more-->

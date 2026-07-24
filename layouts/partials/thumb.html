@@ -5,6 +5,7 @@ Renders a page's thumbnail image with intrinsic dimensions.
 @context {string} imgName Base name of the image resource (optional, default "img").
 @context {string} class CSS class for the wrapper div (optional, default "post-img").
 @context {bool} eager Load immediately instead of lazily — use for above-the-fold images (optional, default false).
+@context {bool} decorative Render empty alt text when the adjacent copy already names the image (optional, default false).
 @context {string} sizes Browser slot-size hint (optional, defaults to the card layout).
 
 @example: {{ partial "thumb.html" (dict "page" . "class" "article-img" "eager" true "sizes" "(max-width: 768px) calc(100vw - 6.5rem), 400px") }}
@@ -13,9 +14,9 @@ Renders a page's thumbnail image with intrinsic dimensions.
 {{- $page := .page }}
 {{- $imgName := .imgName | default "img" }}
 {{- $formats := (slice "webp" "png" "jpg" "jpeg") }}
-{{- $altText := $page.Title }}
 {{- $cssClass := .class | default "post-img" }}
 {{- $eager := .eager | default false }}
+{{- $decorative := .decorative | default false }}
 {{- $sizes := .sizes | default "(max-width: 768px) calc(100vw - 5rem), 150px" }}
 
 {{- $found := false }}
@@ -24,6 +25,10 @@ Renders a page's thumbnail image with intrinsic dimensions.
     {{- $imgPath := printf "%s.%s" $imgName . }}
     {{- with $page.Resources.GetMatch $imgPath }}
       {{- $image := . }}
+      {{- $altText := "" }}
+      {{- if not $decorative }}
+        {{- with $image.Params.alt }}{{ $altText = . }}{{ end }}
+      {{- end }}
       {{- $maxWidth := 1440 }}
       {{- if lt $image.Width $maxWidth }}{{ $maxWidth = $image.Width }}{{ end }}
       {{- $fallbackWidth := 640 }}

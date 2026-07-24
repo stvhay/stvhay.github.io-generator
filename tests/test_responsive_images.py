@@ -39,3 +39,20 @@ def test_card_and_article_images_declare_distinct_slot_sizes(public_dir):
 
     assert portfolio.select_one(".post-img img")["sizes"].endswith("150px")
     assert article.select_one(".article-img img")["sizes"].endswith("400px")
+
+
+@pytest.mark.accessibility
+def test_image_alt_text_matches_context(public_dir):
+    """Repeated card art is decorative; meaningful article art is described."""
+    portfolio = parse_html(public_dir / "portfolio" / "index.html")
+    article = parse_html(
+        public_dir
+        / "writing"
+        / "computational-neuroscience-meets-the-17th-century"
+        / "index.html"
+    )
+
+    assert all(image["alt"] == "" for image in portfolio.select(".post-img img"))
+    assert article.select_one(".article-img img")["alt"] == (
+        "Portrait of George Berkeley seated in clerical dress."
+    )
