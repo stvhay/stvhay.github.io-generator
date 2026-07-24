@@ -48,7 +48,7 @@ The override is persisted in `localStorage` under `theme-preference`.
 
 - **Source Serif 4** variable font, served locally from
   `static/fonts/` to avoid third-party CDN dependencies and keep CSP
-  strict. Regular + Italic VF files cover all weights via
+  strict. Latin-subset Regular + Italic VF files cover all weights via
   `font-weight: 100 900` in the `@font-face` rule.
 - Body weight is `300` (light) per `body { font-weight: 300; }` for an
   airy reading experience; bold uses `font-weight: 600` (not 700) to

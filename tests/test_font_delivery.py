@@ -17,9 +17,11 @@ def test_source_serif_uses_woff2_only():
     assert all(font.suffix == ".woff2" for font in fonts)
 
 
-def test_woff2_payload_is_smaller_than_previous_ttf_total():
-    """The two web fonts remain below the former 2 MiB TTF payload."""
-    total_bytes = sum(
-        font.stat().st_size for font in (ROOT / "static" / "fonts").glob("*.woff2")
-    )
-    assert 0 < total_bytes < 2_000_000
+def test_woff2_payload_uses_latin_subsets():
+    """The two variable web fonts stay within the Latin-subset budget."""
+    fonts = list((ROOT / "static" / "fonts").glob("*.woff2"))
+    total_bytes = sum(font.stat().st_size for font in fonts)
+
+    assert len(fonts) == 2
+    assert all("Latin" in font.name for font in fonts)
+    assert 0 < total_bytes < 400_000
