@@ -2,6 +2,10 @@
 title = 'Digital Music'
 weight = 13
 description = '16-bit Scream Tracker 3 music compositions created for PC demos, playable in emulated hardware.'
+[[resources]]
+src = 'img.jpeg'
+[resources.params]
+alt = 'Abstract collage of musical notes, waveforms, and record shapes.'
 +++
 
 ## Scream Tracker 3 Music (16-bit/8-channel)

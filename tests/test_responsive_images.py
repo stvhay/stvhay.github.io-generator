@@ -83,3 +83,18 @@ def test_image_alt_text_matches_context(public_dir):
     assert article.select_one(".article-img img")["alt"] == (
         "Portrait of George Berkeley seated in clerical dress."
     )
+
+
+@pytest.mark.accessibility
+def test_portfolio_detail_images_are_described(public_dir):
+    """Meaningful portfolio heroes use page-bundle resource metadata."""
+    missing_alt = []
+
+    for page in (public_dir / "portfolio").glob("*/index.html"):
+        image = parse_html(page).select_one(".article-img img")
+        if image and not image.get("alt", "").strip():
+            missing_alt.append(page.parent.name)
+
+    assert not missing_alt, "Portfolio detail images missing alt text: " + ", ".join(
+        missing_alt
+    )

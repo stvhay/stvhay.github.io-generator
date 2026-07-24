@@ -33,8 +33,10 @@ PDFs, embedded images).
    draft = false
    description = 'One-sentence summary; surfaces in <meta description> and
                   OpenGraph tags.'
-   image = 'thumb.jpg'              # optional; enables summary_large_image
-                                    # twitter card and post-card thumbnail
+   [[resources]]
+   src = 'img.jpg'
+   [resources.params]
+   alt = 'Concise description of the project image.'
    +++
    ```
 
@@ -43,7 +45,7 @@ PDFs, embedded images).
    ```
    content/portfolio/My Project Title/
    ├── index.md
-   ├── thumb.jpg        # referenced by `image` in front matter
+   ├── img.jpg          # card/detail image matched by the resource metadata
    └── screenshot1.png  # referenced inline from markdown
    ```
 
@@ -77,11 +79,11 @@ PDFs, embedded images).
 - Always include a `description`. Tests in
   `tests/test_content_requirements.py` enforce that every page has one
   (drives `<meta name="description">`, OpenGraph, Twitter Cards).
-- Set `image` if the item has a visual representation. The
-  `layouts/partials/post-card.html` partial renders thumbnails on the
-  `/portfolio/` listing.
-- Optimize images before committing (consider WebP or JPEG with
-  reasonable compression). The site has no automatic image pipeline.
+- Name the card/detail image `img.webp`, `img.png`, or `img.jpg`, and describe
+  it with `resources.params.alt`. Listing cards treat repeated art as
+  decorative; the detail page uses this description.
+- Optimize source images before committing. Hugo generates responsive WebP
+  sources plus a JPEG fallback at build time.
 
 ## Common pitfalls
 

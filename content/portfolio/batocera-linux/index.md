@@ -2,6 +2,10 @@
 title = 'Batocera Linux'
 weight = 14
 description = 'Linux kernel and embedded systems work for retrogaming platform, focusing on ARM boards with RK3588 chipsets.'
+[[resources]]
+src = 'img.jpeg'
+[resources.params]
+alt = 'Batocera Linux game controller logo.'
 +++
 
 I wanted to make a retrogaming platform for my nephews, and this project turned
