@@ -5,8 +5,9 @@ Renders a page's thumbnail image with intrinsic dimensions.
 @context {string} imgName Base name of the image resource (optional, default "img").
 @context {string} class CSS class for the wrapper div (optional, default "post-img").
 @context {bool} eager Load immediately instead of lazily — use for above-the-fold images (optional, default false).
+@context {string} sizes Browser slot-size hint (optional, defaults to the card layout).
 
-@example: {{ partial "thumb.html" (dict "page" . "class" "article-img" "eager" true) }}
+@example: {{ partial "thumb.html" (dict "page" . "class" "article-img" "eager" true "sizes" "(max-width: 768px) calc(100vw - 6.5rem), 400px") }}
 */}}
 
 {{- $page := .page }}
@@ -15,17 +16,37 @@ Renders a page's thumbnail image with intrinsic dimensions.
 {{- $altText := $page.Title }}
 {{- $cssClass := .class | default "post-img" }}
 {{- $eager := .eager | default false }}
+{{- $sizes := .sizes | default "(max-width: 768px) calc(100vw - 5rem), 150px" }}
 
 {{- $found := false }}
 {{- range $formats }}
   {{- if not $found }}
     {{- $imgPath := printf "%s.%s" $imgName . }}
     {{- with $page.Resources.GetMatch $imgPath }}
+      {{- $image := . }}
+      {{- $maxWidth := 1440 }}
+      {{- if lt $image.Width $maxWidth }}{{ $maxWidth = $image.Width }}{{ end }}
+      {{- $fallbackWidth := 640 }}
+      {{- if lt $image.Width $fallbackWidth }}{{ $fallbackWidth = $image.Width }}{{ end }}
+      {{- $fallback := $image.Resize (printf "%dx webp q82" $fallbackWidth) }}
+      {{- $srcset := slice }}
+      {{- $widths := slice 320 640 960 1440 }}
+      {{- range $widths }}
+        {{- if le . $maxWidth }}
+          {{- $resized := $image.Resize (printf "%dx webp q82" .) }}
+          {{- $srcset = $srcset | append (printf "%s %dw" $resized.RelPermalink $resized.Width) }}
+        {{- end }}
+      {{- end }}
+      {{- if not (in $widths $maxWidth) }}
+        {{- $resized := $image.Resize (printf "%dx webp q82" $maxWidth) }}
+        {{- $srcset = $srcset | append (printf "%s %dw" $resized.RelPermalink $resized.Width) }}
+      {{- end }}
       <div class="{{ $cssClass }}">
         {{- /* width/height reserve layout space (no shift while loading);
                below-the-fold thumbnails defer via loading="lazy". */}}
-        <img src="{{ .RelPermalink }}" alt="{{ $altText }}"
-          width="{{ .Width }}" height="{{ .Height }}"
+        <img src="{{ $fallback.RelPermalink }}" srcset="{{ delimit $srcset ", " }}"
+          sizes="{{ $sizes }}" alt="{{ $altText }}"
+          width="{{ $fallback.Width }}" height="{{ $fallback.Height }}"
           {{- if not $eager }} loading="lazy"{{ end }} decoding="async">
       </div>
       {{- $found = true }}
