@@ -1,0 +1,7 @@
+{
+  "files": ["public/**/*.html"],
+  "exclude": ["public/cns/**", "public/face-dataset/**"],
+  "insertBefore": "</body>",
+  "commentSyntax": "html",
+  "cspChecked": true
+}

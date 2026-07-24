@@ -262,3 +262,16 @@ class TestDescriptionTags:
             f"The following pages have descriptions longer than {max_length} chars:\n"
             f"{chr(10).join(f'{p}: {length} chars' for p, length in long_descriptions)}"
         )
+
+
+@pytest.mark.meta
+class TestContentSecurityPolicy:
+    """Tests for production Content Security Policy metadata."""
+
+    def test_production_csp_does_not_allow_impeccable_live(self, public_dir):
+        """Keep the localhost live-mode allowance out of production output."""
+        soup = parse_html(public_dir / "index.html")
+        csp = soup.find("meta", {"http-equiv": "Content-Security-Policy"})
+
+        assert csp
+        assert csp["content"] == "default-src 'self'; script-src 'self';"
