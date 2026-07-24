@@ -276,6 +276,26 @@ class TestImageAccessibility:
 
 
 @pytest.mark.accessibility
+class TestTouchTargets:
+    """Tests for pointer target sizing."""
+
+    def test_compact_controls_have_44px_minimum_targets(self):
+        """Navigation and contact controls meet the enhanced target guideline."""
+        import re
+
+        css = (
+            Path(__file__).parent.parent / "assets" / "css" / "main.css"
+        ).read_text()
+
+        for selector in ("nav a", ".reveal-email-button"):
+            match = re.search(rf"{re.escape(selector)}\s*\{{([^}}]+)\}}", css)
+            assert match, f"Missing CSS rule for {selector}"
+            declarations = match.group(1)
+            assert "min-block-size: 44px" in declarations
+            assert "min-inline-size: 44px" in declarations
+
+
+@pytest.mark.accessibility
 class TestKeyboardNavigation:
     """Tests for keyboard navigation support."""
 
