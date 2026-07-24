@@ -1,5 +1,5 @@
 baseURL = 'https://stevenhay.com/'
-languageCode = 'en-us'
+locale = 'en-US'
 title = 'Steven Hay'
 pluralizelisttitles = false
 enableEmoji = true
