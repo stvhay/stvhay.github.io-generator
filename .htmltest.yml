@@ -20,8 +20,10 @@ CheckInternalHash: true
 # External links are lychee's job (see header comment)
 CheckExternal: false
 
-# Verify all images have alt attributes
+# Verify all images have alt attributes. Empty alt text is valid for decorative
+# card art and is covered by tests/test_responsive_images.py.
 CheckImages: true
+IgnoreAltEmpty: true
 
 # Check script tags reference valid files
 CheckScripts: true
