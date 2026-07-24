@@ -1,5 +1,5 @@
 +++
-title = 'Welcome'
+title = 'Engineer learning neuroscience'
 description = 'About Steven Hay - Engineer learning computational neuroscience with interests in early visual processing and machine learning.'
 weight = 1
 # This content is inlined on the homepage (home.html via .Site.GetPage);
