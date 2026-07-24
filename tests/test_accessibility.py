@@ -316,6 +316,17 @@ class TestTouchTargets:
 class TestKeyboardNavigation:
     """Tests for keyboard navigation support."""
 
+    def test_email_reveal_button_has_visible_keyboard_focus(self):
+        """Contact reveal control has an explicit focus-visible treatment."""
+        import re
+
+        css = (Path(__file__).parent.parent / "assets" / "css" / "main.css").read_text()
+        rule = re.search(r"\.reveal-email-button:focus-visible\s*\{([^}]+)\}", css)
+
+        assert rule
+        assert "outline: 2px solid var(--color-accent)" in rule.group(1)
+        assert "outline-offset: 2px" in rule.group(1)
+
     def test_no_positive_tabindex(self, html_files):
         """Verify that no elements use positive tabindex values."""
         elements_with_positive_tabindex = []

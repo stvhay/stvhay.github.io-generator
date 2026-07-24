@@ -603,6 +603,11 @@ footer p {
     text-decoration: underline;
 }
 
+.reveal-email-button:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
 .reveal-email-button:disabled {
     opacity: 0.6;
     cursor: not-allowed;
