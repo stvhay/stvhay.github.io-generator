@@ -4,12 +4,26 @@
  */
 (function () {
     "use strict";
+
+    var THEME_COLORS = { light: "#f2efe9", dark: "#1f1f1f" };
+    var saved = null;
+
     try {
-        var saved = localStorage.getItem("theme-preference");
+        saved = localStorage.getItem("theme-preference");
         if (saved) {
             document.documentElement.setAttribute("data-theme", saved);
         }
     } catch (e) {
         // localStorage not available
+    }
+
+    var effective =
+        saved ||
+        (window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light");
+    var themeColor = document.querySelector('meta[name="theme-color"]');
+    if (themeColor) {
+        themeColor.setAttribute("content", THEME_COLORS[effective]);
     }
 })();

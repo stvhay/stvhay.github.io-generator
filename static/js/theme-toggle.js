@@ -13,6 +13,7 @@
   "use strict";
 
   const STORAGE_KEY = "theme-preference";
+  const THEME_COLORS = { light: "#f2efe9", dark: "#1f1f1f" };
 
   function getSystemTheme() {
     return window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -53,6 +54,14 @@
       document.documentElement.setAttribute("data-theme", theme);
     } else {
       document.documentElement.removeAttribute("data-theme");
+    }
+
+    const themeColor = document.querySelector('meta[name="theme-color"]');
+    if (themeColor) {
+      themeColor.setAttribute(
+        "content",
+        THEME_COLORS[theme || getSystemTheme()],
+      );
     }
   }
 
@@ -108,6 +117,7 @@
       .addEventListener("change", function () {
         // If no override, button text should update
         if (!getSavedTheme()) {
+          applyTheme(null);
           updateButtonText(button);
         }
       });

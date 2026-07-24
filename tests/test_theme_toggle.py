@@ -135,6 +135,23 @@ def test_theme_toggle_storage_key(js_theme_toggle):
     assert "theme-preference" in content
 
 
+def test_theme_color_meta_precedes_blocking_init():
+    """Theme initialization can update browser chrome before first paint."""
+    head = (
+        Path(__file__).parent.parent / "layouts" / "partials" / "head.html"
+    ).read_text()
+    assert head.count('name="theme-color"') == 1
+    assert head.index('name="theme-color"') < head.index("/js/theme-init.js")
+
+
+def test_theme_scripts_update_theme_color(js_theme_init, js_theme_toggle):
+    """Initial, manual, and system changes all synchronize browser chrome."""
+    for script in (js_theme_init, js_theme_toggle):
+        content = script.read_text()
+        assert 'meta[name="theme-color"]' in content
+        assert "THEME_COLORS" in content
+
+
 # =============================================================================
 # CSS Theme Support Tests
 # =============================================================================
