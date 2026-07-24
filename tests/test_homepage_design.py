@@ -50,3 +50,12 @@ def test_featured_project_has_larger_desktop_scale():
     assert ".featured-project" in css
     assert "grid-template-columns: 240px 1fr" in css
     assert ".featured-project .post-title" in css
+
+
+def test_home_intro_uses_documented_prose_measure(public_dir):
+    homepage = parse_html(public_dir / "index.html")
+    css = Path("assets/css/main.css").read_text()
+
+    assert "home-intro" in homepage.find("section", id="home").get("class", [])
+    assert ".home-intro" in css
+    assert "max-width: 45rem" in css.split(".home-intro", 1)[1].split("}", 1)[0]
