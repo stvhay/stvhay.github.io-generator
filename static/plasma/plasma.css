@@ -3,19 +3,17 @@ html {
     color: white;
 }
 
-/* Center the div and set its width to 100 characters */
+/* Keep the 2:1 demo stage centered without exceeding narrow viewports. */
 .canvas-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 120ch; /* Set width to 100 characters */
-    margin: 20ch auto; /* Center horizontally */
+    width: calc(100% - 2rem);
+    max-width: 80ch;
+    margin: clamp(2rem, 20vh, 20ch) auto;
 }
 
-/* Ensure the canvas fills the container */
 .canvas-container canvas {
     display: block;
-    width: 80ch;
-    height: 40ch;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2 / 1;
     image-rendering: pixelated;
 }

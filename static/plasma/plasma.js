@@ -4,10 +4,8 @@
 // https://github.com/mtuomi/SecondReality/blob/master/PLZPART/PLZ.C
 
 function startPlasma(canvas, config) {
-  // Set the logical size of the canvas (CSS size)
+  // Let responsive CSS own the logical size; match the rendering buffer to it.
   const rect = canvas.getBoundingClientRect();
-  canvas.style.width = `${rect.width}px`;
-  canvas.style.height = `${rect.height}px`;
 
   // Set the actual size of the canvas (scaled for high DPI)
   const dpr = window.devicePixelRatio || 1;
