@@ -18,7 +18,8 @@ This repository generates a static website from Markdown and LaTeX sources:
 - **Source repository** (this repo): Hugo source, LaTeX files, and build scripts
 - **Hosting repository** ([stvhay.github.io](https://github.com/stvhay/stvhay.github.io/)): Separate repository that serves GitHub Pages. The build script clones it into `public/` (gitignored) and pushes generated output there. Not a git submodule.
 
-See [`docs/`](docs/) for in-depth architecture, design, and workflow documentation.
+See [`DESIGN.md`](DESIGN.md) for the visual system and [`docs/`](docs/) for
+architecture and workflow documentation.
 
 ### LaTeX Build System
 
@@ -74,7 +75,8 @@ layouts/              # Hugo templates
 static/               # Static assets
 latex/                # LaTeX sources + latex.manifest
 public/               # Generated site (clone of hosting repo, gitignored)
-docs/                 # Repo documentation (architecture, design, workflows)
+DESIGN.md             # Canonical visual design system
+docs/                 # Repo documentation (architecture and workflows)
 utilities/            # Build script modules
 ```
 

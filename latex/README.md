@@ -62,4 +62,4 @@ bytes), so `public/docs/` is excluded in `.prettierignore`.
 ## Styling
 
 Generated HTML links the shared stylesheets in `static/css/latexml/`;
-see the "Generated documents" section of `docs/DESIGN.md`.
+see the "Generated Documents" section of [`DESIGN.md`](../DESIGN.md).

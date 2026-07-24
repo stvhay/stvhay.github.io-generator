@@ -176,7 +176,7 @@ class TestHtmlDocuments:
 class TestSiteCssAnchors:
     """site.css rules for generated documents key on LaTeXML markup
     details; these anchors fail if a LaTeXML upgrade changes that markup,
-    so the rules don't silently stop applying (see docs/DESIGN.md)."""
+    so the rules don't silently stop applying (see DESIGN.md)."""
 
     CV = "cv/cv-steve-hay"
 

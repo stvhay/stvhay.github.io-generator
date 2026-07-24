@@ -144,10 +144,15 @@ header {
 }
 
 .site-title {
-    font-size: 2.5rem;
     font-weight: 600;
     color: inherit;
     text-decoration: none;
+}
+
+.site-title,
+h1 {
+    font-size: clamp(2rem, 1.75rem + 1.25vw, 2.5rem);
+    line-height: 1.15;
 }
 
 nav {
@@ -255,38 +260,29 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
 }
 
+h1,
+h2 {
+    text-wrap: balance;
+}
+
 h1 {
-    font-size: 2.5rem;
     color: var(--color-text-primary);
     margin-bottom: 1.5rem;
 }
 
 h2 {
     font-size: 1.5rem;
+    line-height: 1.25;
     color: var(--color-text-primary);
     margin-bottom: 1.25rem;
 }
 
-h3 {
-    font-size: 1.4rem;
-    color: var(--color-text-primary);
-    margin-bottom: 1rem;
-}
-
-/*
- * Body copy is 1.2rem, larger than the browser's ~1rem default for
- * h4-h6; without explicit sizes those headings render smaller than
- * the paragraphs they introduce.
- */
-h4 {
-    font-size: 1.3rem;
-    color: var(--color-text-primary);
-    margin-bottom: 1rem;
-}
-
+h3,
+h4,
 h5,
 h6 {
     font-size: 1.2rem;
+    line-height: 1.35;
     color: var(--color-text-primary);
     margin-bottom: 1rem;
 }
@@ -351,6 +347,7 @@ ul {
 
 .post-text h2 {
     font-size: 1.25rem;
+    line-height: 1.3;
 }
 
 .post-text h2 a {

@@ -1,17 +1,16 @@
 # docs/
 
 Repository documentation, primarily for agents working on the site but readable
-by humans too. Living information about how this project is structured,
-designed, and operated on lives here.
+by humans too. Architecture and operating guides live here; the canonical visual
+design system lives at the project root.
 
 ## Map
 
 - **[ARCHITECTURE.md](ARCHITECTURE.md)** — repository layout, build pipeline,
   dual-repo deployment model, Hugo mounts, the three-category `static/`
   convention, and CI.
-- **[DESIGN.md](DESIGN.md)** — visual and UX choices: theme system
-  (light/dark/system), typography, CSS variable conventions, layout
-  partials.
+- **[DESIGN.md](../DESIGN.md)** — canonical visual design system: machine-readable
+  tokens, theme behavior, typography, layout, components, and guardrails.
 - **[workflows/](workflows/)** — task-oriented runbooks for recurring work:
   - [add-portfolio-item.md](workflows/add-portfolio-item.md)
   - [add-writing-post.md](workflows/add-writing-post.md)

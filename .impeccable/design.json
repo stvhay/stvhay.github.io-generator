@@ -1,0 +1,434 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-24T01:39:50Z",
+  "title": "Design System: Steven Hay",
+  "extensions": {
+    "colorMeta": {
+      "warm-paper": {
+        "role": "neutral",
+        "displayName": "Warm Paper",
+        "canonical": "#faf7f2",
+        "tonalRamp": [
+          "oklch(15% 0.015 85)",
+          "oklch(26% 0.015 85)",
+          "oklch(38% 0.015 85)",
+          "oklch(50% 0.015 85)",
+          "oklch(62% 0.015 85)",
+          "oklch(74% 0.015 85)",
+          "oklch(86% 0.015 85)",
+          "oklch(95% 0.015 85)"
+        ]
+      },
+      "quiet-paper": {
+        "role": "neutral",
+        "displayName": "Quiet Paper",
+        "canonical": "#f2efe9",
+        "tonalRamp": [
+          "oklch(15% 0.012 85)",
+          "oklch(26% 0.012 85)",
+          "oklch(38% 0.012 85)",
+          "oklch(50% 0.012 85)",
+          "oklch(62% 0.012 85)",
+          "oklch(74% 0.012 85)",
+          "oklch(86% 0.012 85)",
+          "oklch(95% 0.012 85)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#1a1a1a",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(50% 0 0)",
+          "oklch(62% 0 0)",
+          "oklch(74% 0 0)",
+          "oklch(86% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "graphite": {
+        "role": "neutral",
+        "displayName": "Graphite",
+        "canonical": "#4a4a4a",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(50% 0 0)",
+          "oklch(62% 0 0)",
+          "oklch(74% 0 0)",
+          "oklch(86% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "signal-blue": {
+        "role": "primary",
+        "displayName": "Signal Blue",
+        "canonical": "#0069d9",
+        "tonalRamp": [
+          "oklch(15% 0.2 254)",
+          "oklch(26% 0.2 254)",
+          "oklch(38% 0.2 254)",
+          "oklch(50% 0.2 254)",
+          "oklch(62% 0.2 254)",
+          "oklch(74% 0.2 254)",
+          "oklch(86% 0.2 254)",
+          "oklch(95% 0.2 254)"
+        ]
+      },
+      "deep-signal-blue": {
+        "role": "primary",
+        "displayName": "Deep Signal Blue",
+        "canonical": "#0056b3",
+        "tonalRamp": [
+          "oklch(15% 0.18 254)",
+          "oklch(26% 0.18 254)",
+          "oklch(38% 0.18 254)",
+          "oklch(50% 0.18 254)",
+          "oklch(62% 0.18 254)",
+          "oklch(74% 0.18 254)",
+          "oklch(86% 0.18 254)",
+          "oklch(95% 0.18 254)"
+        ]
+      },
+      "soft-white": {
+        "role": "neutral",
+        "displayName": "Soft White",
+        "canonical": "#e0e0e0",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(50% 0 0)",
+          "oklch(62% 0 0)",
+          "oklch(74% 0 0)",
+          "oklch(86% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "pure-white": {
+        "role": "neutral",
+        "displayName": "Pure White",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(50% 0 0)",
+          "oklch(62% 0 0)",
+          "oklch(74% 0 0)",
+          "oklch(86% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "carbon": {
+        "role": "neutral",
+        "displayName": "Carbon",
+        "canonical": "#121212",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(50% 0 0)",
+          "oklch(62% 0 0)",
+          "oklch(74% 0 0)",
+          "oklch(86% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "night-chrome": {
+        "role": "neutral",
+        "displayName": "Night Chrome",
+        "canonical": "#1f1f1f",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(50% 0 0)",
+          "oklch(62% 0 0)",
+          "oklch(74% 0 0)",
+          "oklch(86% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "night-paper": {
+        "role": "neutral",
+        "displayName": "Night Paper",
+        "canonical": "#222222",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(50% 0 0)",
+          "oklch(62% 0 0)",
+          "oklch(74% 0 0)",
+          "oklch(86% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "soft-ash": {
+        "role": "neutral",
+        "displayName": "Soft Ash",
+        "canonical": "#cccccc",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(50% 0 0)",
+          "oklch(62% 0 0)",
+          "oklch(74% 0 0)",
+          "oklch(86% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "reading-gold": {
+        "role": "secondary",
+        "displayName": "Reading Gold",
+        "canonical": "#e0d890",
+        "tonalRamp": [
+          "oklch(15% 0.08 101)",
+          "oklch(26% 0.08 101)",
+          "oklch(38% 0.08 101)",
+          "oklch(50% 0.08 101)",
+          "oklch(62% 0.08 101)",
+          "oklch(74% 0.08 101)",
+          "oklch(86% 0.08 101)",
+          "oklch(95% 0.08 101)"
+        ]
+      },
+      "bright-reading-gold": {
+        "role": "secondary",
+        "displayName": "Bright Reading Gold",
+        "canonical": "#f9ff99",
+        "tonalRamp": [
+          "oklch(15% 0.14 108)",
+          "oklch(26% 0.14 108)",
+          "oklch(38% 0.14 108)",
+          "oklch(50% 0.14 108)",
+          "oklch(62% 0.14 108)",
+          "oklch(74% 0.14 108)",
+          "oklch(86% 0.14 108)",
+          "oklch(95% 0.14 108)"
+        ]
+      },
+      "night-structure": {
+        "role": "neutral",
+        "displayName": "Night Structure",
+        "canonical": "#444444",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(50% 0 0)",
+          "oklch(62% 0 0)",
+          "oklch(74% 0 0)",
+          "oklch(86% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "night-structure-hover": {
+        "role": "neutral",
+        "displayName": "Night Structure Hover",
+        "canonical": "#888888",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(50% 0 0)",
+          "oklch(62% 0 0)",
+          "oklch(74% 0 0)",
+          "oklch(86% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "night-control-hover": {
+        "role": "neutral",
+        "displayName": "Night Control Hover",
+        "canonical": "#666666",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(50% 0 0)",
+          "oklch(62% 0 0)",
+          "oklch(74% 0 0)",
+          "oklch(86% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Site title and page-level headings."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Major section headings."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card titles and compact content headings."
+      },
+      "minor": {
+        "displayName": "Minor Heading",
+        "purpose": "Lower-level headings that remain distinct from body copy."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Long-form prose and summaries."
+      },
+      "nav": {
+        "displayName": "Navigation",
+        "purpose": "Sticky index links and current-location states."
+      },
+      "metadata": {
+        "displayName": "Metadata",
+        "purpose": "Dates, section marks, and footer copy."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Compact controls and footer actions."
+      },
+      "code": {
+        "displayName": "Code",
+        "purpose": "Technical notation and examples."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "state-color",
+        "value": "0.3s ease",
+        "purpose": "Links, card borders, and hover emphasis."
+      },
+      {
+        "name": "control-state",
+        "value": "0.2s ease",
+        "purpose": "Compact control and disclosure feedback."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "0.01ms",
+        "purpose": "Effective zero-duration fallback when reduced motion is requested."
+      }
+    ],
+    "breakpoints": [{ "name": "mobile", "value": "768px" }]
+  },
+  "components": [
+    {
+      "name": "Primary Reveal Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "A compact, high-contrast action used when revealing the contact address.",
+      "html": "<button class=\"ds-button-primary\" type=\"button\">Reveal email</button>",
+      "css": ".ds-button-primary { min-block-size: 44px; min-inline-size: 44px; padding: 0.5rem 0.75rem; font: 300 0.85rem/1.5 \"Source Serif 4\", serif; color: var(--color-button-text, #fff); background: var(--color-button-bg, #0069d9); border: 1px solid var(--color-button-bg, #0069d9); border-radius: 4px; cursor: pointer; transition: all 0.2s ease; } .ds-button-primary:hover { color: var(--color-button-text, #fff); background: var(--color-button-bg-hover, #0056b3); border-color: var(--color-button-bg-hover, #0056b3); text-decoration: underline; } .ds-button-primary:focus-visible { outline: 2px solid var(--color-accent, #0069d9); outline-offset: 2px; }"
+    },
+    {
+      "name": "Theme Toggle",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "A quiet footer action that reveals its underline on interaction.",
+      "html": "<button class=\"ds-button-ghost\" type=\"button\">Toggle theme</button>",
+      "css": ".ds-button-ghost { min-block-size: 44px; padding: 0.75rem 1rem; font: 300 0.85rem/1.5 \"Source Serif 4\", serif; color: var(--color-text-light, #1a1a1a); background: none; border: 0; cursor: pointer; text-decoration: underline; text-decoration-color: transparent; transition: text-decoration-color 0.3s ease; } .ds-button-ghost:hover, .ds-button-ghost:active { text-decoration-color: var(--color-accent-hover, #0056b3); } .ds-button-ghost:focus-visible { outline: 2px solid var(--color-accent, #0069d9); outline-offset: 2px; }"
+    },
+    {
+      "name": "Primary Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "A centered, wrapping text index with a precise current-page underline.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Primary\"><a class=\"ds-nav-link ds-nav-current\" href=\"#\" aria-current=\"page\">Home</a><a class=\"ds-nav-link\" href=\"#\">Portfolio</a><a class=\"ds-nav-link\" href=\"#\">Writing</a></nav>",
+      "css": ".ds-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 1rem; background: var(--color-bg-header, #f2efe9); } .ds-nav-link { display: inline-flex; align-items: center; justify-content: center; min-block-size: 44px; min-inline-size: 44px; padding: 0.5rem 0.75rem; color: var(--color-text-light, #1a1a1a); font: 600 1rem/1.5 \"Source Serif 4\", serif; text-decoration: none; transition: color 0.3s ease; } .ds-nav-link:hover { color: var(--color-accent-hover, #0056b3); text-decoration: underline; } .ds-nav-link:focus-visible { color: var(--color-accent, #0069d9); outline: 2px solid var(--color-accent, #0069d9); outline-offset: 2px; } .ds-nav-current { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.4em; }"
+    },
+    {
+      "name": "Post Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "The signature project and writing index row: image, title, summary, and quiet section mark.",
+      "html": "<article class=\"ds-post-card\"><div class=\"ds-post-thumb\" aria-hidden=\"true\"></div><div class=\"ds-post-copy\"><h2><a href=\"#\">A research project</a></h2><p>A concise description keeps the index scannable.</p><span>(portfolio)</span></div></article>",
+      "css": ".ds-post-card { display: grid; grid-template-columns: 150px 1fr; gap: 0 1.25rem; align-items: start; padding: 1.25rem; color: var(--color-text-primary, #1a1a1a); background: var(--color-bg-card, #f2efe9); border: 1px solid var(--color-border, #e0e0e0); border-radius: 8px; font: 300 1.2rem/1.5 \"Source Serif 4\", serif; transition: border-color 0.3s ease; } .ds-post-card:hover { border-color: var(--color-border-hover, #0069d9); } .ds-post-card:focus-within { border-color: var(--color-border-hover, #0069d9); outline: 2px solid var(--color-accent, #0069d9); outline-offset: 2px; } .ds-post-thumb { width: 100%; aspect-ratio: 1; border: 1px solid var(--color-border, #e0e0e0); border-radius: 8px; background: var(--color-bg-body, #faf7f2); } .ds-post-copy h2 { margin: 0 0 1.25rem; font-size: 1.25rem; line-height: 1.3; } .ds-post-copy a { color: var(--color-text-primary, #1a1a1a); text-decoration: none; } .ds-post-copy a:hover { color: var(--color-accent-hover, #0056b3); text-decoration: underline; } .ds-post-copy p { margin: 0 0 1.5rem; } .ds-post-copy span { display: block; margin-top: 0.5rem; color: var(--color-text-muted, #4a4a4a); text-align: right; } @media (max-width: 768px) { .ds-post-card { grid-template-columns: 1fr; } .ds-post-thumb { margin-bottom: 1.25rem; } }"
+    },
+    {
+      "name": "Annotated Quotation",
+      "kind": "custom",
+      "description": "A semantic margin-like annotation made from italic graphite text and one signal rule.",
+      "html": "<blockquote class=\"ds-blockquote\">A useful quotation or technical aside belongs to the argument, not to decoration.</blockquote>",
+      "css": ".ds-blockquote { margin: 0 0 1.5rem; padding-left: 1rem; color: var(--color-text-muted, #4a4a4a); border-left: 3px solid var(--color-accent, #0069d9); font: italic 300 1.2rem/1.5 \"Source Serif 4\", serif; }"
+    },
+    {
+      "name": "Code Block",
+      "kind": "custom",
+      "description": "A bordered, internally scrolling technical inset that never widens the reading column.",
+      "html": "<pre class=\"ds-code-block\"><code>signal = model.observe(input)</code></pre>",
+      "css": ".ds-code-block { overflow-x: auto; margin: 0 0 1.5rem; padding: 1rem; color: var(--color-text-primary, #1a1a1a); background: var(--color-bg-body, #faf7f2); border: 1px solid var(--color-border, #e0e0e0); border-radius: 8px; } .ds-code-block code { padding: 0; background: none; border: 0; font: 0.95rem/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; } .ds-code-block:focus-visible { outline: 2px solid var(--color-accent, #0069d9); outline-offset: 2px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Warm Research Notebook",
+    "overview": "The site should feel like opening a careful research notebook: warm, legible, personal, and quietly technical. Source Serif 4 gives ideas the authority of print without making the portfolio feel ceremonial. Paper-toned surfaces, light rules, and generous reading space let projects and writing carry the page.\n\nThe system is deliberately restrained. A single signal color handles navigation, links, focus, and action in the light theme; a warm reading glow takes that role at night. Components are structurally explicit and quietly tactile rather than glossy, ornamental, or application-like.",
+    "keyCharacteristics": [
+      "Warm paper surfaces with ink-like serif typography.",
+      "One scarce signal color per theme.",
+      "Flat, border-defined depth with no shadows.",
+      "Comfortable prose measures and compact, scannable indexes.",
+      "Motion limited to state communication and disabled for reduced-motion users.",
+      "Light, dark, and system-following themes with equal visual authority."
+    ],
+    "rules": [
+      {
+        "name": "The One Signal Rule",
+        "body": "Use Signal Blue in light mode and Reading Gold in dark mode for links, focus, and action. Do not introduce a competing accent.",
+        "section": "colors"
+      },
+      {
+        "name": "The Paired Theme Rule",
+        "body": "Every semantic color change must be defined for the light default, system-dark mode, and explicit dark override. An explicit light choice continues to inherit the light default.",
+        "section": "colors"
+      },
+      {
+        "name": "The Single Voice Rule",
+        "body": "Use weight, size, spacing, and italics to create hierarchy before introducing another typeface.",
+        "section": "typography"
+      },
+      {
+        "name": "The Reading Measure Rule",
+        "body": "Indexes may use the full `100ch` container; prose must use the narrower `45rem` article measure.",
+        "section": "layout"
+      },
+      {
+        "name": "The Content-First Collapse Rule",
+        "body": "At narrow widths, remove floats and side-by-side card geometry before reducing readable type or touch targets.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat Notebook Rule",
+        "body": "Depth comes from tonal surfaces and structural borders. Do not add ambient shadows to cards, navigation, controls, or article media.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Quiet Corner Rule",
+        "body": "Use `8px` for content containers, `4px` for compact controls, and no radius for text navigation. Never use pills as decoration.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do use semantic CSS variables for every themed color and update the light default, system-dark declaration, and explicit dark declaration together.",
+      "Do keep Source Serif 4 local, variable, Latin-subset, and loaded with `font-display: swap`.",
+      "Do preserve 44px interaction targets and visible `:focus-visible` outlines.",
+      "Do keep article prose near 70–75 characters and let indexes use the wider grid.",
+      "Do use responsive Hugo page resources with intrinsic dimensions, WebP sources, and JPEG fallbacks.",
+      "Do honor `prefers-reduced-motion` and preserve core reading access without JavaScript."
+    ],
+    "donts": [
+      "Don't hard-code themed colors in component rules; use the established semantic variables.",
+      "Don't add shadows, glossy gradients, decorative pills, or extra accent colors.",
+      "Don't remove focus indicators, shrink touch targets, or communicate state through color alone.",
+      "Don't use inline scripts or inline styles in Hugo templates; the strict CSP requires external scripts and class-based styling.",
+      "Don't edit vendored LaTeXML stylesheets for site-specific changes; use `static/css/latexml/site.css`.",
+      "Don't repeat nearby link text in thumbnail alternatives; decorative card thumbnails use empty alt text, while meaningful article images use page-resource metadata."
+    ]
+  }
+}
