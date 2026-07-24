@@ -477,13 +477,6 @@ blockquote {
     font-style: italic;
 }
 
-.section-mark {
-    display: block;
-    text-align: right;
-    color: var(--color-text-muted);
-    margin-top: 0.5rem;
-}
-
 @media (max-width: 768px) {
     .post {
         grid-template-columns: 1fr;

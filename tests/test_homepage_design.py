@@ -59,3 +59,13 @@ def test_home_intro_uses_documented_prose_measure(public_dir):
     assert "home-intro" in homepage.find("section", id="home").get("class", [])
     assert ".home-intro" in css
     assert "max-width: 45rem" in css.split(".home-intro", 1)[1].split("}", 1)[0]
+
+
+def test_card_lists_omit_redundant_section_marks(public_dir):
+    pages = [
+        public_dir / "index.html",
+        public_dir / "portfolio" / "index.html",
+        public_dir / "writing" / "index.html",
+    ]
+
+    assert all(not parse_html(page).select(".section-mark") for page in pages)
