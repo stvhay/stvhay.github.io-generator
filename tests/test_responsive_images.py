@@ -15,14 +15,37 @@ def test_content_images_have_responsive_sources(html_files, public_dir):
             continue
 
         for image in parse_html(html_file).find_all("img"):
-            srcset = image.get("srcset", "")
-            sizes = image.get("sizes")
+            picture = image.find_parent("picture")
+            source = picture.find("source", type="image/webp") if picture else None
+            srcset = source.get("srcset", "") if source else ""
+            sizes = source.get("sizes") if source else None
             if not srcset or not sizes or ".webp " not in srcset:
                 images_without_sources.append(html_file.relative_to(public_dir))
 
     assert not images_without_sources, (
         "Content images missing responsive WebP sources:\n"
         + "\n".join(str(path) for path in images_without_sources)
+    )
+
+
+@pytest.mark.performance
+def test_content_images_retain_non_webp_fallback(html_files, public_dir):
+    """Responsive WebP sources keep a broadly compatible browser fallback."""
+    missing_fallbacks = []
+
+    for html_file in html_files:
+        if is_static_file(html_file, public_dir):
+            continue
+
+        for image in parse_html(html_file).find_all("img"):
+            picture = image.find_parent("picture")
+            source = picture.find("source", type="image/webp") if picture else None
+            if not source or image["src"].endswith(".webp"):
+                missing_fallbacks.append(html_file.relative_to(public_dir))
+
+    assert not missing_fallbacks, (
+        "Content images missing original-format fallbacks:\n"
+        + "\n".join(str(path) for path in missing_fallbacks)
     )
 
 
@@ -37,8 +60,12 @@ def test_card_and_article_images_declare_distinct_slot_sizes(public_dir):
         / "index.html"
     )
 
-    assert portfolio.select_one(".post-img img")["sizes"].endswith("150px")
-    assert article.select_one(".article-img img")["sizes"].endswith("400px")
+    assert portfolio.select_one('.post-img source[type="image/webp"]')[
+        "sizes"
+    ].endswith("150px")
+    assert article.select_one('.article-img source[type="image/webp"]')[
+        "sizes"
+    ].endswith("400px")
 
 
 @pytest.mark.accessibility
