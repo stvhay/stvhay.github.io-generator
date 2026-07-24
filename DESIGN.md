@@ -185,7 +185,7 @@ The palette is **Paper, Ink & Signal**: warm neutrals carry the reading surface,
 - **Minor Heading** (600, `1.2rem`, 1.35): lower-level headings that must not render smaller than the body copy they introduce.
 - **Body** (300, `1.2rem`, 1.5): prose, summaries, and article copy; long-form articles stop at `45rem`, approximately 70–75 characters.
 - **Navigation** (600, `1rem`, 1.5): sticky index links and current-location states.
-- **Metadata** (300, `0.9rem`, 1.5): dates, section marks, and footer copy.
+- **Metadata** (300, `0.9rem`, 1.5): dates, featured labels, and footer copy.
 - **Label** (300, `0.85rem`, 1.5): compact controls and footer actions.
 - **Code** (platform monospace, `0.9em` inline / `0.95rem` block, 1.5): technical notation and examples.
 
@@ -197,7 +197,7 @@ Source Serif 4 is served locally as Latin-subset regular and italic variable WOF
 
 The global `.container` is centered and capped at `100ch`; it creates a generous index canvas rather than a full-bleed application shell. Sections use `1.875rem 1.25rem` padding, and containers add `1.25rem` internal padding. Long-form `.article` content narrows to `45rem` and permits long technical strings to wrap rather than widen the viewport.
 
-Portfolio and writing cards use a `150px 1fr` grid with a `1.25rem` gutter. At `768px` and below, cards become a single column, floated article media becomes full width, and text remains left aligned. Navigation wraps, stays sticky, and preserves 44px minimum targets. Responsive images retain intrinsic dimensions and use Hugo-generated WebP sources with JPEG fallbacks.
+Standard portfolio and writing cards use a `150px 1fr` grid with a `1.25rem` gutter. The first editorially weighted homepage project uses a `240px 1fr` featured variant and a `1.5rem` title to create one clear entry point. At `768px` and below, both card variants become a single column, floated article media becomes full width, and text remains left aligned. Navigation wraps, stays sticky, and preserves 44px minimum targets. Responsive images retain intrinsic dimensions and use Hugo-generated WebP sources with JPEG fallbacks.
 
 **The Reading Measure Rule.** Indexes may use the full `100ch` container; prose must use the narrower `45rem` article measure.
 
@@ -235,8 +235,9 @@ Components are restrained and quietly tactile: their default state recedes, whil
 - **Background:** Quiet Paper in light mode; Night Paper in dark mode.
 - **Shadow Strategy:** none; see the Flat Notebook Rule.
 - **Border:** one-pixel semantic border that changes to the active theme emphasis on hover or focus-within.
-- **Internal Padding:** `1.25rem` for standard post cards and `2rem` for article cards.
+- **Internal Padding:** `1.25rem` for standard post cards, `1.5rem` for the featured homepage card, and `2rem` for article cards.
 - **Focus:** focus-within adds both the emphasized border and an external focus outline.
+- **Featured Variant:** only the first editorially weighted homepage project receives the `240px` image column, larger title, and factual “Featured project” label. Do not repeat category marks already supplied by the surrounding section.
 
 Post-card thumbnails are decorative because the adjacent heading names the destination. Detail-page content images carry meaningful alternatives from Hugo page-resource metadata.
 
