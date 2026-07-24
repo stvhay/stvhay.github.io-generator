@@ -152,3 +152,25 @@ def test_export_for_node(js_scrambler):
     """Verify module exports for Node.js testing."""
     content = js_scrambler.read_text()
     assert "module.exports" in content, "Should export functions for testing"
+
+
+@pytest.mark.accessibility
+def test_revealed_email_is_a_live_region():
+    """The dynamically revealed address must be announced to assistive tech."""
+    shortcode = (
+        Path(__file__).parent.parent
+        / "layouts"
+        / "shortcodes"
+        / "scrambled-email.html"
+    ).read_text()
+    assert 'aria-live="polite"' in shortcode
+    assert 'aria-atomic="true"' in shortcode
+
+
+@pytest.mark.javascript
+def test_revealed_email_receives_focus(js_scrambler):
+    """Focus moves from the completed reveal action to the usable email link."""
+    content = js_scrambler.read_text()
+    href_assignment = content.index("emailDisplay.href =")
+    focus_call = content.index("emailDisplay.focus()")
+    assert focus_call > href_assignment

@@ -169,6 +169,12 @@ function setupEmailReveal(
       emailDisplay.textContent = unscrambled;
       emailDisplay.classList.remove("scrambled");
       emailDisplay.classList.add("revealed");
+
+      const status = emailDisplay.parentElement.querySelector(
+        ".email-scrambler-status",
+      );
+      if (status) status.textContent = `Email address revealed: ${unscrambled}`;
+      emailDisplay.focus();
     } catch (error) {
       console.error("Error unscrambling email:", error);
       // Show button again with error message if something fails
